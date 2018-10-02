@@ -1,8 +1,10 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Text, View } from 'react-native'
+import { Dimensions, Text, View } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
+
+const { windowWidth, windowHeight } = Dimensions.get('window')
 
 function objectWithKey(key, value) {
   return (Array.isArray(value) && value.length > 0) ||
@@ -50,7 +52,7 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs } = props
+  const { icon: iconArgs, height = windowHeight * 0.1, width  = windowWidth * 0.1 } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
 
@@ -62,20 +64,92 @@ export default function FontAwesomeIcon(props) {
   }
 
   const { abstract } = renderedIcon
-  const extraProps = {}
+  const extraProps = { height, width }
 
-  // Object.keys(props).forEach(key => {
-  //   if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
-  //     extraProps[key] = props[key]
-  //   }
-  // })
+  Object.keys(props).forEach(key => {
+    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
+      extraProps[key] = props[key]
+    }
+  })
 
   return convertCurry(abstract[0], extraProps)
-  // return (
-  //   <View>
-  //     <Text>pure component Icon from JSX here</Text>
-  //   </View>
-  // )
+}
+
+FontAwesomeIcon.displayName = 'FontAwesomeIcon'
+
+FontAwesomeIcon.propTypes = {
+  border: PropTypes.bool,
+
+  className: PropTypes.string,
+
+  mask: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string
+  ]),
+
+  fixedWidth: PropTypes.bool,
+
+  inverse: PropTypes.bool,
+
+  flip: PropTypes.oneOf(['horizontal', 'vertical', 'both']),
+
+  icon: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string
+  ]),
+
+  listItem: PropTypes.bool,
+
+  pull: PropTypes.oneOf(['right', 'left']),
+
+  pulse: PropTypes.bool,
+
+  rotation: PropTypes.oneOf([90, 180, 270]),
+
+  size: PropTypes.oneOf([
+    'lg',
+    'xs',
+    'sm',
+    '1x',
+    '2x',
+    '3x',
+    '4x',
+    '5x',
+    '6x',
+    '7x',
+    '8x',
+    '9x',
+    '10x'
+  ]),
+
+  spin: PropTypes.bool,
+
+  symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
+  title: PropTypes.string,
+
+  transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+}
+
+FontAwesomeIcon.defaultProps = {
+  border: false,
+  className: '',
+  mask: null,
+  fixedWidth: false,
+  inverse: false,
+  flip: null,
+  icon: null,
+  listItem: false,
+  pull: null,
+  pulse: false,
+  rotation: null,
+  size: null,
+  spin: false,
+  symbol: false,
+  title: '',
+  transform: null
 }
 
 const convertCurry = convert.bind(null, React.createElement)

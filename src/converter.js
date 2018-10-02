@@ -36,7 +36,7 @@ function convert(createElement, element, extraProps = {}) {
 
   return createElement(
     humps.pascalize(element.tag),
-    { ...mixins.attrs },
+    { ...mixins.attrs, ...extraProps },
     ...children
   )
 }

@@ -41,6 +41,9 @@
     "prop-types": "^15.6.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/examples"
+    ]
   }
 }

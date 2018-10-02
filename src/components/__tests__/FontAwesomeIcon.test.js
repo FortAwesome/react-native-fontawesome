@@ -29,6 +29,6 @@ const faCircle = {
 
 fontawesome.library.add(faCoffee, faCircle)
 test('renders correctly', () => {
-  const tree = renderer.create(<FontAwesomeIcon icon={ ['fas', 'coffee'] } />).toJSON()
+  const tree = renderer.create(<FontAwesomeIcon height={10} width={10} icon={ ['fas', 'coffee'] } />).toJSON()
   expect(tree).toMatchSnapshot();
 })

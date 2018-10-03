@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Dimensions, Text, View } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 
-const { windowWidth, windowHeight } = Dimensions.get('window')
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
 function objectWithKey(key, value) {
   return (Array.isArray(value) && value.length > 0) ||

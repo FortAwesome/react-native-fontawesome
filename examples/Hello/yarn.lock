@@ -526,7 +526,7 @@
 
 "@fortawesome/react-native-fontawesome@git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev", "react-native-fontawesome@git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev":
   version "0.0.1"
-  resolved "git+ssh://git@github.com/FortAwesome/react-native-fontawesome#104e60cca9786a2cc8d901163bad4b0c79dae033"
+  resolved "git+ssh://git@github.com/FortAwesome/react-native-fontawesome#68650a73de793d246c409873b29128cbdab6d1d7"
   dependencies:
     humps "^2.0.1"
     prop-types "^15.6.2"

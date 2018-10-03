@@ -18,9 +18,10 @@ function convert(createElement, element, extraProps = {}) {
     (acc, key) => {
       const val = element.attributes[key]
       switch(key){
-        case 'style':
         case 'class':
+        case 'fill':
         case 'role':
+        case 'style':
         case 'xmlns':
           delete element.attributes[key]
           break

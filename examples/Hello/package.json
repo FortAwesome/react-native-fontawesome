@@ -15,6 +15,7 @@
     "expo": "^30.0.1",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "react-native-fontawesome": "git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev",
     "react-native-svg": "^7.0.3"
   }
 }

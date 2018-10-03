@@ -1,30 +1,40 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, ScrollView } from 'react-native'
 import { Svg, Path } from 'react-native-svg'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/pro-solid-svg-icons'
+import { far } from '@fortawesome/pro-regular-svg-icons'
+import { fal } from '@fortawesome/pro-light-svg-icons'
 
-library.add(faCoffee)
 const { width, height } = Dimensions.get('window')
-// console.log("DEBUG: width, height", width, height)
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Show me coffee:</Text>
-        <FontAwesomeIcon icon={ ['fas', 'coffee'] } />
-      </View>
+      <ScrollView style={styles.container}>
+        <Text>Show me the icons:</Text>
+        {
+         Object.keys(fas).map(icon => {
+           return <FontAwesomeIcon key={`fas-${fas[icon].iconName}`} icon={ fas[icon] }/>
+         })
+        }
+        {
+         Object.keys(far).map(icon => {
+           return <FontAwesomeIcon key={`far-${far[icon].iconName}`} icon={ far[icon] }/>
+         })
+        }
+        {
+         Object.keys(fal).map(icon => {
+           return <FontAwesomeIcon key={`fal-${fal[icon].iconName}`} icon={ fal[icon] }/>
+         })
+        }
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  contentContainer: {
+    paddingVertical: 20
   },
 })

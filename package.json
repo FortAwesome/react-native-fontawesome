@@ -30,7 +30,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "babel-core": "^7.0.0-bridge",
     "babel-jest": "^23.6.0",
-    "humps": "^2.0.1",
     "jest": "^23.6.0",
     "metro-react-native-babel-preset": "^0.47.0",
     "react": "16.5.0",
@@ -39,7 +38,8 @@
     "react-test-renderer": "^16.5.2"
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "humps": "^2.0.1"
   },
   "jest": {
     "preset": "react-native",

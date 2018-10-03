@@ -1,1 +1,0 @@
-var _interopRequireDefault=require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports,"__esModule",{value:true});Object.defineProperty(exports,"FontAwesomeIcon",{enumerable:true,get:function get(){return _FontAwesomeIcon.default;}});var _FontAwesomeIcon=_interopRequireDefault(require("./components/FontAwesomeIcon"));

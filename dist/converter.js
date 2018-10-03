@@ -1,1 +1,68 @@
-var _interopRequireDefault=require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports,"__esModule",{value:true});exports.default=void 0;var _objectSpread2=_interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));var _toConsumableArray2=_interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));var _humps=_interopRequireDefault(require("humps"));var _reactNativeSvg=require("react-native-svg");var svgObjectMap={"svg":_reactNativeSvg.Svg,"path":_reactNativeSvg.Path};function convert(createElement,element){var extraProps=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{};if(typeof element==='string'){return element;}var children=(element.children||[]).map(convert.bind(null,createElement));var mixins=Object.keys(element.attributes||{}).reduce(function(acc,key){var val=element.attributes[key];switch(key){case'class':case'fill':case'role':case'style':case'xmlns':delete element.attributes[key];break;default:if(key.indexOf('aria-')===0||key.indexOf('data-')===0){delete element.attributes[key];}else{acc.attrs[_humps.default.camelize(key)]=val;}}return acc;},{attrs:{}});return createElement.apply(void 0,[svgObjectMap[element.tag],(0,_objectSpread2.default)({},mixins.attrs,extraProps)].concat((0,_toConsumableArray2.default)(children)));}var _default=convert;exports.default=_default;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _humps = _interopRequireDefault(require("humps"));
+
+var _reactNativeSvg = require("react-native-svg");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var svgObjectMap = {
+  "svg": _reactNativeSvg.Svg,
+  "path": _reactNativeSvg.Path
+};
+
+function convert(createElement, element) {
+  var extraProps = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  if (typeof element === 'string') {
+    return element;
+  }
+
+  var children = (element.children || []).map(convert.bind(null, createElement));
+  var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
+    var val = element.attributes[key];
+
+    switch (key) {
+      case 'class':
+      case 'fill':
+      case 'role':
+      case 'style':
+      case 'xmlns':
+        delete element.attributes[key];
+        break;
+
+      default:
+        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
+          delete element.attributes[key];
+        } else {
+          acc.attrs[_humps.default.camelize(key)] = val;
+        }
+
+    }
+
+    return acc;
+  }, {
+    attrs: {}
+  });
+  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread({}, mixins.attrs, extraProps)].concat(_toConsumableArray(children)));
+}
+
+var _default = convert;
+exports.default = _default;

@@ -32,23 +32,6 @@ export default {
       jsnext: true,
       main: true
     }),
-    commonJs(),
-    // babel({
-    //   babelrc: false,
-    //   presets: [
-    //     [
-    //       'env',
-    //       {
-    //         debug: true,
-    //         targets: { browsers: ['> 1%', 'last 2 versions', 'ie > 9'] },
-    //         modules: false
-    //       }
-    //     ],
-    //     'stage-3',
-    //     'react'
-    //   ],
-    //   plugins: ['external-helpers'],
-    //   exclude: 'node_modules/**'
-    // })
+    commonJs()
   ]
 }

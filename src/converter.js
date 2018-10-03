@@ -1,7 +1,9 @@
 import humps from 'humps'
+import { Svg, Path } from 'react-native-svg'
 
-function capitalize(val) {
-  return val.charAt(0).toUpperCase() + val.slice(1)
+const svgObjectMap = {
+  "svg": Svg,
+  "path": Path
 }
 
 function convert(createElement, element, extraProps = {}) {
@@ -35,7 +37,7 @@ function convert(createElement, element, extraProps = {}) {
   )
 
   return createElement(
-    humps.pascalize(element.tag),
+    svgObjectMap[element.tag],
     { ...mixins.attrs, ...extraProps },
     ...children
   )

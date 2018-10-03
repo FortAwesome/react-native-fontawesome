@@ -22,8 +22,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var _Dimensions$get = _reactNative.Dimensions.get('window'),
-    windowWidth = _Dimensions$get.windowWidth,
-    windowHeight = _Dimensions$get.windowHeight;
+    windowWidth = _Dimensions$get.width,
+    windowHeight = _Dimensions$get.height;
 
 function objectWithKey(key, value) {
   return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};

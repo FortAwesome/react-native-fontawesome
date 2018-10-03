@@ -33,7 +33,7 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs, height = windowHeight * 0.1, width  = windowWidth * 0.1 } = props
+  const { icon: iconArgs, mask: maskArgs, height = windowHeight * 0.1, width  = windowWidth * 0.1 } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
 

@@ -3,6 +3,7 @@ import convert from '../converter'
 import PropTypes from 'prop-types'
 import { Dimensions, Text, View } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
+import log from '../logger'
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
@@ -11,26 +12,6 @@ function objectWithKey(key, value) {
     (!Array.isArray(value) && value)
     ? { [key]: value }
     : {}
-}
-
-function classList(props) {
-  let classes = {
-    'fa-spin': props.spin,
-    'fa-pulse': props.pulse,
-    'fa-fw': props.fixedWidth,
-    'fa-inverse': props.inverse,
-    'fa-border': props.border,
-    'fa-li': props.listItem,
-    'fa-flip-horizontal': props.flip === 'horizontal' || props.flip === 'both',
-    'fa-flip-vertical': props.flip === 'vertical' || props.flip === 'both',
-    [`fa-${props.size}`]: props.size !== null,
-    [`fa-rotate-${props.rotation}`]: props.rotation !== null,
-    [`fa-pull-${props.pull}`]: props.pull !== null
-  }
-
-  return Object.keys(classes)
-    .map(key => (classes[key] ? key : null))
-    .filter(key => key)
 }
 
 function normalizeIconArgs(icon) {
@@ -56,10 +37,22 @@ export default function FontAwesomeIcon(props) {
 
   const iconLookup = normalizeIconArgs(iconArgs)
 
-  const renderedIcon = icon(iconLookup, {})
+  const transform = objectWithKey(
+    'transform',
+    typeof props.transform === 'string'
+      ? parse.transform(props.transform)
+      : props.transform
+  )
+
+  const mask = objectWithKey('mask', normalizeIconArgs(maskArgs))
+
+  const renderedIcon = icon(iconLookup, {
+    ...transform,
+    ...mask
+  })
 
   if (!renderedIcon) {
-    console.log("DEBUG: could not find icon")
+    log("ERROR: icon not found for icon = ", iconArgs)
     return null
   }
 
@@ -78,9 +71,6 @@ export default function FontAwesomeIcon(props) {
 FontAwesomeIcon.displayName = 'FontAwesomeIcon'
 
 FontAwesomeIcon.propTypes = {
-  border: PropTypes.bool,
-
-  className: PropTypes.string,
 
   mask: PropTypes.oneOfType([
     PropTypes.object,
@@ -88,11 +78,6 @@ FontAwesomeIcon.propTypes = {
     PropTypes.string
   ]),
 
-  fixedWidth: PropTypes.bool,
-
-  inverse: PropTypes.bool,
-
-  flip: PropTypes.oneOf(['horizontal', 'vertical', 'both']),
 
   icon: PropTypes.oneOfType([
     PropTypes.object,
@@ -108,47 +93,20 @@ FontAwesomeIcon.propTypes = {
 
   rotation: PropTypes.oneOf([90, 180, 270]),
 
-  size: PropTypes.oneOf([
-    'lg',
-    'xs',
-    'sm',
-    '1x',
-    '2x',
-    '3x',
-    '4x',
-    '5x',
-    '6x',
-    '7x',
-    '8x',
-    '9x',
-    '10x'
-  ]),
-
   spin: PropTypes.bool,
-
-  symbol: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-
-  title: PropTypes.string,
 
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 }
 
 FontAwesomeIcon.defaultProps = {
-  border: false,
-  className: '',
   mask: null,
-  fixedWidth: false,
   inverse: false,
-  flip: null,
   icon: null,
   listItem: false,
   pull: null,
   pulse: false,
   rotation: null,
-  size: null,
   spin: false,
-  symbol: false,
-  title: '',
   transform: null
 }
 

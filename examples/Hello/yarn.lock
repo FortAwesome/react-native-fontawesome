@@ -524,27 +524,6 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.4"
 
-"@fortawesome/pro-light-svg-icons@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/pro-light-svg-icons/-/pro-light-svg-icons-5.3.1.tgz#186c9819d49987d248f2eede994ae9e7bc4354d3"
-  integrity sha512-WDDzr9LZchq5zfCPDCNZqr9IyUil2SqzCujnl7smbe+CHlyBuB1TZuXCtre4hFTEJIQnOaf1EH3WITBbt5q87Q==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.4"
-
-"@fortawesome/pro-regular-svg-icons@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/pro-regular-svg-icons/-/pro-regular-svg-icons-5.3.1.tgz#79e835ae8b73a5d99782b503a1e3b3caa8f1fabc"
-  integrity sha512-RR8aj3tvo+zHYrsbmeSIEYoVhE1FxbklAoxt8L54YgdH+XwrakqlsTacVjzRujY72HFkz6MnvUOSLb1b87XUYQ==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.4"
-
-"@fortawesome/pro-solid-svg-icons@^5.3.1":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/pro-solid-svg-icons/-/pro-solid-svg-icons-5.3.1.tgz#b09c2cce921e8a2295ab8ac73499975b124eb953"
-  integrity sha512-FQLtAPdYDY1TElK9tt8Plc0hdFD84IG43b9nedTYB2uV9C5bCMi6kIO5CCAwc83VGS8EaYnw4dy3Cw1qdV9LoQ==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.4"
-
 "@fortawesome/react-native-fontawesome@git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev", "react-native-fontawesome@git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev":
   version "0.0.1"
   resolved "git+ssh://git@github.com/FortAwesome/react-native-fontawesome#53c9bb2b227fd082840820defd16f0e26d5ea2ed"

@@ -11,9 +11,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
-    "@fortawesome/pro-light-svg-icons": "^5.3.1",
-    "@fortawesome/pro-regular-svg-icons": "^5.3.1",
-    "@fortawesome/pro-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-native-fontawesome": "git+ssh://git@github.com/FortAwesome/react-native-fontawesome#dev",
     "expo": "^30.0.1",
     "react": "16.3.1",

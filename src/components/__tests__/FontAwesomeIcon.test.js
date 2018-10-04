@@ -32,3 +32,8 @@ test('renders correctly', () => {
   const tree = renderer.create(<FontAwesomeIcon height={10} width={10} icon={ ['fas', 'coffee'] } />).toJSON()
   expect(tree).toMatchSnapshot();
 })
+
+test('renders correctly with default height and width', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ ['fas', 'coffee'] } />).toJSON()
+  expect(tree).toMatchSnapshot();
+})

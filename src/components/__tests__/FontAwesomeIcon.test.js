@@ -43,3 +43,8 @@ test('renders with icon object prop', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
   expect(tree).toMatchSnapshot();
 })
+
+test('renders mask with transform', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } mask={ faCircle } transform="shrink-9 right-4" />).toJSON()
+  expect(tree).toMatchSnapshot();
+})

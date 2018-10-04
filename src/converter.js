@@ -1,9 +1,14 @@
 import humps from 'humps'
-import { Svg, Path } from 'react-native-svg'
+import { Svg, Path, Rect, Defs, Mask, G, ClipPath } from 'react-native-svg'
 
 const svgObjectMap = {
   "svg": Svg,
-  "path": Path
+  "path": Path,
+  "rect": Rect,
+  "defs": Defs,
+  "mask": Mask,
+  "g": G,
+  "clipPath": ClipPath
 }
 
 function convert(createElement, element, extraProps = {}) {
@@ -17,6 +22,7 @@ function convert(createElement, element, extraProps = {}) {
   const mixins = Object.keys(element.attributes || {}).reduce(
     (acc, key) => {
       const val = element.attributes[key]
+      //console.log("DEBUG: key: ", key)
       switch(key){
         case 'class':
         case 'fill':

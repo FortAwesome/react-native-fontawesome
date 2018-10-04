@@ -15,7 +15,11 @@ var _reactNative = require("react-native");
 
 var _fontawesomeSvgCore = require("@fortawesome/fontawesome-svg-core");
 
+var _logger = _interopRequireDefault(require("../logger"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -27,26 +31,6 @@ var _Dimensions$get = _reactNative.Dimensions.get('window'),
 
 function objectWithKey(key, value) {
   return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};
-}
-
-function classList(props) {
-  var _classes;
-
-  var classes = (_classes = {
-    'fa-spin': props.spin,
-    'fa-pulse': props.pulse,
-    'fa-fw': props.fixedWidth,
-    'fa-inverse': props.inverse,
-    'fa-border': props.border,
-    'fa-li': props.listItem,
-    'fa-flip-horizontal': props.flip === 'horizontal' || props.flip === 'both',
-    'fa-flip-vertical': props.flip === 'vertical' || props.flip === 'both'
-  }, _defineProperty(_classes, "fa-".concat(props.size), props.size !== null), _defineProperty(_classes, "fa-rotate-".concat(props.rotation), props.rotation !== null), _defineProperty(_classes, "fa-pull-".concat(props.pull), props.pull !== null), _classes);
-  return Object.keys(classes).map(function (key) {
-    return classes[key] ? key : null;
-  }).filter(function (key) {
-    return key;
-  });
 }
 
 function normalizeIconArgs(icon) {
@@ -75,15 +59,18 @@ function normalizeIconArgs(icon) {
 
 function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
+      maskArgs = props.mask,
       _props$height = props.height,
       height = _props$height === void 0 ? windowHeight * 0.1 : _props$height,
       _props$width = props.width,
       width = _props$width === void 0 ? windowWidth * 0.1 : _props$width;
   var iconLookup = normalizeIconArgs(iconArgs);
-  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, {});
+  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
+  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread({}, transform, mask));
 
   if (!renderedIcon) {
-    console.log("DEBUG: could not find icon");
+    (0, _logger.default)("ERROR: icon not found for icon = ", iconArgs);
     return null;
   }
 
@@ -102,39 +89,24 @@ function FontAwesomeIcon(props) {
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
-  border: _propTypes.default.bool,
-  className: _propTypes.default.string,
   mask: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
-  fixedWidth: _propTypes.default.bool,
-  inverse: _propTypes.default.bool,
-  flip: _propTypes.default.oneOf(['horizontal', 'vertical', 'both']),
   icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
   listItem: _propTypes.default.bool,
   pull: _propTypes.default.oneOf(['right', 'left']),
   pulse: _propTypes.default.bool,
   rotation: _propTypes.default.oneOf([90, 180, 270]),
-  size: _propTypes.default.oneOf(['lg', 'xs', 'sm', '1x', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x']),
   spin: _propTypes.default.bool,
-  symbol: _propTypes.default.oneOfType([_propTypes.default.bool, _propTypes.default.string]),
-  title: _propTypes.default.string,
   transform: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object])
 };
 FontAwesomeIcon.defaultProps = {
-  border: false,
-  className: '',
   mask: null,
-  fixedWidth: false,
   inverse: false,
-  flip: null,
   icon: null,
   listItem: false,
   pull: null,
   pulse: false,
   rotation: null,
-  size: null,
   spin: false,
-  symbol: false,
-  title: '',
   transform: null
 };
 

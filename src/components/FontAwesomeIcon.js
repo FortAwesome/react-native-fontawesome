@@ -72,12 +72,15 @@ FontAwesomeIcon.displayName = 'FontAwesomeIcon'
 
 FontAwesomeIcon.propTypes = {
 
+  height: PropTypes.number,
+
+  width: PropTypes.number,
+
   mask: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
     PropTypes.string
   ]),
-
 
   icon: PropTypes.oneOfType([
     PropTypes.object,
@@ -85,28 +88,12 @@ FontAwesomeIcon.propTypes = {
     PropTypes.string
   ]),
 
-  listItem: PropTypes.bool,
-
-  pull: PropTypes.oneOf(['right', 'left']),
-
-  pulse: PropTypes.bool,
-
-  rotation: PropTypes.oneOf([90, 180, 270]),
-
-  spin: PropTypes.bool,
-
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 }
 
 FontAwesomeIcon.defaultProps = {
   mask: null,
-  inverse: false,
   icon: null,
-  listItem: false,
-  pull: null,
-  pulse: false,
-  rotation: null,
-  spin: false,
   transform: null
 }
 

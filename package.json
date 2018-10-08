@@ -43,6 +43,12 @@
     "humps": "^2.0.1",
     "prop-types": "^15.6.2"
   },
+  "files": [
+    "index.js",
+    "dist/converter.js",
+    "dist/logger.js",
+    "dist/components/FontAwesomeIcon.js"
+  ],
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [

@@ -4,7 +4,8 @@
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dist": "babel src --ignore src/components/__tests__ --out-dir dist"
   },
   "homepage": "https://github.com/FortAwesome/react-native-fontawesome",
   "repository": {
@@ -24,22 +25,28 @@
     "react-native-svg": "^7.0.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "babel-core": "^7.0.0-bridge",
     "babel-jest": "^23.6.0",
     "jest": "^23.6.0",
-    "metro-react-native-babel-preset": "^0.47.0",
     "react": "16.5.0",
     "react-native": "^0.57.1",
     "react-native-svg": "^7.0.3",
     "react-test-renderer": "^16.5.2"
   },
   "dependencies": {
+    "humps": "^2.0.1",
     "prop-types": "^15.6.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/examples"
+    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-fontawesome",
+  "name": "@fortawesome/react-native-fontawesome",
   "version": "0.0.1",
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
@@ -43,6 +43,12 @@
     "humps": "^2.0.1",
     "prop-types": "^15.6.2"
   },
+  "files": [
+    "index.js",
+    "dist/converter.js",
+    "dist/logger.js",
+    "dist/components/FontAwesomeIcon.js"
+  ],
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [

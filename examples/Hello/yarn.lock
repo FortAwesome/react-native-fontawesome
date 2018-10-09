@@ -645,6 +645,33 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-common-types@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.5.tgz#a7f660607997b019cc985d525ec37d2fb72df926"
+  integrity sha512-hkKASkxINPqAyhYDF9QVtDK02hcleUzGxXnGmFkF/fIJgHaGaI4lVV07OfLsC6KIlgXQfIAAf3PNR2C74HN6xg==
+
+"@fortawesome/fontawesome-svg-core@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.5.tgz#590eae58179e904b55f6049582fc9f7719a77e6a"
+  integrity sha512-5q/3JyLg4sxEfk3VxBlBO7Rvl7rLvcEbKrWIGN0Y9xnjkPLIqdP9fgnetjCi3rNzhQjSzTyOgVG0M0I0KabXHw==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.5"
+
+"@fortawesome/free-solid-svg-icons@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.4.0.tgz#5f9494bc8ce98e07a0cefef3537aeca08b550cad"
+  integrity sha512-+9k7KO8wJbUIa88U2s712r5WAxZuFNb2RTE9AASMMb5VYAWsVGfhLAOkDAkI92RDLjN3Y2NK+2vt8A5uNxCuYQ==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.5"
+
+"@fortawesome/react-native-fontawesome@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-native-fontawesome/-/react-native-fontawesome-0.0.1.tgz#d960f949c43c0ac4b1122f4b67aaff0a2eda5486"
+  integrity sha512-B4ga5xk+8wp3B2Ye5S2or177euOZyAVrh3TIX5sBOPzX7GnhpD9zFwqXLHLTkf91olgp4P6HQIQO218YKSrZBw==
+  dependencies:
+    humps "^2.0.1"
+    prop-types "^15.6.2"
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -2783,6 +2810,11 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+humps@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/humps/-/humps-2.0.1.tgz#dd02ea6081bd0568dc5d073184463957ba9ef9aa"
+  integrity sha1-3QLqYIG9BWjcXQcxhEY5V7qe+ao=
 
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"

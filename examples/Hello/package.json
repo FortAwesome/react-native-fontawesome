@@ -7,6 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.5",
+    "@fortawesome/free-solid-svg-icons": "^5.4.0",
+    "@fortawesome/react-native-fontawesome": "^0.0.1",
     "react": "16.5.0",
     "react-native": "0.57.2",
     "react-native-svg": "^7.0.3"

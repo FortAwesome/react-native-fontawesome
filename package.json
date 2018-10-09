@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist"
+    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "start": "react-native start",
+    "start-with-cache-reset": "react-native start --reset-cache",
+    "clean": "rm -rf $TMPDIR/react-*; rm -rf $TMPDIR/haste-*; rm -rf $TMPDIR/metro-*; watchman watch-del-all"
   },
   "homepage": "https://github.com/FortAwesome/react-native-fontawesome",
   "repository": {

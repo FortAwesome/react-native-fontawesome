@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
 import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee, faBeer } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBeer, faCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -51,6 +51,9 @@ export default class App extends Component<Props> {
           <Rect clipPath="url(#clip-1)" mask="url(#Mask-1)" x="0" y="0" width="100%" height="100%"></Rect>
         </Svg>
 
+        <Text style={styles.instructions}>This masked icon uses react-native-fontawesome:</Text>
+
+        <FontAwesomeIcon height={windowHeight * 0.1} width={windowWidth * 0.1} icon={ faCircle } mask={ faCheck } />
       </View>
     );
   }

@@ -89,24 +89,15 @@ function FontAwesomeIcon(props) {
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
+  height: _propTypes.default.number,
+  width: _propTypes.default.number,
   mask: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
   icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
-  listItem: _propTypes.default.bool,
-  pull: _propTypes.default.oneOf(['right', 'left']),
-  pulse: _propTypes.default.bool,
-  rotation: _propTypes.default.oneOf([90, 180, 270]),
-  spin: _propTypes.default.bool,
   transform: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object])
 };
 FontAwesomeIcon.defaultProps = {
   mask: null,
-  inverse: false,
   icon: null,
-  listItem: false,
-  pull: null,
-  pulse: false,
-  rotation: null,
-  spin: false,
   transform: null
 };
 

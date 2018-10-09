@@ -25,7 +25,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var svgObjectMap = {
   "svg": _reactNativeSvg.Svg,
-  "path": _reactNativeSvg.Path
+  "path": _reactNativeSvg.Path,
+  "rect": _reactNativeSvg.Rect,
+  "defs": _reactNativeSvg.Defs,
+  "mask": _reactNativeSvg.Mask,
+  "g": _reactNativeSvg.G,
+  "clipPath": _reactNativeSvg.ClipPath
 };
 
 function convert(createElement, element) {
@@ -37,7 +42,7 @@ function convert(createElement, element) {
 
   var children = (element.children || []).map(convert.bind(null, createElement));
   var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
-    var val = element.attributes[key];
+    var val = element.attributes[key]; //console.log("DEBUG: key: ", key)
 
     switch (key) {
       case 'class':

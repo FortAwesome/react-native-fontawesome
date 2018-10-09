@@ -8,11 +8,6 @@ The following commands are available through `npm run`
 | ------- | ------------------------------------- |
 | dist    | Transpile code into `dist/`, to be checked in so the GitHub repo can be sourced directly from a `package.json` file |
 | test    | Run tests                             |
-| start   | Start JavaScript bundler, listening on a port |
-| ios     | Build the ios XCode project (requires XCode set up) |
-| android | Build the Android project |
-| start-with-cache-reset | Useful when after modifying JavaScript modules, something isn't resolving that you're pretty sure should be there |
-| clean | clean out build cache. Useful when the build isn't working and you're pretty sure it should be |
 
 ## Set up Development Environment (iOS)
 
@@ -28,6 +23,16 @@ to get your environment set up in your OS. For Mac OS X, that would look like:
 
 
 ## Launch the Example App
+
+In the `examples/Hello` subdirectory, the following script commands are available:
+
+| Command | Purpose                               |
+| ------- | ------------------------------------- |
+| start   | Start JavaScript bundler, listening on a port |
+| ios     | Build the ios XCode project (requires XCode set up) |
+| android | Build the Android project |
+| start-with-cache-reset | Useful when after modifying JavaScript modules, something isn't resolving that you're pretty sure should be there |
+| clean | clean out build cache. Useful when the build isn't working and you're pretty sure it should be |
 
 In one terminal tab:
 1. `cd examples/Hello`

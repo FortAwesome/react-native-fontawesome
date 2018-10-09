@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
 import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCoffee, faBeer } from '@fortawesome/free-solid-svg-icons'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,7 +28,10 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text>Show me some icons:</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+        <FontAwesomeIcon icon={ faCoffee } />
+        <FontAwesomeIcon icon={ faBeer } />
         <Text style={styles.instructions}>This masked icon uses react-native-svg directly:</Text>
 
         <Svg height={windowHeight * 0.1} width={windowWidth * 0.1} xmlns="http://www.w3.org/2000/Svg" viewBox="0 0 512 512">

@@ -645,9 +645,28 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-common-types@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.5.tgz#a7f660607997b019cc985d525ec37d2fb72df926"
+  integrity sha512-hkKASkxINPqAyhYDF9QVtDK02hcleUzGxXnGmFkF/fIJgHaGaI4lVV07OfLsC6KIlgXQfIAAf3PNR2C74HN6xg==
+
+"@fortawesome/fontawesome-svg-core@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.5.tgz#590eae58179e904b55f6049582fc9f7719a77e6a"
+  integrity sha512-5q/3JyLg4sxEfk3VxBlBO7Rvl7rLvcEbKrWIGN0Y9xnjkPLIqdP9fgnetjCi3rNzhQjSzTyOgVG0M0I0KabXHw==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.5"
+
+"@fortawesome/free-solid-svg-icons@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.4.0.tgz#5f9494bc8ce98e07a0cefef3537aeca08b550cad"
+  integrity sha512-+9k7KO8wJbUIa88U2s712r5WAxZuFNb2RTE9AASMMb5VYAWsVGfhLAOkDAkI92RDLjN3Y2NK+2vt8A5uNxCuYQ==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.5"
+
 "@fortawesome/react-native-fontawesome@https://github.com/FortAwesome/react-native-fontawesome#level-up-react-native-svg":
   version "0.0.1"
-  resolved "https://github.com/FortAwesome/react-native-fontawesome#e45918fb28298a95d258a04c980eec0fd3d95bd7"
+  resolved "https://github.com/FortAwesome/react-native-fontawesome#63059ce540993b54f5c9236df45844ca4f2e3b81"
   dependencies:
     humps "^2.0.1"
     prop-types "^15.6.2"

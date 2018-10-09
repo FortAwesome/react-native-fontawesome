@@ -1,26 +1,79 @@
-import React from 'react'
-import { Dimensions, StyleSheet, Text, ScrollView } from 'react-native'
-import { Svg, Path, ClipPath, Defs, Mask, G, Rect } from 'react-native-svg'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
+import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee, faBeer } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBeer, faCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const { width, height } = Dimensions.get('window')
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-export default class App extends React.Component {
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
+
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
-      <ScrollView style={styles.contentContainer}>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text>Show me some icons:</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
         <FontAwesomeIcon icon={ faCoffee } />
         <FontAwesomeIcon icon={ faBeer } />
-      </ScrollView>
-    )
+        <Text style={styles.instructions}>This masked icon uses react-native-svg directly:</Text>
+
+        <Svg height={windowHeight * 0.1} width={windowWidth * 0.1} xmlns="http://www.w3.org/2000/Svg" viewBox="0 0 512 512">
+          <Defs>
+            <ClipPath id="clip-1">
+              <Path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></Path>
+            </ClipPath>
+            <Mask x="0" y="0" width="100%" height="100%" id="Mask-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+              <Rect x="0" y="0" width="100%" height="100%" fill="white"></Rect>
+              <G >
+                <G>
+                  <Path fill="black" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></Path>
+                </G>
+              </G>
+            </Mask>
+          </Defs>
+          <Rect clipPath="url(#clip-1)" mask="url(#Mask-1)" x="0" y="0" width="100%" height="100%"></Rect>
+        </Svg>
+
+        <Text style={styles.instructions}>This masked icon uses react-native-fontawesome:</Text>
+
+        <FontAwesomeIcon height={windowHeight * 0.1} width={windowWidth * 0.1} icon={ faCircle } mask={ faCheck } />
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    paddingVertical: 50,
-    marginLeft: 20
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-})
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});

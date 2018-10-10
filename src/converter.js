@@ -22,7 +22,6 @@ function convert(createElement, element, extraProps = {}) {
   const mixins = Object.keys(element.attributes || {}).reduce(
     (acc, key) => {
       const val = element.attributes[key]
-      //console.log("DEBUG: key: ", key)
       switch(key){
         case 'class':
         case 'fill':

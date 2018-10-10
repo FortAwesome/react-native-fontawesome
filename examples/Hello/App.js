@@ -1,26 +1,58 @@
-import React from 'react'
-import { Dimensions, StyleSheet, Text, ScrollView } from 'react-native'
-import { Svg, Path, ClipPath, Defs, Mask, G, Rect } from 'react-native-svg'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
+import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCoffee, faBeer } from '@fortawesome/free-solid-svg-icons'
 
-const { width, height } = Dimensions.get('window')
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
-export default class App extends React.Component {
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
+
+type Props = {};
+export default class App extends Component<Props> {
   render() {
     return (
-      <ScrollView style={styles.contentContainer}>
-        <Text>Show me some icons:</Text>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to react-native-fontawesome!</Text>
+        <Text style={styles.instructions}>To get started, edit App.js</Text>
+        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.instructions}>And now, for some icons:</Text>
+
         <FontAwesomeIcon icon={ faCoffee } />
         <FontAwesomeIcon icon={ faBeer } />
-      </ScrollView>
-    )
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    paddingVertical: 50,
-    marginLeft: 20
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-})
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});

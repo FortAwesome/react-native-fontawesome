@@ -21,6 +21,9 @@
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
   * [Change Color with a StyleSheet](#change-color-with-a-stylesheet)
+- [Features](#features)
+  * [Masking](#masking)
+  * [Power Transforms](#power-transforms)    
 - [Frequent questions](#frequent-questions)
   * [How do I import the same icon from two different styles?](#how-do-i-import-the-same-icon-from-two-different-styles)
   * [I don't think tree-shaking is working; got any advice?](#i-dont-think-tree-shaking-is-working-got-any-advice)
@@ -335,6 +338,25 @@ export default class App extends Component<Props> {
   }
 }
 ```
+
+## Features
+
+### Masking
+
+```javascript
+<FontAwesomeIcon icon="coffee" mask={['far', 'circle']} />
+```
+
+[More on masking...](https://fontawesome.com/how-to-use/on-the-web/styling/masking):
+
+### Power Transforms
+
+```javascript
+<FontAwesomeIcon icon="arrows" transform="shrink-6 left-4" />
+<FontAwesomeIcon icon="arrow-rightr" transform={{ rotate: 42 }} />
+```
+
+[More on power transforms...](https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)
 
 ## Frequent questions
 

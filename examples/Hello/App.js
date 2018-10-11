@@ -32,13 +32,17 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>And now, for some icons:</Text>
 
         <FontAwesomeIcon icon={ faCoffee } />
-        <FontAwesomeIcon icon={ faBeer } />
+        <FontAwesomeIcon icon={ faBeer } style={ styles.icon } />
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  icon: {
+    color: 'green'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

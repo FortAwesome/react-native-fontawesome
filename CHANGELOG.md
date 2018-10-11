@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.0.2](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.0.2) - 2018-10-11
+
+### Added
+
+- Add style prop with initial special-case support for setting icon color
+
+- Re-initialize example app to allow for using it with `react-native-svg` 7.x
+
 ## [0.0.1](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.0.1) - 2018-10-08
 
 ### Added

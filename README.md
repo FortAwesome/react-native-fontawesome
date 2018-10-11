@@ -20,6 +20,7 @@
 - [Usage](#usage)
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
+  * [Change Color with a StyleSheet](#change-color-with-a-stylesheet)
 - [Frequent questions](#frequent-questions)
   * [How do I import the same icon from two different styles?](#how-do-i-import-the-same-icon-from-two-different-styles)
   * [I don't think tree-shaking is working; got any advice?](#i-dont-think-tree-shaking-is-working-got-any-advice)
@@ -301,7 +302,7 @@ The `icon` prop expects a single object:
 - Or it could be an `Array` of strings, where the first element is a prefix,
   and the second element is the icon name: `{["fab", "apple"]}`
 
-### Add Color with a StyleSheet
+### Change Color with a StyleSheet
 
 As `react-native-svg` gains more support for [`StyleSheets`](https://github.com/react-native-community/react-native-svg/commit/e7d0eb6df676d4f63f9eba7c0cf5ddd6c4c85fbe), we expect to pass through a `StyleSheet` given to the `style` prop on `FontAwesomeIcon` down to underlying `<Svg>` built by `react-native-svg`.
 

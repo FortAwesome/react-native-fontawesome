@@ -2,6 +2,7 @@ import * as fontawesome from '@fortawesome/fontawesome-svg-core'
 import FontAwesomeIcon from '../FontAwesomeIcon'
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { StyleSheet } from 'react-native'
 
 const faCoffee = {
   prefix: 'fas',
@@ -31,16 +32,25 @@ fontawesome.library.add(faCoffee, faCircle)
 
 test('renders correctly', () => {
   const tree = renderer.create(<FontAwesomeIcon height={10} width={10} icon={ ['fas', 'coffee'] } />).toJSON()
-  expect(tree).toMatchSnapshot();
+  expect(tree).toMatchSnapshot()
 })
 
 test('renders correctly with default height and width', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ ['fas', 'coffee'] } />).toJSON()
-  expect(tree).toMatchSnapshot();
+  expect(tree).toMatchSnapshot()
 })
 
 test('renders with icon object prop', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
-  expect(tree).toMatchSnapshot();
+  expect(tree).toMatchSnapshot()
 })
 
+test('renders with style prop setting color', () => {
+  const styles = StyleSheet.create({
+    icon: {
+      color: 'blue'
+    }
+  })
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
+  expect(tree).toMatchSnapshot()
+})

@@ -1,7 +1,7 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Dimensions, Text, View } from 'react-native'
+import { Dimensions, Text, View, ViewPropTypes } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
 
@@ -33,11 +33,11 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs, height = windowHeight * 0.1, width  = windowWidth * 0.1 } = props
+  const { icon: iconArgs, height, width, style } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
 
-  const renderedIcon = icon(iconLookup, {})
+  const renderedIcon = icon(iconLookup)
 
   if (!renderedIcon) {
     log("ERROR: icon not found for icon = ", iconArgs)
@@ -45,7 +45,7 @@ export default function FontAwesomeIcon(props) {
   }
 
   const { abstract } = renderedIcon
-  const extraProps = { height, width }
+  const extraProps = { height, width, style }
 
   Object.keys(props).forEach(key => {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
@@ -64,6 +64,8 @@ FontAwesomeIcon.propTypes = {
 
   width: PropTypes.number,
 
+  style: PropTypes.shape({ ...ViewPropTypes.style }),
+
   icon: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array,
@@ -72,7 +74,10 @@ FontAwesomeIcon.propTypes = {
 }
 
 FontAwesomeIcon.defaultProps = {
-  icon: null
+  icon: null,
+  style: null,
+  height: windowHeight * 0.1,
+  width: windowWidth * 0.1
 }
 
 const convertCurry = convert.bind(null, React.createElement)

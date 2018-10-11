@@ -304,11 +304,11 @@ The `icon` prop expects a single object:
 
 ### Change Color with a StyleSheet
 
-As `react-native-svg` gains more support for [`StyleSheets`](https://github.com/react-native-community/react-native-svg/commit/e7d0eb6df676d4f63f9eba7c0cf5ddd6c4c85fbe), we expect to pass through a `StyleSheet` given to the `style` prop on `FontAwesomeIcon` down to underlying `<Svg>` built by `react-native-svg`.
+As `react-native-svg` gains more support for [`StyleSheets`](https://github.com/react-native-community/react-native-svg/commit/e7d0eb6df676d4f63f9eba7c0cf5ddd6c4c85fbe), we pass down to it the `StyleSheet` provided to the `style` prop on `FontAwesomeIcon`.
 
-For now, there's one `StyleSheet` property for which we've implemented more special-case support: `color`.
+For now, there's just one `StyleSheet` property for which we've implemented special-case support: `color`.
 
-So, to apply a color to an icon, provide a `StyleSheet` like this:
+To set the color of an icon, provide a `StyleSheet` like this:
 
 ```javascript
 import React, { Component } from 'react'

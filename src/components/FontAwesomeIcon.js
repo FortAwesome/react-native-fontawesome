@@ -33,11 +33,20 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs, height, width, style } = props
+  const { icon: iconArgs, mask: maskArgs, height, width, style } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
-
-  const renderedIcon = icon(iconLookup)
+  const transform = objectWithKey(
+    'transform',
+    typeof props.transform === 'string'
+      ? parse.transform(props.transform)
+      : props.transform
+  )
+  const mask = objectWithKey('mask', normalizeIconArgs(maskArgs))
+  const renderedIcon = icon(iconLookup, {
+    ...transform,
+    ...mask
+  })
 
   if (!renderedIcon) {
     log("ERROR: icon not found for icon = ", iconArgs)
@@ -70,11 +79,21 @@ FontAwesomeIcon.propTypes = {
     PropTypes.object,
     PropTypes.array,
     PropTypes.string
-  ])
+  ]),
+
+  mask: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string
+  ]),
+
+  transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 }
 
 FontAwesomeIcon.defaultProps = {
   icon: null,
+  mask: null,
+  transform: null,
   style: null,
   height: windowHeight * 0.1,
   width: windowWidth * 0.1

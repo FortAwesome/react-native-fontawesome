@@ -54,3 +54,8 @@ test('renders with style prop setting color', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('renders with mask and transform', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
+  expect(tree).toMatchSnapshot();
+})

@@ -97,7 +97,7 @@ $ yarn add @fortawesome/react-native-fontawesome
 
 ## Usage
 
-You can use Font Awesome icons in your React components as simply as this:
+You can use Font Awesome icons in your React Native components as simply as this:
 
 ```javascript
 <FontAwesomeIcon icon="coffee" />
@@ -106,7 +106,7 @@ You can use Font Awesome icons in your React components as simply as this:
 That simple usage is made possible when you add the `"coffee"` icon, to the
 _library_.
 
-This is one of the two ways you can use Font Awesome 5 with React. We'll
+This is one of the two ways you can use Font Awesome 5 with React Native. We'll
 summarize both ways briefly and then get into the details of each below.
 
 1.  **Explicit Import**
@@ -141,13 +141,21 @@ $ yarn add @fortawesome/free-solid-svg-icons
 Now, a simple React component might look like this:
 
 ```javascript
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-const element = <FontAwesomeIcon icon={faCoffee} />
-
-ReactDOM.render(element, document.body)
+type Props = {}
+export default class App extends Component<Props> {
+  render() {
+    return (
+      <View>
+        <FontAwesomeIcon icon={ faCoffee } />
+      </View>
+    )
+  }
+}
 ```
 
 Notice that the `faCoffee` icon is imported from
@@ -190,7 +198,7 @@ $ yarn add @fortawesome/free-brands-svg-icons
 In `App.js`, where our app is initialized:
 
 ```javascript
-import ReactDOM from 'react-dom'
+// ...
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -219,13 +227,14 @@ We'll make `Beverage.js` a functional component:
 
 ```javascript
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { View, Text } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export const Beverage = () => (
-  <div>
+  <View>
     <FontAwesomeIcon icon="check-square" />
-    Favorite beverage: <FontAwesomeIcon icon="coffee" />
-  </div>
+    <Text>Favorite beverage: </Text><FontAwesomeIcon icon="coffee" />
+  </View>
 )
 ```
 
@@ -238,16 +247,17 @@ Now suppose `Gadget.js` looks like this:
 
 ```javascript
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { View, Text } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export const Gadget = () => (
-  <div>
+  <View>
     <FontAwesomeIcon icon="check-square" />
-    Popular gadgets come from vendors like:
+    <Text>Popular gadgets come from vendors like:</Text>
     <FontAwesomeIcon icon={['fab', 'apple']} />
     <FontAwesomeIcon icon={['fab', 'microsoft']} />
     <FontAwesomeIcon icon={['fab', 'google']} />
-  </div>
+  </View>
 )
 ```
 

@@ -15,11 +15,29 @@ function convert(createElement, element, extraProps = {}) {
   if (typeof element === 'string') {
     return element
   }
+
+  const {
+    style, // get rid of this key
+    ...modifiedExtraProps // store the result here
+  } = extraProps
+
+  // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value.
+  // This is a prop we'll want to pass down to children as well.
+  if(extraProps.style && extraProps.style.color){
+    modifiedExtraProps['fill'] = extraProps.style.color
+  }
+
+  // We don't want to pass down height/width props to children: they're only intended for the
+  // top-level element.
+  const {
+    height,
+    width,
+    ...extraPropsForChildren
+  } = modifiedExtraProps
+
   const children = (element.children || []).map(
     child => {
-      // Don't pass down props meant only for the top-level SVG element
-      const { style, height, width, ...remainingExtraProps } = extraProps
-      return convert(createElement, child, remainingExtraProps)
+      return convert(createElement, child, extraPropsForChildren)
     }
   )
 
@@ -54,16 +72,6 @@ function convert(createElement, element, extraProps = {}) {
     },
     { attrs: {} }
   )
-
-  const {
-    style, // get rid of this key
-    ...modifiedExtraProps // store the result here
-  } = extraProps
-
-  // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value
-  if(extraProps.style && extraProps.style.color){
-    modifiedExtraProps['fill'] = extraProps.style.color
-  }
 
   return createElement(
     svgObjectMap[element.tag],

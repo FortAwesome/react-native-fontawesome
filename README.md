@@ -138,7 +138,7 @@ or
 $ yarn add @fortawesome/free-solid-svg-icons
 ```
 
-Now, a simple React component might look like this:
+Now, a simple React Native component might look like this:
 
 ```javascript
 import React, { Component } from 'react'
@@ -219,7 +219,7 @@ In our call to <span style="white-space:nowrap;">`library.add()`</span> we're pa
   allows us to refer to them throughout our app by their icon string names,
   `"check-square"` and `"coffee"`, respectively.
 
-Now, suppose you also have React components `Beverage` and `Gadget` in your app.
+Now, suppose you also have React Native components `Beverage` and `Gadget` in your app.
 You don't have to re-import your icons into them. Just import the `FontAwesomeIcon`
 component, and when you use it, supply the icon prop an icon name as a string.
 
@@ -300,6 +300,40 @@ The `icon` prop expects a single object:
   so we've omitted them.)
 - Or it could be an `Array` of strings, where the first element is a prefix,
   and the second element is the icon name: `{["fab", "apple"]}`
+
+### Add Color with a StyleSheet
+
+As `react-native-svg` gains more support for [`StyleSheets`](https://github.com/react-native-community/react-native-svg/commit/e7d0eb6df676d4f63f9eba7c0cf5ddd6c4c85fbe), we expect to pass through a `StyleSheet` given to the `style` prop on `FontAwesomeIcon` down to underlying `<Svg>` built by `react-native-svg`.
+
+For now, there's one `StyleSheet` property for which we've implemented more special-case support: `color`.
+
+So, to apply a color to an icon, provide a `StyleSheet` like this:
+
+```javascript
+import React, { Component } from 'react'
+import { View, StyleSheet } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+
+type Props = {}
+
+const style = StyleSheet.create({
+  icon: {
+    color: 'blue'
+  }
+})
+
+export default class App extends Component<Props> {
+  render() {
+    return (
+      <View>
+        <FontAwesomeIcon icon={ faCoffee } style={ style.icon } />
+      </View>
+    )
+  }
+}
+```
 
 ## Frequent questions
 

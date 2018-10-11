@@ -347,7 +347,7 @@ export default class App extends Component<Props> {
 <FontAwesomeIcon icon="coffee" mask={['far', 'circle']} />
 ```
 
-[More on masking...](https://fontawesome.com/how-to-use/on-the-web/styling/masking):
+[More on masking...](https://fontawesome.com/how-to-use/on-the-web/styling/masking)
 
 ### Power Transforms
 

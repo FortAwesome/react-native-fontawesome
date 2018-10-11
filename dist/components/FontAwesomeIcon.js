@@ -59,15 +59,11 @@ function normalizeIconArgs(icon) {
 
 function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
-      maskArgs = props.mask,
-      _props$height = props.height,
-      height = _props$height === void 0 ? windowHeight * 0.1 : _props$height,
-      _props$width = props.width,
-      width = _props$width === void 0 ? windowWidth * 0.1 : _props$width;
+      height = props.height,
+      width = props.width,
+      style = props.style;
   var iconLookup = normalizeIconArgs(iconArgs);
-  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
-  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
-  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread({}, transform, mask));
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup);
 
   if (!renderedIcon) {
     (0, _logger.default)("ERROR: icon not found for icon = ", iconArgs);
@@ -77,7 +73,8 @@ function FontAwesomeIcon(props) {
   var abstract = renderedIcon.abstract;
   var extraProps = {
     height: height,
-    width: width
+    width: width,
+    style: style
   };
   Object.keys(props).forEach(function (key) {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
@@ -89,25 +86,16 @@ function FontAwesomeIcon(props) {
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
-  mask: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
-  icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
-  listItem: _propTypes.default.bool,
-  pull: _propTypes.default.oneOf(['right', 'left']),
-  pulse: _propTypes.default.bool,
-  rotation: _propTypes.default.oneOf([90, 180, 270]),
-  spin: _propTypes.default.bool,
-  transform: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object])
+  height: _propTypes.default.number,
+  width: _propTypes.default.number,
+  style: _propTypes.default.shape(_objectSpread({}, _reactNative.ViewPropTypes.style)),
+  icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string])
 };
 FontAwesomeIcon.defaultProps = {
-  mask: null,
-  inverse: false,
   icon: null,
-  listItem: false,
-  pull: null,
-  pulse: false,
-  rotation: null,
-  spin: false,
-  transform: null
+  style: null,
+  height: windowHeight * 0.1,
+  width: windowWidth * 0.1
 };
 
 var convertCurry = _converter.default.bind(null, _react.default.createElement);

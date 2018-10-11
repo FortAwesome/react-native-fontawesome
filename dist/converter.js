@@ -45,7 +45,13 @@ function convert(createElement, element) {
   }
 
   var children = (element.children || []).map(function (child) {
-    return convert(createElement, child, extraProps);
+    // Don't pass down props meant only for the top-level SVG element
+    var style = extraProps.style,
+        height = extraProps.height,
+        width = extraProps.width,
+        remainingExtraProps = _objectWithoutProperties(extraProps, ["style", "height", "width"]);
+
+    return convert(createElement, child, remainingExtraProps);
   });
   var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
     var val = element.attributes[key];

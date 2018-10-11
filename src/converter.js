@@ -17,7 +17,9 @@ function convert(createElement, element, extraProps = {}) {
   }
   const children = (element.children || []).map(
     child => {
-      return convert(createElement, child, extraProps)
+      // Don't pass down props meant only for the top-level SVG element
+      const { style, height, width, ...remainingExtraProps } = extraProps
+      return convert(createElement, child, remainingExtraProps)
     }
   )
 

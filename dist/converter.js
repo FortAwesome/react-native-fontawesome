@@ -78,13 +78,12 @@ function convert(createElement, element) {
       case 'xmlns':
         delete element.attributes[key];
         break;
-
-      case 'fill':
-        // TODO: When react-native-svg supports currentColor, pass it through
-        // In the meantime, just translate 'currentColor' to 'black'
-        // See: https://github.com/react-native-community/react-native-svg/commit/1827b918833efdaa25cfc1a76df2164cb2bcdd2b
-        acc.attrs[key] = val === 'currentColor' ? 'black' : val;
-        break;
+      // case 'fill':
+      //   // TODO: When react-native-svg supports currentColor, pass it through
+      //   // In the meantime, just translate 'currentColor' to 'black'
+      //   // See: https://github.com/react-native-community/react-native-svg/commit/1827b918833efdaa25cfc1a76df2164cb2bcdd2b
+      //   acc.attrs[key] = val === 'currentColor' ? 'black' : val
+      //   break
 
       default:
         if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {

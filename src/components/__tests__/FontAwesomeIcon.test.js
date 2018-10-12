@@ -54,3 +54,29 @@ test('renders with style prop setting color', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('renders with mask and transform', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
+  // modify the clipPath and mask identifiers to be fixed, so they aren't regenerated each time and thus
+  // our snapshot will remain stable across test runs
+  const maskId = "mask-1"
+  const clipId = "clip-1"
+
+  // clip id
+  tree.children[0].children[0].props.name = clipId
+  tree.children[1].props.clipPath = clipId
+
+  // mask id
+  tree.children[0].children[1].props.name = maskId
+  tree.children[1].props.mask = maskId
+
+  expect(tree).toMatchSnapshot()
+})
+
+test('renders transform equivalently when assigning prop as string or object', () => {
+  const firstTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform="shrink-9 right-4" />).toJSON()
+  expect(firstTree).toMatchSnapshot()
+
+  const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform("shrink-9 right-4")} />).toJSON()
+  expect(secondTree).toMatchObject(firstTree)
+})

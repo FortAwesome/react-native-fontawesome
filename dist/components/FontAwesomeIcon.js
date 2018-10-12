@@ -59,11 +59,14 @@ function normalizeIconArgs(icon) {
 
 function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
+      maskArgs = props.mask,
       height = props.height,
       width = props.width,
       style = props.style;
   var iconLookup = normalizeIconArgs(iconArgs);
-  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup);
+  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
+  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread({}, transform, mask));
 
   if (!renderedIcon) {
     (0, _logger.default)("ERROR: icon not found for icon = ", iconArgs);
@@ -89,10 +92,14 @@ FontAwesomeIcon.propTypes = {
   height: _propTypes.default.number,
   width: _propTypes.default.number,
   style: _propTypes.default.shape(_objectSpread({}, _reactNative.ViewPropTypes.style)),
-  icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string])
+  icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
+  mask: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
+  transform: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object])
 };
 FontAwesomeIcon.defaultProps = {
   icon: null,
+  mask: null,
+  transform: null,
   style: null,
   height: windowHeight * 0.1,
   width: windowWidth * 0.1

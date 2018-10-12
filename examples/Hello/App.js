@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
 import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee, faBeer } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBeer, faCircle, faCheck, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -32,7 +32,15 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>And now, for some icons:</Text>
 
         <FontAwesomeIcon icon={ faCoffee } />
+
+        <Text>Icon with different color:</Text>
         <FontAwesomeIcon icon={ faBeer } style={ styles.icon } />
+
+        <Text>Icon with mask and transform:</Text>
+        <FontAwesomeIcon icon={ faCheck } mask={ faCircle } transform="shrink-5" />
+
+        <Text>Icon with transform as object prop:</Text>
+        <FontAwesomeIcon icon={ faArrowsAlt } transform={{rotate: 15 }} />
 
       </View>
     );

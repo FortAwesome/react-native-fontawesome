@@ -48,11 +48,11 @@ function convert(createElement, element) {
   // store the result here
   extraProps.style,
       modifiedExtraProps = _objectWithoutProperties(extraProps, ["style"]); // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value.
-  // This is a prop we'll want to pass down to children as well.
-  // if(extraProps.style && extraProps.style.color){
-  //   modifiedExtraProps['fill'] = extraProps.style.color
-  // }
-  // We don't want to pass down height/width props to children: they're only intended for the
+
+
+  if (extraProps.style && extraProps.style.color) {
+    modifiedExtraProps['color'] = extraProps.style.color;
+  } // We don't want to pass down height/width props to children: they're only intended for the
   // top-level element.
 
 

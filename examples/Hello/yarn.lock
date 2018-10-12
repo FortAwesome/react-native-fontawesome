@@ -666,7 +666,7 @@
 
 "@fortawesome/react-native-fontawesome@https://github.com/FortAwesome/react-native-fontawesome":
   version "0.0.2"
-  resolved "https://github.com/FortAwesome/react-native-fontawesome#bcd8e70332f8105862ff2d279b615e848fc0c88b"
+  resolved "https://github.com/FortAwesome/react-native-fontawesome#ff8b11e2e755e2155fe4f457c0226edfeea65e9a"
   dependencies:
     humps "^2.0.1"
     prop-types "^15.6.2"
@@ -5572,9 +5572,9 @@ sprintf-js@~1.0.2:
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 sshpk@^1.7.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.15.0.tgz#74e084946318c487a6c7c64796f864301ce35886"
-  integrity sha512-fAUqwOzq7VlJ/pOgQWRJZmyMXGwXLgslaHYyJpNNg1uHoVFgW3Y8NuC8YBWaPV/9LltfgorM1Z9S2Q+DXwqxgQ==
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.15.1.tgz#b79a089a732e346c6e0714830f36285cd38191a2"
+  integrity sha512-mSdgNUaidk+dRU5MhYtN9zebdzF2iG0cNPWy8HG+W8y+fT1JnSkh0fzzpjOa0L7P8i1Rscz38t0h4gPcKz43xA==
   dependencies:
     asn1 "~0.2.3"
     assert-plus "^1.0.0"

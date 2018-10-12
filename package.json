@@ -1,6 +1,6 @@
 {
   "name": "@fortawesome/react-native-fontawesome",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
   "scripts": {

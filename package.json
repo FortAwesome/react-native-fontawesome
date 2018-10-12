@@ -37,7 +37,7 @@
     "metro-react-native-babel-preset": "^0.48.0",
     "react": "16.5.0",
     "react-native": "^0.57.1",
-    "react-native-svg": "^7.0.3",
+    "react-native-svg": "^7.1.2",
     "react-test-renderer": "^16.5.2"
   },
   "dependencies": {

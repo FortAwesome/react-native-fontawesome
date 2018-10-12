@@ -11,6 +11,7 @@ import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
 import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCoffee, faBeer, faCircle, faCheck, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
+import SampleMaskedIcon from './SampleMaskedIcon'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -39,9 +40,12 @@ export default class App extends Component<Props> {
         <Text>Icon with mask and transform:</Text>
         <FontAwesomeIcon icon={ faCheck } mask={ faCircle } transform="shrink-5" />
 
-        <Text>Icon with transform as object prop:</Text>
-        <FontAwesomeIcon icon={ faArrowsAlt } transform={{rotate: 15 }} />
-
+        {
+          // Uncomment to compare a FontAwesomeIcon-rendered masked icon with
+          // a hand-crafted one that uses the react-native-svg elements directly.
+          //
+          // SampleMaskedIcon
+        }
       </View>
     );
   }

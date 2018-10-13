@@ -32,6 +32,7 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>{instructions}</Text>
         <Text style={styles.instructions}>And now, for some icons:</Text>
 
+        <Text>Default style</Text>
         <FontAwesomeIcon icon={ faCoffee } />
 
         <Text>Icon with different color:</Text>
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,

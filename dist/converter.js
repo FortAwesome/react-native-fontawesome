@@ -23,10 +23,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 var svgObjectMap = {
   "svg": _reactNativeSvg.Svg,
   "path": _reactNativeSvg.Path,
@@ -44,25 +40,8 @@ function convert(createElement, element) {
     return element;
   }
 
-  var style = // get rid of this key
-  // store the result here
-  extraProps.style,
-      modifiedExtraProps = _objectWithoutProperties(extraProps, ["style"]); // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value.
-  // This is a prop we'll want to pass down to children as well.
-
-
-  if (extraProps.style && extraProps.style.color) {
-    modifiedExtraProps['fill'] = extraProps.style.color;
-  } // We don't want to pass down height/width props to children: they're only intended for the
-  // top-level element.
-
-
-  var height = modifiedExtraProps.height,
-      width = modifiedExtraProps.width,
-      extraPropsForChildren = _objectWithoutProperties(modifiedExtraProps, ["height", "width"]);
-
   var children = (element.children || []).map(function (child) {
-    return convert(createElement, child, extraPropsForChildren);
+    return convert(createElement, child);
   });
   var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
     var val = element.attributes[key];
@@ -70,20 +49,9 @@ function convert(createElement, element) {
     switch (key) {
       case 'class':
       case 'role':
-      case 'style': // TODO: when react-native-svg supports the style prop, there may be a better way to do this.
-      // In the meantime, (below) we'll manually peel off any color property passed in via the "style" prop
-      // and assign it as the value of the "fill" attribute.
-      // See: https://github.com/react-native-community/react-native-svg/commit/e7d0eb6df676d4f63f9eba7c0cf5ddd6c4c85fbe
-
+      case 'style':
       case 'xmlns':
         delete element.attributes[key];
-        break;
-
-      case 'fill':
-        // TODO: When react-native-svg supports currentColor, pass it through
-        // In the meantime, just translate 'currentColor' to 'black'
-        // See: https://github.com/react-native-community/react-native-svg/commit/1827b918833efdaa25cfc1a76df2164cb2bcdd2b
-        acc.attrs[key] = val === 'currentColor' ? 'black' : val;
         break;
 
       default:
@@ -99,7 +67,7 @@ function convert(createElement, element) {
   }, {
     attrs: {}
   });
-  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread({}, mixins.attrs, modifiedExtraProps)].concat(_toConsumableArray(children)));
+  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread({}, mixins.attrs, extraProps)].concat(_toConsumableArray(children)));
 }
 
 var _default = convert;

@@ -32,6 +32,15 @@ function normalizeIconArgs(icon) {
   }
 }
 
+function resolveColor(style = {}) {
+  const {
+    // default to black
+    color = 'black'
+  } = style === null ? {} : style
+
+  return color
+}
+
 export default function FontAwesomeIcon(props) {
   const { icon: iconArgs, mask: maskArgs, height, width, style } = props
 
@@ -54,7 +63,11 @@ export default function FontAwesomeIcon(props) {
   }
 
   const { abstract } = renderedIcon
-  const extraProps = { height, width, style }
+
+  // This is the color that will be passed to the "color" prop of the Svg element
+  const color = resolveColor(style)
+
+  const extraProps = { height, width, color, style }
 
   Object.keys(props).forEach(key => {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {

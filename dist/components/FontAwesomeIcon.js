@@ -57,6 +57,16 @@ function normalizeIconArgs(icon) {
   }
 }
 
+function resolveColor() {
+  var style = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _ref2 = style === null ? {} : style,
+      _ref2$color = _ref2.color,
+      color = _ref2$color === void 0 ? 'black' : _ref2$color;
+
+  return color;
+}
+
 function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
       maskArgs = props.mask,
@@ -73,10 +83,13 @@ function FontAwesomeIcon(props) {
     return null;
   }
 
-  var abstract = renderedIcon.abstract;
+  var abstract = renderedIcon.abstract; // This is the color that will be passed to the "color" prop of the Svg element
+
+  var color = resolveColor(style);
   var extraProps = {
     height: height,
     width: width,
+    color: color,
     style: style
   };
   Object.keys(props).forEach(function (key) {

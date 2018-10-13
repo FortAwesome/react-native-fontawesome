@@ -16,30 +16,9 @@ function convert(createElement, element, extraProps = {}) {
     return element
   }
 
-  const {
-    style, // get rid of this key
-    ...modifiedExtraProps // store the result here
-  } = extraProps
-
-  // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value.
-  if(extraProps.style && extraProps.style.color){
-    modifiedExtraProps['color'] = extraProps.style.color
-  } else {
-    // Default to black
-    modifiedExtraProps['color'] = 'black'
-  }
-
-  // We don't want to pass down height/width props to children: they're only intended for the
-  // top-level element.
-  // const {
-  //   height,
-  //   width,
-  //   ...extraPropsForChildren
-  // } = modifiedExtraProps
-
   const children = (element.children || []).map(
     child => {
-      return convert(createElement, child, {})
+      return convert(createElement, child)
     }
   )
 
@@ -67,7 +46,7 @@ function convert(createElement, element, extraProps = {}) {
 
   return createElement(
     svgObjectMap[element.tag],
-    { ...mixins.attrs, ...modifiedExtraProps },
+    { ...mixins.attrs, ...extraProps },
     ...children
   )
 }

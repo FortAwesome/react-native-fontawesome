@@ -23,10 +23,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 var svgObjectMap = {
   "svg": _reactNativeSvg.Svg,
   "path": _reactNativeSvg.Path,
@@ -44,28 +40,8 @@ function convert(createElement, element) {
     return element;
   }
 
-  var style = // get rid of this key
-  // store the result here
-  extraProps.style,
-      modifiedExtraProps = _objectWithoutProperties(extraProps, ["style"]); // If a color was passed in as a style sheet on the style prop, set the fill attribute to its value.
-
-
-  if (extraProps.style && extraProps.style.color) {
-    modifiedExtraProps['color'] = extraProps.style.color;
-  } else {
-    // Default to black
-    modifiedExtraProps['color'] = 'black';
-  } // We don't want to pass down height/width props to children: they're only intended for the
-  // top-level element.
-  // const {
-  //   height,
-  //   width,
-  //   ...extraPropsForChildren
-  // } = modifiedExtraProps
-
-
   var children = (element.children || []).map(function (child) {
-    return convert(createElement, child, {});
+    return convert(createElement, child);
   });
   var mixins = Object.keys(element.attributes || {}).reduce(function (acc, key) {
     var val = element.attributes[key];
@@ -91,7 +67,7 @@ function convert(createElement, element) {
   }, {
     attrs: {}
   });
-  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread({}, mixins.attrs, modifiedExtraProps)].concat(_toConsumableArray(children)));
+  return createElement.apply(void 0, [svgObjectMap[element.tag], _objectSpread({}, mixins.attrs, extraProps)].concat(_toConsumableArray(children)));
 }
 
 var _default = convert;

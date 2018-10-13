@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.0.4](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.0.4) - 2018-10-13
+
+### Changed
+
+- Internal clean-up, leveraging recent developments in react-native-svg
+
 ## [0.0.3](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.0.3) - 2018-10-11
 
 ### Added

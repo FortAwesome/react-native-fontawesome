@@ -102,7 +102,7 @@ FontAwesomeIcon.defaultProps = {
   icon: null,
   mask: null,
   transform: null,
-  style: null,
+  style: {},
   color: null,
   height: windowHeight * 0.1,
   width: windowWidth * 0.1

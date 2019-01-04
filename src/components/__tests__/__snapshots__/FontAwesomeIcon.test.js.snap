@@ -5,7 +5,7 @@ exports[`color prop 1`] = `
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="blue"
+  fill="blue"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -16,9 +16,7 @@ exports[`color prop 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      Object {
-        "color": "blue",
-      },
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -27,7 +25,6 @@ exports[`color prop 1`] = `
       },
     ]
   }
-  tintColor="blue"
   vbHeight={512}
   vbWidth={640}
   width={75}
@@ -38,7 +35,7 @@ exports[`color prop 1`] = `
         0,
         0,
         0,
-        0,
+        1,
         1,
       ]
     }
@@ -58,7 +55,11 @@ exports[`color prop 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -127,7 +128,6 @@ exports[`renders correctly 1`] = `
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="black"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -138,7 +138,7 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      null,
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -147,7 +147,6 @@ exports[`renders correctly 1`] = `
       },
     ]
   }
-  tintColor="black"
   vbHeight={512}
   vbWidth={640}
   width={75}
@@ -178,7 +177,11 @@ exports[`renders correctly 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -247,7 +250,6 @@ exports[`renders correctly with non-default height and width 1`] = `
   align="xMidYMid"
   bbHeight="10"
   bbWidth="10"
-  color="black"
   height={10}
   meetOrSlice={0}
   minX={0}
@@ -258,7 +260,7 @@ exports[`renders correctly with non-default height and width 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      null,
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -267,7 +269,6 @@ exports[`renders correctly with non-default height and width 1`] = `
       },
     ]
   }
-  tintColor="black"
   vbHeight={512}
   vbWidth={640}
   width={10}
@@ -298,7 +299,11 @@ exports[`renders correctly with non-default height and width 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -367,7 +372,6 @@ exports[`renders transform equivalently when assigning prop as string or object 
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="black"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -378,7 +382,7 @@ exports[`renders transform equivalently when assigning prop as string or object 
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      null,
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -387,7 +391,6 @@ exports[`renders transform equivalently when assigning prop as string or object 
       },
     ]
   }
-  tintColor="black"
   vbHeight={512}
   vbWidth={640}
   width={75}
@@ -418,7 +421,11 @@ exports[`renders transform equivalently when assigning prop as string or object 
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -575,7 +582,6 @@ exports[`renders with icon object prop 1`] = `
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="black"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -586,7 +592,7 @@ exports[`renders with icon object prop 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      null,
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -595,7 +601,6 @@ exports[`renders with icon object prop 1`] = `
       },
     ]
   }
-  tintColor="black"
   vbHeight={512}
   vbWidth={640}
   width={75}
@@ -626,7 +631,11 @@ exports[`renders with icon object prop 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -695,7 +704,6 @@ exports[`renders with mask and transform 1`] = `
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="black"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -706,7 +714,7 @@ exports[`renders with mask and transform 1`] = `
         "backgroundColor": "transparent",
         "borderWidth": 0,
       },
-      null,
+      Object {},
       false,
       Object {
         "flex": 0,
@@ -715,7 +723,6 @@ exports[`renders with mask and transform 1`] = `
       },
     ]
   }
-  tintColor="black"
   vbHeight={512}
   vbWidth={640}
   width={75}
@@ -746,7 +753,11 @@ exports[`renders with mask and transform 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}
@@ -1084,7 +1095,7 @@ exports[`renders with style prop setting color 1`] = `
   align="xMidYMid"
   bbHeight="133.4"
   bbWidth="75"
-  color="blue"
+  fill="blue"
   height={133.4}
   meetOrSlice={0}
   minX={0}
@@ -1117,7 +1128,7 @@ exports[`renders with style prop setting color 1`] = `
         0,
         0,
         0,
-        0,
+        1,
         1,
       ]
     }
@@ -1137,7 +1148,11 @@ exports[`renders with style prop setting color 1`] = `
     opacity={1}
     originX={0}
     originY={0}
-    propList={Array []}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
     rotation={0}
     scaleX={1}
     scaleY={1}

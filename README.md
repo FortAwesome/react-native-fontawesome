@@ -20,7 +20,9 @@
 - [Usage](#usage)
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
-  * [Change Color with a StyleSheet](#change-color-with-a-stylesheet)
+  * [Color](#color)
+    + [Color Prop](#color-prop) 
+    + [Change Color with a StyleSheet](#color-stylesheet-property)
   * [Set Height and Width](#set-height-width)
 - [Features](#features)
   * [Masking](#masking)
@@ -305,7 +307,18 @@ The `icon` prop expects a single object:
 - Or it could be an `Array` of strings, where the first element is a prefix,
   and the second element is the icon name: `{["fab", "apple"]}`
 
-### Change Color with a StyleSheet
+### Color
+
+Priority: The color prop takes priority over setting color via StyleSheet. So if you end up with both set,
+the prop wins.
+
+#### Color Prop
+
+```javascript
+  <FontAwesomeIcon icon={ faCoffee } color={ 'red' } />
+```
+
+#### Color StyleSheet property
 
 To set the color of an icon, provide a `StyleSheet` like this:
 

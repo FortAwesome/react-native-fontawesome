@@ -312,6 +312,12 @@ The `icon` prop expects a single object:
 Priority: The color prop takes priority over setting color via StyleSheet. So if you end up with both set,
 the prop wins.
 
+In fact, when provided a style object (suppose you've declared other style properties other
+than `color`), if the color prop has been specified, then any color property on the style object is removed
+ before the style object is passed through to the underlying SVG rendering library. This is to avoid ambiguity.
+
+Using the color prop should be preferred over using the StyleSheet.
+
 #### Color Prop
 
 ```javascript

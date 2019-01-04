@@ -32,15 +32,6 @@ function normalizeIconArgs(icon) {
   }
 }
 
-function resolveColor(style = {}) {
-  const {
-    // default to black
-    color = 'black'
-  } = style === null ? {} : style
-
-  return color
-}
-
 export default function FontAwesomeIcon(props) {
   const { icon: iconArgs, mask: maskArgs, height, width, style } = props
 
@@ -64,16 +55,18 @@ export default function FontAwesomeIcon(props) {
 
   const { abstract } = renderedIcon
 
-  // This is the color that will be passed to the "color" prop of the Svg element
-  const color = resolveColor(style)
+  // This is the color that will be passed to the "fill" prop of the Svg element
+  const color = props.color || style.color || undefined
 
-  const extraProps = { height, width, color, style }
+  const extraProps = { height, width, fill: color, style }
 
+  /*
   Object.keys(props).forEach(key => {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
       extraProps[key] = props[key]
     }
   })
+  */
 
   return convertCurry(abstract[0], extraProps)
 }
@@ -85,6 +78,8 @@ FontAwesomeIcon.propTypes = {
   height: PropTypes.number,
 
   width: PropTypes.number,
+
+  color: PropTypes.string,
 
   style: PropTypes.shape({ ...ViewPropTypes.style }),
 
@@ -108,6 +103,7 @@ FontAwesomeIcon.defaultProps = {
   mask: null,
   transform: null,
   style: null,
+  color: null,
   height: windowHeight * 0.1,
   width: windowWidth * 0.1
 }

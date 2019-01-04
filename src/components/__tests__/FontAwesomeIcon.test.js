@@ -3,6 +3,7 @@ import FontAwesomeIcon from '../FontAwesomeIcon'
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { StyleSheet } from 'react-native'
+import { find } from 'lodash'
 
 const faCoffee = {
   prefix: 'fas',
@@ -87,6 +88,17 @@ test('renders transform equivalently when assigning prop as string or object', (
 })
 
 test('color prop', () => {
-  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'blue' }/>).toJSON()
-  expect(tree).toMatchSnapshot()
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'purple' }/>).toJSON()
+  expect(tree.props.fill).toEqual('purple')
+  expect(tree.props.tintColor).toBeUndefined()
+  const path = tree.children[0].children.find(c => c.type === 'RNSVGPath')
+  expect(path.fill).toBeUndefined()
+})
+
+test('color prop overrides style.color', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'blue' } style={{ color: 'red' }}/>).toJSON()
+  expect(tree.props.fill).toEqual('blue')
+  expect(tree.props.tintColor).toBeUndefined()
+  const path = tree.children[0].children.find(c => c.type === 'RNSVGPath')
+  expect(path.fill).toBeUndefined()
 })

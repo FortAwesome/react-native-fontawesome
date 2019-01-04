@@ -70,6 +70,11 @@ test('renders with mask and transform', () => {
   tree.children[0].children[0].children[1].props.name = maskId
   tree.children[0].children[1].props.mask = maskId
 
+  // remove the clipPath prop, if present, to normalize the shape across versions of react-native-svg.
+  // in version ^7.1.2, there was a clipRule prop here. in version ^8.0.8 there's not.
+  // normalizing this lets us match more fuzzily and have this same test work in both version scenarios.
+  tree.children[0].children[1].props = { ...tree.children[0].children[1].props, clipRule: undefined }
+
   expect(tree).toMatchSnapshot()
 })
 

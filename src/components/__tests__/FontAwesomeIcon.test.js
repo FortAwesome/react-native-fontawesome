@@ -85,3 +85,8 @@ test('renders transform equivalently when assigning prop as string or object', (
   const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform("shrink-9 right-4")} />).toJSON()
   expect(secondTree).toMatchObject(firstTree)
 })
+
+test('color prop', () => {
+  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'blue' }/>).toJSON()
+  expect(tree).toMatchSnapshot()
+})

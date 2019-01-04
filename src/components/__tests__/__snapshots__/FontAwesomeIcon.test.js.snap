@@ -907,7 +907,6 @@ exports[`renders with mask and transform 1`] = `
     </RNSVGDefs>
     <RNSVGRect
       clipPath="clip-1"
-      clipRule={1}
       fill={
         Array [
           2,

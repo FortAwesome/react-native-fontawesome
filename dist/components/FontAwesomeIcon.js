@@ -19,6 +19,10 @@ var _logger = _interopRequireDefault(require("../logger"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -81,11 +85,13 @@ function FontAwesomeIcon(props) {
 
   var abstract = renderedIcon.abstract; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = props.color || style.color || undefined; // To avoid confusion down the line, we'll remove any color property that might have been in the stylesheet.
-  // The only color attribute we want to affect the rendered result should be the one assigned to the fill prop
-  // on the top-level SVG element.
+  var color = props.color || style.color || undefined; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
+  // In other words, we don't want color (for example) to be specified via two different inputs.
 
-  delete style['color'];
+  var styleColor = style.color,
+      modifiedStyle = _objectWithoutProperties(style, ["color"]);
+
   var resolvedHeight, resolvedWidth;
 
   if (height || width) {
@@ -105,7 +111,7 @@ function FontAwesomeIcon(props) {
     height: resolvedHeight,
     width: resolvedWidth,
     fill: color,
-    style: style
+    style: modifiedStyle
     /*
     Object.keys(props).forEach(key => {
       if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {

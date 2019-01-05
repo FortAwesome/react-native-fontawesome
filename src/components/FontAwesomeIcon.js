@@ -1,11 +1,17 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Dimensions, Text, View, ViewPropTypes } from 'react-native'
+import { Dimensions, ViewPropTypes } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
+
+const DEFAULT_SIZE = 16
+
+// Deprecated height and width defaults
+const DEFAULT_HEIGHT = windowHeight * 0.1
+const DEFAULT_WIDTH = windowWidth * 0.1
 
 function objectWithKey(key, value) {
   return (Array.isArray(value) && value.length > 0) ||
@@ -33,7 +39,7 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs, mask: maskArgs, height, width, style } = props
+  const { icon: iconArgs, mask: maskArgs, height, width, style, size } = props
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
@@ -63,7 +69,25 @@ export default function FontAwesomeIcon(props) {
   // on the top-level SVG element.
   delete style['color']
 
-  const extraProps = { height, width, fill: color, style }
+  let resolvedHeight, resolvedWidth
+
+  if(height || width){
+    if(size) {
+      console.warn(`DEPRECATION: height and width props on ${FontAwesomeIcon.displayName} have been deprecated.  ` +
+        `Since you've also provided a size prop, we'll use it to override the height and width props given.  ` +
+        `You should probably go ahead and remove the height and width props to avoid confusion and resolve this warning.`)
+      resolvedHeight = resolvedWidth = size
+    } else {
+      console.warn(`DEPRECATION: height and width props on ${FontAwesomeIcon.displayName} have been deprecated.  ` +
+        `Use the size prop instead.`)
+      resolvedHeight = height || DEFAULT_HEIGHT
+      resolvedWidth = width || DEFAULT_WIDTH
+    }
+  } else {
+    resolvedHeight = resolvedWidth = size || DEFAULT_SIZE
+  }
+
+  const extraProps = { height: resolvedHeight, width: resolvedWidth, fill: color, style }
 
   /*
   Object.keys(props).forEach(key => {
@@ -83,6 +107,8 @@ FontAwesomeIcon.propTypes = {
   height: PropTypes.number,
 
   width: PropTypes.number,
+
+  size: PropTypes.number,
 
   color: PropTypes.string,
 
@@ -109,8 +135,7 @@ FontAwesomeIcon.defaultProps = {
   transform: null,
   style: {},
   color: null,
-  height: windowHeight * 0.1,
-  width: windowWidth * 0.1
+  // Once the deprecation of height and width props is complete, let's put a default prop value for size here
 }
 
 const convertCurry = convert.bind(null, React.createElement)

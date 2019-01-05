@@ -64,10 +64,10 @@ export default function FontAwesomeIcon(props) {
   // This is the color that will be passed to the "fill" prop of the Svg element
   const color = props.color || style.color || undefined
 
-  // To avoid confusion down the line, we'll remove any color property that might have been in the stylesheet.
-  // The only color attribute we want to affect the rendered result should be the one assigned to the fill prop
-  // on the top-level SVG element.
-  delete style['color']
+  // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
+  // In other words, we don't want color (for example) to be specified via two different inputs.
+  const { color: styleColor, ...modifiedStyle} = style
 
   let resolvedHeight, resolvedWidth
 
@@ -87,7 +87,7 @@ export default function FontAwesomeIcon(props) {
     resolvedHeight = resolvedWidth = size || DEFAULT_SIZE
   }
 
-  const extraProps = { height: resolvedHeight, width: resolvedWidth, fill: color, style }
+  const extraProps = { height: resolvedHeight, width: resolvedWidth, fill: color, style: modifiedStyle }
 
   /*
   Object.keys(props).forEach(key => {

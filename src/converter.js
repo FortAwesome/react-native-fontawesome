@@ -29,6 +29,7 @@ function convert(createElement, element, extraProps = {}) {
         case 'class':
         case 'role':
         case 'style':
+        case 'fill':
         case 'xmlns':
           delete element.attributes[key]
           break

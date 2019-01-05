@@ -29,6 +29,11 @@ var _Dimensions$get = _reactNative.Dimensions.get('window'),
     windowWidth = _Dimensions$get.width,
     windowHeight = _Dimensions$get.height;
 
+var DEFAULT_SIZE = 16; // Deprecated height and width defaults
+
+var DEFAULT_HEIGHT = windowHeight * 0.1;
+var DEFAULT_WIDTH = windowWidth * 0.1;
+
 function objectWithKey(key, value) {
   return Array.isArray(value) && value.length > 0 || !Array.isArray(value) && value ? _defineProperty({}, key, value) : {};
 }
@@ -57,22 +62,13 @@ function normalizeIconArgs(icon) {
   }
 }
 
-function resolveColor() {
-  var style = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var _ref2 = style === null ? {} : style,
-      _ref2$color = _ref2.color,
-      color = _ref2$color === void 0 ? 'black' : _ref2$color;
-
-  return color;
-}
-
 function FontAwesomeIcon(props) {
   var iconArgs = props.icon,
       maskArgs = props.mask,
       height = props.height,
       width = props.width,
-      style = props.style;
+      style = props.style,
+      size = props.size;
   var iconLookup = normalizeIconArgs(iconArgs);
   var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
   var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
@@ -83,20 +79,42 @@ function FontAwesomeIcon(props) {
     return null;
   }
 
-  var abstract = renderedIcon.abstract; // This is the color that will be passed to the "color" prop of the Svg element
+  var abstract = renderedIcon.abstract; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = resolveColor(style);
-  var extraProps = {
-    height: height,
-    width: width,
-    color: color,
-    style: style
-  };
-  Object.keys(props).forEach(function (key) {
-    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
-      extraProps[key] = props[key];
+  var color = props.color || style.color || undefined; // To avoid confusion down the line, we'll remove any color property that might have been in the stylesheet.
+  // The only color attribute we want to affect the rendered result should be the one assigned to the fill prop
+  // on the top-level SVG element.
+
+  delete style['color'];
+  var resolvedHeight, resolvedWidth;
+
+  if (height || width) {
+    if (size) {
+      console.warn("DEPRECATION: height and width props on ".concat(FontAwesomeIcon.displayName, " have been deprecated.  ") + "Since you've also provided a size prop, we'll use it to override the height and width props given.  " + "You should probably go ahead and remove the height and width props to avoid confusion and resolve this warning.");
+      resolvedHeight = resolvedWidth = size;
+    } else {
+      console.warn("DEPRECATION: height and width props on ".concat(FontAwesomeIcon.displayName, " have been deprecated.  ") + "Use the size prop instead.");
+      resolvedHeight = height || DEFAULT_HEIGHT;
+      resolvedWidth = width || DEFAULT_WIDTH;
     }
-  });
+  } else {
+    resolvedHeight = resolvedWidth = size || DEFAULT_SIZE;
+  }
+
+  var extraProps = {
+    height: resolvedHeight,
+    width: resolvedWidth,
+    fill: color,
+    style: style
+    /*
+    Object.keys(props).forEach(key => {
+      if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
+        extraProps[key] = props[key]
+      }
+    })
+    */
+
+  };
   return convertCurry(abstract[0], extraProps);
 }
 
@@ -104,6 +122,8 @@ FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
   height: _propTypes.default.number,
   width: _propTypes.default.number,
+  size: _propTypes.default.number,
+  color: _propTypes.default.string,
   style: _propTypes.default.shape(_objectSpread({}, _reactNative.ViewPropTypes.style)),
   icon: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
   mask: _propTypes.default.oneOfType([_propTypes.default.object, _propTypes.default.array, _propTypes.default.string]),
@@ -113,9 +133,9 @@ FontAwesomeIcon.defaultProps = {
   icon: null,
   mask: null,
   transform: null,
-  style: null,
-  height: windowHeight * 0.1,
-  width: windowWidth * 0.1
+  style: {},
+  color: null // Once the deprecation of height and width props is complete, let's put a default prop value for size here
+
 };
 
 var convertCurry = _converter.default.bind(null, _react.default.createElement);

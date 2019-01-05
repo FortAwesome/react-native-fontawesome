@@ -50,13 +50,12 @@ function convert(createElement, element) {
       case 'class':
       case 'role':
       case 'style':
-      case 'fill':
       case 'xmlns':
         delete element.attributes[key];
         break;
 
       default:
-        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
+        if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || 'fill' === key && 'currentColor' === val) {
           delete element.attributes[key];
         } else {
           acc.attrs[_humps.default.camelize(key)] = val;

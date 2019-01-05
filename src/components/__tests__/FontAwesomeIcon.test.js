@@ -1,5 +1,5 @@
 import * as fontawesome from '@fortawesome/fontawesome-svg-core'
-import FontAwesomeIcon from '../FontAwesomeIcon'
+import FontAwesomeIcon, { DEFAULT_SIZE, DEFAULT_COLOR } from '../FontAwesomeIcon'
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { StyleSheet } from 'react-native'
@@ -104,7 +104,12 @@ describe('color', () => {
       expect(tree.props.fill).toEqual('purple')
       expect(tree.props.tintColor).toBeUndefined()
       const path = tree.children[0].children.find(c => c.type === 'RNSVGPath')
-      expect(path.fill).toBeUndefined()
+
+      // A fill of [2] on an RNSVGPath would correspond to fill="currentColor".
+      // react-native-svg seems to have sort of handling of currentColor, but it doesn't seem to accomplish
+      // what we want, so our component's convert() should be stripping out any fill="currentColor" that the
+      // fontawesome-svg-core adds to the elements it renders.
+      expect(path.props.fill).not.toEqual([2])
     })
   })
   describe('when color is specified both by a color prop AND StyleSheet', () => {
@@ -122,8 +127,8 @@ describe('size', () => {
   describe('when no size, width, or height props are specified', () => {
     test('default size is assigned', () => {
       const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
-      expect(tree.props.height).toEqual(16)
-      expect(tree.props.width).toEqual(16)
+      expect(tree.props.height).toEqual(DEFAULT_SIZE)
+      expect(tree.props.width).toEqual(DEFAULT_SIZE)
     })
   })
   describe('when only a size prop is specified', () => {

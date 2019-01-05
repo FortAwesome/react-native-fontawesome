@@ -74,14 +74,28 @@ test('renders transform equivalently when assigning prop as string or object', (
 
 describe('color', () => {
   describe('when color is given in StyleSheet and NO color prop', () => {
-    test('renders with StyleSheet color', () => {
+    test('assigns StyleSheet color to fill and removes style.color', () => {
       const styles = StyleSheet.create({
         icon: {
           color: 'blue'
         }
       })
       const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
-      expect(tree).toMatchSnapshot()
+      expect(tree.props.fill).toEqual('blue')
+      expect(tree.props.style.filter(s => s.color === 'blue').length).toEqual(0)
+    })
+    describe('when other style properties are also given', () => {
+      test('the non-color style properties are passed through, though the color style property is not', () => {
+        const styles = StyleSheet.create({
+          icon: {
+            color: 'blue',
+            backgroundColor: 'yellow'
+          }
+        })
+        const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
+        expect(tree.props.style.filter(s => s.backgroundColor === 'yellow').length).toEqual(1)
+        expect(tree.props.style.filter(s => s.color === 'blue').length).toEqual(0)
+      })
     })
   })
   describe('when color prop is given and NO style.color is given', () => {

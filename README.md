@@ -23,7 +23,7 @@
   * [Color](#color)
     + [Color Prop](#color-prop) 
     + [Change Color with a StyleSheet](#color-stylesheet-property)
-  * [Set Height and Width](#set-height-width)
+  * [Size](#size)  
 - [Features](#features)
   * [Masking](#masking)
   * [Power Transforms](#power-transforms)    
@@ -354,28 +354,17 @@ export default class App extends Component<Props> {
 }
 ```
 
-### Set Height and Width
+### Size
 
-To adjust the height and width of an icon, provide `height` and `width` props:
+Default: 16
 
-Make it bigger:
+To adjust the size, use the `size` prop:
+
 ```javascript
-<FontAwesomeIcon icon={ faCoffee } height="200" width="200"/>
+<FontAwesomeIcon icon={ faCoffee } size={ 32 } />
 ```
 
-Make it smaller:
-```javascript
-<FontAwesomeIcon icon={ faCoffee } height="20" width="20"/>
-```
-
-For now, these props are simply passed down to the underlying `<Svg>` element and have the effect of changing the
-outer dimensions of the icon. The aspect ratio of the icon itself will be preserved, even if you choose a height and
-width that are out of proportion. The effect will be simply to draw the icon limited by the smallest dimension.
-To make the icon appear smaller or larger, increase or decrease `height` and `width` together, keeping them
-approximately square.
-
-_This API will probably change soon, replaced by a `size` prop that works more like
-the [one in our React component](https://github.com/FortAwesome/react-fontawesome#basic)._
+Note: the `height` and `width` props have been deprecated.
 
 ## Features
 

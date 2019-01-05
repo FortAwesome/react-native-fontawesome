@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = FontAwesomeIcon;
+exports.DEFAULT_COLOR = exports.DEFAULT_SIZE = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -33,8 +34,11 @@ var _Dimensions$get = _reactNative.Dimensions.get('window'),
     windowWidth = _Dimensions$get.width,
     windowHeight = _Dimensions$get.height;
 
-var DEFAULT_SIZE = 16; // Deprecated height and width defaults
+var DEFAULT_SIZE = 16;
+exports.DEFAULT_SIZE = DEFAULT_SIZE;
+var DEFAULT_COLOR = '#000'; // Deprecated height and width defaults
 
+exports.DEFAULT_COLOR = DEFAULT_COLOR;
 var DEFAULT_HEIGHT = windowHeight * 0.1;
 var DEFAULT_WIDTH = windowWidth * 0.1;
 
@@ -85,7 +89,7 @@ function FontAwesomeIcon(props) {
 
   var abstract = renderedIcon.abstract; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = props.color || style.color || undefined; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  var color = props.color || style.color || DEFAULT_COLOR; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
 

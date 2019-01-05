@@ -7,11 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
-import { Svg, Rect, G, Mask, ClipPath, Path, Defs } from 'react-native-svg';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee, faBeer, faCircle, faCheck, faArrowsAlt } from '@fortawesome/free-solid-svg-icons'
-import SampleMaskedIcon from './SampleMaskedIcon'
+import { faCoffee, faBeer, faCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
+import SampleRNSVGMaskedIcon from './SampleRNSVGMaskedIcon'
+import SampleRNSVGPlainIcon from './SampleRNSVGPlainIcon'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,8 +19,6 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-
-const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -42,10 +40,14 @@ export default class App extends Component<Props> {
         <FontAwesomeIcon icon={ faCheck } mask={ faCircle } transform="shrink-5" />
 
         {
-          // Uncomment to compare a FontAwesomeIcon-rendered masked icon with
-          // a hand-crafted one that uses the react-native-svg elements directly.
-          //
-          // SampleMaskedIcon
+          // Uncomment to render an icon that uses the react-native-svg elements directly.
+          // For comparison.
+          // SampleRNSVGPlainIcon
+        }
+        {
+          // Uncomment to render a masked icon with that uses the react-native-svg elements directly.
+          // For comparison.
+          // SampleRNSVGMaskedIcon
         }
       </View>
     );
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#c7a3a5',
   },
   welcome: {
     fontSize: 20,

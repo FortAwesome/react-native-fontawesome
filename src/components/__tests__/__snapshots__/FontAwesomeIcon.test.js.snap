@@ -614,9 +614,9 @@ exports[`renders with mask and transform 1`] = `
           fill={
             Array [
               0,
-              0,
-              0,
-              0,
+              1,
+              1,
+              1,
               1,
             ]
           }
@@ -636,7 +636,11 @@ exports[`renders with mask and transform 1`] = `
           opacity={1}
           originX={0}
           originY={0}
-          propList={Array []}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
           rotation={0}
           rx={0}
           ry={0}
@@ -768,7 +772,11 @@ exports[`renders with mask and transform 1`] = `
               opacity={1}
               originX={0}
               originY={0}
-              propList={Array []}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
               rotation={0}
               scaleX={1}
               scaleY={1}

@@ -7,7 +7,8 @@ import log from '../logger'
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
-const DEFAULT_SIZE = 16
+export const DEFAULT_SIZE = 16
+export const DEFAULT_COLOR = '#000'
 
 // Deprecated height and width defaults
 const DEFAULT_HEIGHT = windowHeight * 0.1
@@ -62,7 +63,7 @@ export default function FontAwesomeIcon(props) {
   const { abstract } = renderedIcon
 
   // This is the color that will be passed to the "fill" prop of the Svg element
-  const color = props.color || style.color || undefined
+  const color = props.color || style.color || DEFAULT_COLOR
 
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.

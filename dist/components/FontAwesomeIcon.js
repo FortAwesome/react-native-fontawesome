@@ -116,15 +116,12 @@ function FontAwesomeIcon(props) {
     width: resolvedWidth,
     fill: color,
     style: modifiedStyle
-    /*
-    Object.keys(props).forEach(key => {
-      if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
-        extraProps[key] = props[key]
-      }
-    })
-    */
-
   };
+  Object.keys(props).forEach(function (key) {
+    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
+      extraProps[key] = props[key];
+    }
+  });
   return convertCurry(abstract[0], extraProps);
 }
 

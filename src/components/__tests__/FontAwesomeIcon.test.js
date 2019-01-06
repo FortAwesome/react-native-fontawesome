@@ -181,4 +181,11 @@ describe('size', () => {
   })
 })
 
+describe('when extra props are given', () => {
+  test('extra props are passed through to rendered objects', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color="purple" foo="bar" />).toJSON()
+    expect(tree.props.foo).toEqual("bar")
+  })
+})
+
 

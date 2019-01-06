@@ -90,13 +90,11 @@ export default function FontAwesomeIcon(props) {
 
   const extraProps = { height: resolvedHeight, width: resolvedWidth, fill: color, style: modifiedStyle }
 
-  /*
   Object.keys(props).forEach(key => {
     if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
       extraProps[key] = props[key]
     }
   })
-  */
 
   return convertCurry(abstract[0], extraProps)
 }

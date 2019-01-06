@@ -141,7 +141,10 @@ FontAwesomeIcon.defaultProps = {
   mask: null,
   transform: null,
   style: {},
-  color: null // Once the deprecation of height and width props is complete, let's put a default prop value for size here
+  color: null,
+  height: undefined,
+  width: undefined // Once the deprecation of height and width props is complete, let's put the real default prop value for size here.
+  // For now, adding it breaks the default/override logic for height/width/size.
 
 };
 

@@ -20,8 +20,10 @@
 - [Usage](#usage)
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
-  * [Change Color with a StyleSheet](#change-color-with-a-stylesheet)
-  * [Set Height and Width](#set-height-width)
+  * [Color](#color)
+    + [Color Prop](#color-prop) 
+    + [Change Color with a StyleSheet](#color-stylesheet-property)
+  * [Size](#size)  
 - [Features](#features)
   * [Masking](#masking)
   * [Power Transforms](#power-transforms)    
@@ -305,7 +307,24 @@ The `icon` prop expects a single object:
 - Or it could be an `Array` of strings, where the first element is a prefix,
   and the second element is the icon name: `{["fab", "apple"]}`
 
-### Change Color with a StyleSheet
+### Color
+
+Priority: The color prop takes priority over setting color via StyleSheet. So if you end up with both set,
+the prop wins.
+
+In fact, when provided a style object (suppose you've declared other style properties other
+than `color`), if the color prop has been specified, then any color property on the style object is removed
+ before the style object is passed through to the underlying SVG rendering library. This is to avoid ambiguity.
+
+Using the color prop should be preferred over using the StyleSheet.
+
+#### Color Prop
+
+```javascript
+  <FontAwesomeIcon icon={ faCoffee } color={ 'red' } />
+```
+
+#### Color StyleSheet property
 
 To set the color of an icon, provide a `StyleSheet` like this:
 
@@ -335,28 +354,17 @@ export default class App extends Component<Props> {
 }
 ```
 
-### Set Height and Width
+### Size
 
-To adjust the height and width of an icon, provide `height` and `width` props:
+Default: 16
 
-Make it bigger:
+To adjust the size, use the `size` prop:
+
 ```javascript
-<FontAwesomeIcon icon={ faCoffee } height="200" width="200"/>
+<FontAwesomeIcon icon={ faCoffee } size={ 32 } />
 ```
 
-Make it smaller:
-```javascript
-<FontAwesomeIcon icon={ faCoffee } height="20" width="20"/>
-```
-
-For now, these props are simply passed down to the underlying `<Svg>` element and have the effect of changing the
-outer dimensions of the icon. The aspect ratio of the icon itself will be preserved, even if you choose a height and
-width that are out of proportion. The effect will be simply to draw the icon limited by the smallest dimension.
-To make the icon appear smaller or larger, increase or decrease `height` and `width` together, keeping them
-approximately square.
-
-_This API will probably change soon, replaced by a `size` prop that works more like
-the [one in our React component](https://github.com/FortAwesome/react-fontawesome#basic)._
+Note: the `height` and `width` props have been deprecated.
 
 ## Features
 

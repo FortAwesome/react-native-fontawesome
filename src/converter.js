@@ -33,7 +33,7 @@ function convert(createElement, element, extraProps = {}) {
           delete element.attributes[key]
           break
         default:
-          if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0) {
+          if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || ( 'fill' === key && 'currentColor' === val )) {
             delete element.attributes[key]
           } else {
             acc.attrs[humps.camelize(key)] = val

@@ -90,7 +90,7 @@ And change it to something like this:
 1.  Update the `CHANGELOG.md`
 1. `npm run dist`
 1.  `npm run test`
-1.  `npm run publish`
+1.  `npm publish`
 1.  `git add . && git commit -m 'Release VERSION'`
 1.  `git push`
 1.  Create a [new release](https://github.com/FortAwesome/react-native-fontawesome/releases/new) with `CHANGELOG` details

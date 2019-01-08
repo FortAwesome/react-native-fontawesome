@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.0](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.1.0) - 2019-01-07
+
+### Changed
+
+- Add color prop
+  -- Delete color property on style object after resolving the fill color to avoid ambiguity
+  -- Remove any fill="currentColor" attributes returned by fontawesome-svg-core
+
+- Add size prop
+  -- Deprecate height and width props
 
 ## [0.0.4](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.0.4) - 2018-10-13
 

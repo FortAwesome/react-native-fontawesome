@@ -1,13 +1,24 @@
-### Describe the problem
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: ''
+assignees: ''
 
-<!--- What happened? What are you seeing? How did you arrive here? -->
+---
 
-### What did you expect?
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-<!--- How would you like this to work instead? -->
+**Reproducible test case**
+Include a URL (codepen.io, jsfiddle.net, Git repository, codesandbox.io, stackblitz.com, etc.) that demonstrates the problem.
 
-### Reproducible test case
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
-<!--- Insert a URL to your test case -->
+**Desktop (please complete the following information):**
+ - Browser [e.g. chrome, safari]
+ - Version
 
-<!--- Describe any details about the test case that we need to know like "whatever you do, don't click the red button" -->
+**Additional context**
+Add any other context about the problem here.

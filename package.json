@@ -22,8 +22,8 @@
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "react": "16.5.0",
-    "react-native": "^0.57.1",
-    "react-native-svg": "^7.0.0 || ^8.0.8"
+    "react-native": "~0",
+    "react-native-svg": "~7 || ~8",
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -36,9 +36,9 @@
     "babel-jest": "^23.6.0",
     "jest": "^23.6.0",
     "metro-react-native-babel-preset": "^0.48.0",
-    "react": "16.5.0",
-    "react-native": "^0.57.1",
-    "react-native-svg": "^7.0.0 || ^8.0.8",
+    "react": "~16",
+    "react-native": "~0",
+    "react-native-svg": "~7 || ~8",
     "react-test-renderer": "^16.5.2"
   },
   "dependencies": {

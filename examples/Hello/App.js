@@ -1,12 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-import React, {Component} from 'react';
+import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCoffee, faBeer, faCircle, faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -20,38 +12,35 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to react-native-fontawesome!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Text style={styles.instructions}>And now, for some icons:</Text>
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>Welcome to react-native-fontawesome!</Text>
+      <Text style={styles.instructions}>To get started, edit App.js</Text>
+      <Text style={styles.instructions}>{instructions}</Text>
+      <Text style={styles.instructions}>And now, for some icons:</Text>
 
-        <Text>Default style</Text>
-        <FontAwesomeIcon icon={ faCoffee } />
+      <Text>Default style</Text>
+      <FontAwesomeIcon icon={ faCoffee } />
 
-        <Text>Icon with different color:</Text>
-        <FontAwesomeIcon icon={ faBeer } style={ styles.icon } />
+      <Text>Icon with different color:</Text>
+      <FontAwesomeIcon icon={ faBeer } style={ styles.icon } />
 
-        <Text>Icon with mask and transform:</Text>
-        <FontAwesomeIcon icon={ faCheck } mask={ faCircle } transform="shrink-5" />
+      <Text>Icon with mask and transform:</Text>
+      <FontAwesomeIcon icon={ faCheck } mask={ faCircle } transform="shrink-5" />
 
-        {
-          // Uncomment to render an icon that uses the react-native-svg elements directly.
-          // For comparison.
-          // SampleRNSVGPlainIcon
-        }
-        {
-          // Uncomment to render a masked icon with that uses the react-native-svg elements directly.
-          // For comparison.
-          // SampleRNSVGMaskedIcon
-        }
-      </View>
-    );
-  }
+      {
+        // Uncomment to render an icon that uses the react-native-svg elements directly.
+        // For comparison.
+        // SampleRNSVGPlainIcon
+      }
+      {
+        // Uncomment to render a masked icon with that uses the react-native-svg elements directly.
+        // For comparison.
+        // SampleRNSVGMaskedIcon
+      }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

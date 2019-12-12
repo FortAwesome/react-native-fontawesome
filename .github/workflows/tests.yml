@@ -29,5 +29,4 @@ jobs:
           npm install
           npm install react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
           npm list react react-dom react-test-renderer react-native-svg
-          npm run lint
           npm run test

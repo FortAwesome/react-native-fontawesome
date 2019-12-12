@@ -10,7 +10,7 @@ jobs:
       matrix:
         node: [12.6.x]
         react: [
-          16.2.x,
+          16.11.x,
           16.12.x
         ]
         react-native-svg: [
@@ -27,7 +27,6 @@ jobs:
       - name: npm install and test
         run: |
           yarn install
-          yarn add schedule@0.4.0
           yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
           yarn list react react-dom react-test-renderer react-native-svg
           yarn test

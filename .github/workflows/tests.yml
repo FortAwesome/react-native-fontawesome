@@ -27,6 +27,7 @@ jobs:
       - name: npm install and test
         run: |
           yarn install
+          yarn add schedule@0.4.0
           yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
           yarn list react react-dom react-test-renderer react-native-svg
           yarn test

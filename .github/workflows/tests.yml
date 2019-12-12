@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [10.14.x]
+        node: [12.6.x]
         react: [
           16.2.x,
           16.12.x
@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: npm install and test
         run: |
-          npm install
-          npm install react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
-          npm list react react-dom react-test-renderer react-native-svg
-          npm run test
+          yarn install
+          yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
+          yarn list react react-dom react-test-renderer react-native-svg
+          yarn test

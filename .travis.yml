@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - 10
-env:
-  - RNSVG_VERSION=^7.1.2
-  - RNSVG_VERSION=^8.0.8
-script:
-  - yarn set.rnsvg
-  - yarn test

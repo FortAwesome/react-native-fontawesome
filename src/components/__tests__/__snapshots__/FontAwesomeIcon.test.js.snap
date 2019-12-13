@@ -3,9 +3,10 @@
 exports[`renders transform equivalently when assigning prop as string or object 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
-  bbHeight="16"
-  bbWidth="16"
+  bbHeight={16}
+  bbWidth={16}
   fill="#000"
+  focusable={false}
   height={16}
   meetOrSlice={0}
   minX={0}
@@ -17,7 +18,9 @@ exports[`renders transform equivalently when assigning prop as string or object 
         "borderWidth": 0,
       },
       Object {},
-      false,
+      Object {
+        "opacity": 1,
+      },
       Object {
         "flex": 0,
         "height": 16,
@@ -33,10 +36,7 @@ exports[`renders transform equivalently when assigning prop as string or object 
     fill={
       Array [
         0,
-        0,
-        0,
-        0,
-        1,
+        4278190080,
       ]
     }
     fillOpacity={1}
@@ -72,7 +72,8 @@ exports[`renders transform equivalently when assigning prop as string or object 
     strokeLinejoin={0}
     strokeMiterlimit={4}
     strokeOpacity={1}
-    strokeWidth="1"
+    strokeWidth={1}
+    vectorEffect={0}
     x={0}
     y={0}
   >
@@ -80,10 +81,7 @@ exports[`renders transform equivalently when assigning prop as string or object 
       fill={
         Array [
           0,
-          0,
-          0,
-          0,
-          1,
+          4278190080,
         ]
       }
       fillOpacity={1}
@@ -115,7 +113,8 @@ exports[`renders transform equivalently when assigning prop as string or object 
       strokeLinejoin={0}
       strokeMiterlimit={4}
       strokeOpacity={1}
-      strokeWidth="1"
+      strokeWidth={1}
+      vectorEffect={0}
       x={0}
       y={0}
     >
@@ -123,10 +122,7 @@ exports[`renders transform equivalently when assigning prop as string or object 
         fill={
           Array [
             0,
-            0,
-            0,
-            0,
-            1,
+            4278190080,
           ]
         }
         fillOpacity={1}
@@ -158,7 +154,8 @@ exports[`renders transform equivalently when assigning prop as string or object 
         strokeLinejoin={0}
         strokeMiterlimit={4}
         strokeOpacity={1}
-        strokeWidth="1"
+        strokeWidth={1}
+        vectorEffect={0}
         x={0}
         y={0}
       >
@@ -167,10 +164,7 @@ exports[`renders transform equivalently when assigning prop as string or object 
           fill={
             Array [
               0,
-              0,
-              0,
-              0,
-              1,
+              4278190080,
             ]
           }
           fillOpacity={1}
@@ -201,7 +195,8 @@ exports[`renders transform equivalently when assigning prop as string or object 
           strokeLinejoin={0}
           strokeMiterlimit={4}
           strokeOpacity={1}
-          strokeWidth="1"
+          strokeWidth={1}
+          vectorEffect={0}
           x={0}
           y={0}
         />
@@ -214,9 +209,10 @@ exports[`renders transform equivalently when assigning prop as string or object 
 exports[`renders with icon object prop 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
-  bbHeight="16"
-  bbWidth="16"
+  bbHeight={16}
+  bbWidth={16}
   fill="#000"
+  focusable={false}
   height={16}
   meetOrSlice={0}
   minX={0}
@@ -228,7 +224,9 @@ exports[`renders with icon object prop 1`] = `
         "borderWidth": 0,
       },
       Object {},
-      false,
+      Object {
+        "opacity": 1,
+      },
       Object {
         "flex": 0,
         "height": 16,
@@ -244,10 +242,7 @@ exports[`renders with icon object prop 1`] = `
     fill={
       Array [
         0,
-        0,
-        0,
-        0,
-        1,
+        4278190080,
       ]
     }
     fillOpacity={1}
@@ -283,7 +278,8 @@ exports[`renders with icon object prop 1`] = `
     strokeLinejoin={0}
     strokeMiterlimit={4}
     strokeOpacity={1}
-    strokeWidth="1"
+    strokeWidth={1}
+    vectorEffect={0}
     x={0}
     y={0}
   >
@@ -292,10 +288,7 @@ exports[`renders with icon object prop 1`] = `
       fill={
         Array [
           0,
-          0,
-          0,
-          0,
-          1,
+          4278190080,
         ]
       }
       fillOpacity={1}
@@ -326,7 +319,8 @@ exports[`renders with icon object prop 1`] = `
       strokeLinejoin={0}
       strokeMiterlimit={4}
       strokeOpacity={1}
-      strokeWidth="1"
+      strokeWidth={1}
+      vectorEffect={0}
       x={0}
       y={0}
     />
@@ -337,9 +331,10 @@ exports[`renders with icon object prop 1`] = `
 exports[`renders with icon specified as array 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
-  bbHeight="16"
-  bbWidth="16"
+  bbHeight={16}
+  bbWidth={16}
   fill="#000"
+  focusable={false}
   height={16}
   meetOrSlice={0}
   minX={0}
@@ -351,7 +346,9 @@ exports[`renders with icon specified as array 1`] = `
         "borderWidth": 0,
       },
       Object {},
-      false,
+      Object {
+        "opacity": 1,
+      },
       Object {
         "flex": 0,
         "height": 16,
@@ -367,10 +364,7 @@ exports[`renders with icon specified as array 1`] = `
     fill={
       Array [
         0,
-        0,
-        0,
-        0,
-        1,
+        4278190080,
       ]
     }
     fillOpacity={1}
@@ -406,7 +400,8 @@ exports[`renders with icon specified as array 1`] = `
     strokeLinejoin={0}
     strokeMiterlimit={4}
     strokeOpacity={1}
-    strokeWidth="1"
+    strokeWidth={1}
+    vectorEffect={0}
     x={0}
     y={0}
   >
@@ -415,10 +410,7 @@ exports[`renders with icon specified as array 1`] = `
       fill={
         Array [
           0,
-          0,
-          0,
-          0,
-          1,
+          4278190080,
         ]
       }
       fillOpacity={1}
@@ -449,7 +441,8 @@ exports[`renders with icon specified as array 1`] = `
       strokeLinejoin={0}
       strokeMiterlimit={4}
       strokeOpacity={1}
-      strokeWidth="1"
+      strokeWidth={1}
+      vectorEffect={0}
       x={0}
       y={0}
     />
@@ -460,9 +453,10 @@ exports[`renders with icon specified as array 1`] = `
 exports[`renders with mask and transform 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
-  bbHeight="16"
-  bbWidth="16"
+  bbHeight={16}
+  bbWidth={16}
   fill="#000"
+  focusable={false}
   height={16}
   meetOrSlice={0}
   minX={0}
@@ -474,7 +468,9 @@ exports[`renders with mask and transform 1`] = `
         "borderWidth": 0,
       },
       Object {},
-      false,
+      Object {
+        "opacity": 1,
+      },
       Object {
         "flex": 0,
         "height": 16,
@@ -490,10 +486,7 @@ exports[`renders with mask and transform 1`] = `
     fill={
       Array [
         0,
-        0,
-        0,
-        0,
-        1,
+        4278190080,
       ]
     }
     fillOpacity={1}
@@ -529,23 +522,59 @@ exports[`renders with mask and transform 1`] = `
     strokeLinejoin={0}
     strokeMiterlimit={4}
     strokeOpacity={1}
-    strokeWidth="1"
+    strokeWidth={1}
+    vectorEffect={0}
     x={0}
     y={0}
   >
     <RNSVGDefs>
       <RNSVGClipPath
+        fill={
+          Array [
+            0,
+            4278190080,
+          ]
+        }
+        fillOpacity={1}
+        fillRule={1}
+        matrix={
+          Array [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+          ]
+        }
         name="clip-1"
+        opacity={1}
+        originX={0}
+        originY={0}
+        propList={Array []}
+        rotation={0}
+        scaleX={1}
+        scaleY={1}
+        skewX={0}
+        skewY={0}
+        stroke={null}
+        strokeDasharray={null}
+        strokeDashoffset={null}
+        strokeLinecap={0}
+        strokeLinejoin={0}
+        strokeMiterlimit={4}
+        strokeOpacity={1}
+        strokeWidth={1}
+        vectorEffect={0}
+        x={0}
+        y={0}
       >
         <RNSVGPath
           d="M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z"
           fill={
             Array [
               0,
-              0,
-              0,
-              0,
-              1,
+              4278190080,
             ]
           }
           fillOpacity={1}
@@ -576,12 +605,21 @@ exports[`renders with mask and transform 1`] = `
           strokeLinejoin={0}
           strokeMiterlimit={4}
           strokeOpacity={1}
-          strokeWidth="1"
+          strokeWidth={1}
+          vectorEffect={0}
           x={0}
           y={0}
         />
       </RNSVGClipPath>
       <RNSVGMask
+        fill={
+          Array [
+            0,
+            4278190080,
+          ]
+        }
+        fillOpacity={1}
+        fillRule={1}
         height="100%"
         maskContentUnits={1}
         maskTransform={
@@ -606,6 +644,24 @@ exports[`renders with mask and transform 1`] = `
           ]
         }
         name="mask-1"
+        opacity={1}
+        originX={0}
+        originY={0}
+        propList={Array []}
+        rotation={0}
+        scaleX={1}
+        scaleY={1}
+        skewX={0}
+        skewY={0}
+        stroke={null}
+        strokeDasharray={null}
+        strokeDashoffset={null}
+        strokeLinecap={0}
+        strokeLinejoin={0}
+        strokeMiterlimit={4}
+        strokeOpacity={1}
+        strokeWidth={1}
+        vectorEffect={0}
         width="100%"
         x={0}
         y={0}
@@ -614,10 +670,7 @@ exports[`renders with mask and transform 1`] = `
           fill={
             Array [
               0,
-              1,
-              1,
-              1,
-              1,
+              4294967295,
             ]
           }
           fillOpacity={1}
@@ -642,8 +695,6 @@ exports[`renders with mask and transform 1`] = `
             ]
           }
           rotation={0}
-          rx={0}
-          ry={0}
           scaleX={1}
           scaleY={1}
           skewX={0}
@@ -655,7 +706,8 @@ exports[`renders with mask and transform 1`] = `
           strokeLinejoin={0}
           strokeMiterlimit={4}
           strokeOpacity={1}
-          strokeWidth="1"
+          strokeWidth={1}
+          vectorEffect={0}
           width="100%"
           x={0}
           y={0}
@@ -664,10 +716,7 @@ exports[`renders with mask and transform 1`] = `
           fill={
             Array [
               0,
-              0,
-              0,
-              0,
-              1,
+              4278190080,
             ]
           }
           fillOpacity={1}
@@ -699,7 +748,8 @@ exports[`renders with mask and transform 1`] = `
           strokeLinejoin={0}
           strokeMiterlimit={4}
           strokeOpacity={1}
-          strokeWidth="1"
+          strokeWidth={1}
+          vectorEffect={0}
           x={0}
           y={0}
         >
@@ -707,10 +757,7 @@ exports[`renders with mask and transform 1`] = `
             fill={
               Array [
                 0,
-                0,
-                0,
-                0,
-                1,
+                4278190080,
               ]
             }
             fillOpacity={1}
@@ -742,7 +789,8 @@ exports[`renders with mask and transform 1`] = `
             strokeLinejoin={0}
             strokeMiterlimit={4}
             strokeOpacity={1}
-            strokeWidth="1"
+            strokeWidth={1}
+            vectorEffect={0}
             x={0}
             y={0}
           >
@@ -751,10 +799,7 @@ exports[`renders with mask and transform 1`] = `
               fill={
                 Array [
                   0,
-                  0,
-                  0,
-                  0,
-                  1,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
@@ -789,7 +834,8 @@ exports[`renders with mask and transform 1`] = `
               strokeLinejoin={0}
               strokeMiterlimit={4}
               strokeOpacity={1}
-              strokeWidth="1"
+              strokeWidth={1}
+              vectorEffect={0}
               x={0}
               y={0}
             />
@@ -802,10 +848,7 @@ exports[`renders with mask and transform 1`] = `
       fill={
         Array [
           0,
-          0,
-          0,
-          0,
-          1,
+          4278190080,
         ]
       }
       fillOpacity={1}
@@ -827,8 +870,6 @@ exports[`renders with mask and transform 1`] = `
       originY={0}
       propList={Array []}
       rotation={0}
-      rx={0}
-      ry={0}
       scaleX={1}
       scaleY={1}
       skewX={0}
@@ -840,7 +881,8 @@ exports[`renders with mask and transform 1`] = `
       strokeLinejoin={0}
       strokeMiterlimit={4}
       strokeOpacity={1}
-      strokeWidth="1"
+      strokeWidth={1}
+      vectorEffect={0}
       width="100%"
       x={0}
       y={0}

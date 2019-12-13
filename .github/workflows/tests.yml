@@ -1,0 +1,31 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [12.6.x]
+        react: [
+          16.9.x
+        ]
+        react-native-svg: [
+          7.x,
+          8.x,
+          9.x
+        ]
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: npm install and test
+        run: |
+          yarn install
+          yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
+          yarn list react react-dom react-test-renderer react-native-svg
+          yarn test

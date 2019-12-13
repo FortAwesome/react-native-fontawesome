@@ -31,17 +31,17 @@ const faCircle = {
 
 fontawesome.library.add(faCoffee, faCircle)
 
-test('renders with icon specified as array', () => {
+test.skip('renders with icon specified as array', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ ['fas', 'coffee'] } />).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
-test('renders with icon object prop', () => {
+test.skip('renders with icon object prop', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
-test('renders with mask and transform', () => {
+test.skip('renders with mask and transform', () => {
   const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
   // modify the clipPath and mask identifiers to be fixed, so they aren't regenerated each time and thus
   // our snapshot will remain stable across test runs
@@ -64,7 +64,7 @@ test('renders with mask and transform', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('renders transform equivalently when assigning prop as string or object', () => {
+test.skip('renders transform equivalently when assigning prop as string or object', () => {
   const firstTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform="shrink-9 right-4" />).toJSON()
   expect(firstTree).toMatchSnapshot()
 

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+
+## [0.2.0](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.0) - 2019-12-13
+
+### Added
+
+- TypeScript definition file #17
+
+### Changed
+
+- Loosened peer dependencies to prevent incorrect version warnings
+
 ## [0.1.0](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.1.0) - 2019-01-07
 
 ### Changed

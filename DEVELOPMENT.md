@@ -85,12 +85,14 @@ And change it to something like this:
 
 <a name="release"></a>
 
-1.  Edit `package.json` and update the version number
-1.  Add new contributors to the `contributors` section
-1.  Update the `CHANGELOG.md`
+1. Edit `package.json` and update the version number
+1. Add new contributors to the `contributors` section
+1. Update the `CHANGELOG.md`
 1. `npm run dist`
-1.  `npm run test`
-1.  `npm publish`
-1.  `git add . && git commit -m 'Release VERSION'`
-1.  `git push`
-1.  Create a [new release](https://github.com/FortAwesome/react-native-fontawesome/releases/new) with `CHANGELOG` details
+1. `npm run test`
+1. `npm publish`
+1. `npm pack`
+1. `CLOUDSMITH_API_KEY=API_TOKEN cloudsmith upload npm fortawesome/fontawesome-pro ./fortawesome-react-native-fontawesome-VERSION.tgz`
+1. `git add . && git commit -m 'Release VERSION'`
+1. `git push`
+1. Create a [new release](https://github.com/FortAwesome/react-native-fontawesome/releases/new) with `CHANGELOG` details

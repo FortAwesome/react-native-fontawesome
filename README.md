@@ -417,6 +417,12 @@ And then:
 
 ## Contributors
 
+Community:
+
+|                                                   | Name   | GitHub                           |
+| :-----------------------------------------------: | ------ | -------------------------------- |
+| <img src="https://github.com/dizy.png?size=72" /> | Dizy   | [@dizy](https://github.com/dizy) |
+
 The Font Awesome team:
 
 |                                                            | Name           | GitHub                                             |
@@ -425,4 +431,3 @@ The Font Awesome team:
 |   <img src="https://github.com/robmadole.png?size=72" />   | Rob Madole     | [@robmadole](https://github.com/robmadole)         |
 |  <img src="https://github.com/mlwilkerson.png?size=72" />  | Mike Wilkerson | [@mlwilkerson](https://github.com/mlwilkerson)     |
 |     <img src="https://github.com/talbs.png?size=72" />     | Brian Talbot   | [@talbs](https://github.com/talbs)                 |
-

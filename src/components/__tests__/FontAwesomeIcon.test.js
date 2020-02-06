@@ -5,6 +5,8 @@ import renderer from 'react-test-renderer'
 import { StyleSheet } from 'react-native'
 import { find } from 'lodash'
 
+jest.spyOn(React, 'createElement')
+
 const faCoffee = {
   prefix: 'fas',
   iconName: 'coffee',
@@ -189,16 +191,16 @@ describe('when extra props are given', () => {
 })
 
 describe("convert focusable attribute", () => {
-  test("from false string to boolean", () => {
+  test("no title leads to focusable false", () => {
     const tree = renderer
-      .create(<FontAwesomeIcon icon={faCoffee} focusable='false' color="purple" foo="bar" />)
-      .toJSON();
-    expect(tree.props.focusable).toEqual(false);
-  });
-  test("from true string to boolean", () => {
-    const tree = renderer
-      .create(<FontAwesomeIcon icon={faCoffee} focusable='true' color="purple" foo="bar" />)
-      .toJSON();
-    expect(tree.props.focusable).toEqual(true);
-  });
+      .create(<FontAwesomeIcon icon={faCoffee} />)
+      .toJSON()
+
+    React.createElement.mock.calls
+      .map(([_c, attrs, _children]) => attrs)
+      .filter((attrs) => 'focusable' in attrs)
+      .forEach(({ focusable }) => {
+        expect(focusable).toEqual(false)
+      })
+  })
 });

@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.1](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.1) - 2020-02-06
+
+### Fixed
+
+- Convert 'focusable' attribute to boolean from string #42
+
 ## [0.2.0](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.0) - 2019-12-13
 
 ### Added

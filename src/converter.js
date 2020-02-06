@@ -25,15 +25,15 @@ function convert(createElement, element, extraProps = {}) {
   const mixins = Object.keys(element.attributes || {}).reduce(
     (acc, key) => {
       const val = element.attributes[key]
-      switch(key){
+      switch (key) {
         case 'class':
         case 'role':
         case 'style':
         case 'xmlns':
           delete element.attributes[key]
           break
-        case "focusable":
-          acc.attrs[key] = Boolean(val);
+        case 'focusable':
+          acc.attrs[key] = (val === 'true') ? true : false
           break
         default:
           if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || ( 'fill' === key && 'currentColor' === val )) {

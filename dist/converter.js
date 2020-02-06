@@ -56,8 +56,8 @@ function convert(createElement, element) {
         delete element.attributes[key];
         break;
 
-      case "focusable":
-        acc.attrs[key] = Boolean(val);
+      case 'focusable':
+        acc.attrs[key] = val === 'true' ? true : false;
         break;
 
       default:

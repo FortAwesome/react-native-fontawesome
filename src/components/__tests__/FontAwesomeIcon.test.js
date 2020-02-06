@@ -188,4 +188,17 @@ describe('when extra props are given', () => {
   })
 })
 
-
+describe("convert focusable attribute", () => {
+  test("from false string to boolean", () => {
+    const tree = renderer
+      .create(<FontAwesomeIcon icon={faCoffee} focusable='false' color="purple" foo="bar" />)
+      .toJSON();
+    expect(tree.props.focusable).toEqual(false);
+  });
+  test("from true string to boolean", () => {
+    const tree = renderer
+      .create(<FontAwesomeIcon icon={faCoffee} focusable='true' color="purple" foo="bar" />)
+      .toJSON();
+    expect(tree.props.focusable).toEqual(true);
+  });
+});

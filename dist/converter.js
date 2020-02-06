@@ -56,6 +56,10 @@ function convert(createElement, element) {
         delete element.attributes[key];
         break;
 
+      case "focusable":
+        acc.attrs[key] = Boolean(val);
+        break;
+
       default:
         if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || 'fill' === key && 'currentColor' === val) {
           delete element.attributes[key];

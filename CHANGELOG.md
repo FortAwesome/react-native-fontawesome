@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.2](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.2) - 2020-02-17
+
+### Fixed
+
+- Add index.d.ts to the package.json files
+
+---
+
 ## [0.2.1](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.1) - 2020-02-06
 
 ### Fixed

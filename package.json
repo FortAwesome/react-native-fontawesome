@@ -1,6 +1,6 @@
 {
   "name": "@fortawesome/react-native-fontawesome",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
   "scripts": {
@@ -50,6 +50,7 @@
   },
   "files": [
     "index.js",
+    "index.d.ts",
     "dist/converter.js",
     "dist/logger.js",
     "dist/components/FontAwesomeIcon.js"

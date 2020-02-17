@@ -73,6 +73,12 @@ $ npm i --save @fortawesome/react-native-fontawesome
 you shouldn't try to add `react-native-svg`. At the time of writing, `create-react-native-app` bundles
 `react-native-svg` version 6, which does not include support for SVG features such as `Mask`. In order to make use of `Mask`, make sure your dependencies have `react-native-svg` 7. The example app in this repo demonstrates.
 
+If you are using a bare react-native-cli project, run the following command to complete the setup on iOS.
+
+```
+$ cd ios && pod install
+```
+
 ## Add more styles or Pro icons
 
 Brands are separated into their own style and for customers upgrading from

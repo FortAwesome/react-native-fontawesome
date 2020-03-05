@@ -56,4 +56,3 @@ buck-out/
 *.jsbundle
 
 *.swp
-package-lock.json

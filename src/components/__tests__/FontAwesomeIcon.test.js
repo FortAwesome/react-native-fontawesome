@@ -204,3 +204,11 @@ describe("convert focusable attribute", () => {
       })
   })
 });
+
+describe('when style is given an array and not an object', () => {
+  test('it uses the style objects in array', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={[{ color: 'red' }, { backgroundColor: 'yellow' }]}/>).toJSON()
+    expect(tree.props.style.filter(s => s.color === 'red').length).toEqual(0)
+    expect(tree.props.style.filter(s => s.backgroundColor === 'yellow').length).toEqual(1)
+  })
+});

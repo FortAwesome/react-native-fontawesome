@@ -1,7 +1,7 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Dimensions, ViewPropTypes } from 'react-native'
+import { Dimensions, ViewPropTypes, StyleSheet } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
 
@@ -40,7 +40,8 @@ function normalizeIconArgs(icon) {
 }
 
 export default function FontAwesomeIcon(props) {
-  const { icon: iconArgs, mask: maskArgs, height, width, style, size } = props
+  const { icon: iconArgs, mask: maskArgs, height, width, size } = props
+  const style = StyleSheet.flatten(props.style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
@@ -111,7 +112,10 @@ FontAwesomeIcon.propTypes = {
 
   color: PropTypes.string,
 
-  style: PropTypes.shape({ ...ViewPropTypes.style }),
+  style: PropTypes.oneOfType([
+    PropTypes.shape({ ...ViewPropTypes.style }),
+    PropTypes.array
+  ]),
 
   icon: PropTypes.oneOfType([
     PropTypes.object,

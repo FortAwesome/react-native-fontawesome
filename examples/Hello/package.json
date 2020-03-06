@@ -10,7 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.20",
     "@fortawesome/free-solid-svg-icons": "^5.10.0",
-    "@fortawesome/react-native-fontawesome": "^0.1.0",
+    "@fortawesome/react-native-fontawesome": "^0.2.3",
     "expo": "^34.0.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

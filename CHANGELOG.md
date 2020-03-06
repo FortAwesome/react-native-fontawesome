@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.3](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.3) - 2020-03-06
+
+### Fixed
+
+- Support arrays in style property #28 #40 #46
+
+---
+
 ## [0.2.2](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.2) - 2020-02-17
 
 ### Fixed

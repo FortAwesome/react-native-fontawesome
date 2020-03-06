@@ -21,7 +21,6 @@ to get your environment set up in your OS. For Mac OS X, that would look like:
    Tools.
 1. clone this repo
 
-
 ## Launch the Example App
 
 In the `examples/Hello` subdirectory, the following script commands are available:
@@ -87,6 +86,7 @@ And change it to something like this:
 
 1. Edit `package.json` and update the version number
 1. Add new contributors to the `contributors` section
+1. Update the `README.md` and add any contributors
 1. Update the `CHANGELOG.md`
 1. `npm run dist`
 1. `npm run test`

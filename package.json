@@ -1,6 +1,6 @@
 {
   "name": "@fortawesome/react-native-fontawesome",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
     "Rob Madole <rob@fontawesome.com>",
     "Mike Wilkerson <mwilkerson@gmail.com>",
     "Dizy <mhisf@vip.qq.com>",
-    "David Martin <github.com/iamdavidmartin>"
+    "David Martin <github.com/iamdavidmartin>",
+    "Jeremy <github.com/puremana>"
   ],
   "license": "MIT",
   "peerDependencies": {

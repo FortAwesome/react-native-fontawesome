@@ -17,7 +17,7 @@
 - [Installation](#installation)
 - [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
 - [or with Yarn](#or-with-yarn)
-- [Usage](#usage)
+- [Implementation](#implementation)
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
   * [Color](#color)
@@ -37,7 +37,7 @@
 
 ## Introduction
 
-Hey there! We're glad you're here...
+Looking for some amazing and free-to-use fonts for your app? Well! you have landed at the right place! Follow the steps below to use this awesome package in your project.
 
 #### Upgrading Font Awesome?
 
@@ -108,12 +108,20 @@ $ yarn add @fortawesome/free-solid-svg-icons
 $ yarn add @fortawesome/react-native-fontawesome
 ```
 
-## Usage
+## Implementation
+
+You can import the icons from the package into your project as follows:
+
+```js
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCoffee, faUSer } from '@fortawesome/free-solid-svg-icons'
+```
 
 You can use Font Awesome icons in your React Native components as simply as this:
 
 ```javascript
-<FontAwesomeIcon icon="coffee" />
+<FontAwesomeIcon icon="faCoffee" />
+<FontAwesomeIcon icon="faUser" />
 ```
 
 That simple usage is made possible when you add the `"coffee"` icon, to the
@@ -157,7 +165,7 @@ Now, a simple React Native component might look like this:
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faUser } from '@fortawesome/free-solid-svg-icons'
 
 type Props = {}
 export default class App extends Component<Props> {
@@ -165,6 +173,7 @@ export default class App extends Component<Props> {
     return (
       <View>
         <FontAwesomeIcon icon={ faCoffee } />
+        <FontAwesomeIcon icon={ faUser } />
       </View>
     )
   }

@@ -10,28 +10,29 @@
 
 <!-- toc -->
 
-- [Introduction](#introduction)
-    + [Upgrading Font Awesome?](#upgrading-font-awesome)
-    + [Get started](#get-started)
-    + [Learn about our new SVG implementation](#learn-about-our-new-svg-implementation)
-- [Installation](#installation)
-- [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
-- [or with Yarn](#or-with-yarn)
-- [Usage](#usage)
-  * [Explicit Import](#explicit-import)
-  * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
-  * [Color](#color)
-    + [Color Prop](#color-prop) 
-    + [Change Color with a StyleSheet](#color-stylesheet-property)
-  * [Size](#size)  
-- [Features](#features)
-  * [Masking](#masking)
-  * [Power Transforms](#power-transforms)    
-- [Frequent questions](#frequent-questions)
-  * [How do I import the same icon from two different styles?](#how-do-i-import-the-same-icon-from-two-different-styles)
-  * [I don't think tree-shaking is working; got any advice?](#i-dont-think-tree-shaking-is-working-got-any-advice)
-- [How to Help](#how-to-help)
-- [Contributors](#contributors)
+- [react-native-fontawesome](#react-native-fontawesome)
+  - [Introduction](#introduction)
+      - [Upgrading Font Awesome?](#upgrading-font-awesome)
+      - [Get started](#get-started)
+      - [Learn about our new SVG implementation](#learn-about-our-new-svg-implementation)
+  - [Installation](#installation)
+  - [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
+  - [or with Yarn](#or-with-yarn)
+  - [Usage](#usage)
+    - [Explicit Import](#explicit-import)
+    - [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
+    - [Color](#color)
+      - [Color Prop](#color-prop)
+      - [Color StyleSheet property](#color-stylesheet-property)
+    - [Size](#size)
+  - [Features](#features)
+    - [Masking](#masking)
+    - [Power Transforms](#power-transforms)
+  - [Frequent questions](#frequent-questions)
+    - [How do I import the same icon from two different styles?](#how-do-i-import-the-same-icon-from-two-different-styles)
+    - [I don't think tree-shaking is working; got any advice?](#i-dont-think-tree-shaking-is-working-got-any-advice)
+  - [How to Help](#how-to-help)
+  - [Contributors](#contributors)
 
 <!-- tocstop -->
 
@@ -68,10 +69,6 @@ $ npm i --save @fortawesome/fontawesome-svg-core
 $ npm i --save @fortawesome/free-solid-svg-icons
 $ npm i --save @fortawesome/react-native-fontawesome
 ```
-
-** `create-react-native-app` uses Expo, which bundles `reactive-native-svg`. So if you're using `create-reactive-native-app`
-you shouldn't try to add `react-native-svg`. At the time of writing, `create-react-native-app` bundles
-`react-native-svg` version 6, which does not include support for SVG features such as `Mask`. In order to make use of `Mask`, make sure your dependencies have `react-native-svg` 7. The example app in this repo demonstrates.
 
 If you are using a bare react-native-cli project, run the following command to complete the setup on iOS.
 

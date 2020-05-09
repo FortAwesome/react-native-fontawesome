@@ -64,9 +64,9 @@ the web fonts implementation that was used in version 4 and older of Font Awesom
 
 ```
 $ npm i --save react-native-svg # **
-$ npm i --save @fortawesome/fontawesome-svg-core
-$ npm i --save @fortawesome/free-solid-svg-icons
-$ npm i --save @fortawesome/react-native-fontawesome
+$ npm i --save @fontawesome/fontawesome-svg-core
+$ npm i --save @fontawesome/free-solid-svg-icons
+$ npm i --save @fontawesome/react-native-fontawesome
 ```
 
 ** `create-react-native-app` uses Expo, which bundles `reactive-native-svg`. So if you're using `create-reactive-native-app`

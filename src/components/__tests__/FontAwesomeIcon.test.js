@@ -31,6 +31,19 @@ const faCircle = {
   ]
 }
 
+const faAcorn = {
+  prefix: 'fad',
+  iconName: 'acorn',
+  icon: [
+    640,
+    512,
+    [],
+    'f0f4',
+    ['M32 256h384a258.87 258.87 0 0 1-143.11 231.55L224 512l-48.89-24.45A258.87 258.87 0 0 1 32 256z', 'M448 160v32a32 32 0 0 1-32 32H32a32 32 0 0 1-32-32v-32a96 96 0 0 1 96-96h106a132.41 132.41 0 0 1 29.41-58.64 15.7 15.7 0 0 1 11.31-5.3 15.44 15.44 0 0 1 12 4.72L266 16.1a16 16 0 0 1 .66 21.9 84.32 84.32 0 0 0-15.16 26H352a96 96 0 0 1 96 96z']
+  ]
+}
+
+
 fontawesome.library.add(faCoffee, faCircle)
 
 test.skip('renders with icon specified as array', () => {
@@ -212,3 +225,60 @@ describe('when style is given an array and not an object', () => {
     expect(tree.props.style.filter(s => s.backgroundColor === 'yellow').length).toEqual(1)
   })
 });
+
+describe('duotone support', () => {
+  describe('when NO secondary color or opacity are given', () => {
+    test('use the primary color at 40% opacity as the secondary color', () => {
+      const styles = StyleSheet.create({
+        icon: {
+          color: 'blue'
+        }
+      })
+      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon }/>).toJSON()
+      const primaryLayer = tree.children[0].children[0].children[1]
+      const secondaryLayer = tree.children[0].children[0].children[0]
+      expect(primaryLayer.props.fill[1].toString(16)).toEqual('ff0000ff')
+      expect(secondaryLayer.props.fillOpacity).toEqual(0.4)
+    })
+  })
+  describe('when secondary opacity was given, but NO secondary color is given', () => {
+    test('use the primary color with the secondary opacity given', () => {
+      const styles = StyleSheet.create({
+        icon: {
+          color: 'blue'
+        }
+      })
+      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryOpacity={ 0.123 } />).toJSON()
+      const primaryLayer = tree.children[0].children[0].children[1]
+      const secondaryLayer = tree.children[0].children[0].children[0]
+      expect(primaryLayer.props.fill[1].toString(16)).toEqual('ff0000ff')
+      expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
+    })
+  })
+  describe('when secondary color is given, but no secondary opacity', () => {
+    test('use the given secondary color, with opacity set to 1', () => {
+      const styles = StyleSheet.create({
+        icon: {
+          color: 'blue'
+        }
+      })
+      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } />).toJSON()
+      const secondaryLayer = tree.children[0].children[0].children[0]
+      expect(secondaryLayer.props.fill[1].toString(16)).toEqual('ffff0000')
+      expect(secondaryLayer.props.fillOpacity).toEqual(1)
+    })
+  })
+  describe('when secondary color and secondary opacity are given', () => {
+    test('use both the given secondary color and opacity', () => {
+      const styles = StyleSheet.create({
+        icon: {
+          color: 'blue'
+        }
+      })
+      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } secondaryOpacity={ 0.123 } />).toJSON()
+      const secondaryLayer = tree.children[0].children[0].children[0]
+      expect(secondaryLayer.props.fill[1].toString(16)).toEqual('ffff0000')
+      expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
+    })
+  })
+})

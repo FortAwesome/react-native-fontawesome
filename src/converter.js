@@ -16,9 +16,15 @@ function convert(createElement, element, extraProps = {}) {
     return element
   }
 
+  const isDuotone = (element.children || []).length === 2
   const children = (element.children || []).map(
-    child => {
-      return convert(createElement, child)
+    (child, childIndex) => {
+      const isDuotoneSecondLayer = isDuotone && childIndex === 0;
+      const fill = isDuotoneSecondLayer
+        ? extraProps.secondaryFill
+        : extraProps.fill;
+      const fillOpacity = isDuotoneSecondLayer ? extraProps.secondaryOpacity : 1;
+      return convert(createElement, child, { ...extraProps, fill, fillOpacity });
     }
   )
 

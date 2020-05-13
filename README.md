@@ -25,6 +25,7 @@
     + [Change Color with a StyleSheet](#color-stylesheet-property)
   * [Size](#size)  
 - [Features](#features)
+  * [Duotone](#duotone)
   * [Masking](#masking)
   * [Power Transforms](#power-transforms)    
 - [Frequent questions](#frequent-questions)
@@ -98,7 +99,13 @@ $ npm i --save @fortawesome/pro-solid-svg-icons
 $ npm i --save @fortawesome/pro-regular-svg-icons
 $ npm i --save @fortawesome/pro-light-svg-icons
 ```
-**Duotone icons are currently in pre-release and are coming soon to this component.**
+
+If you'd like to use Duotone icons, you'll need to add Duotone package:
+
+```
+$ npm i --save @fortawesome/pro-duotone-svg-icons
+```
+
 
 ## or with Yarn
 
@@ -374,6 +381,14 @@ To adjust the size, use the `size` prop:
 Note: the `height` and `width` props have been deprecated.
 
 ## Features
+
+### Duotone
+
+```javascript
+<FontAwesomeIcon icon="coffee" color="blue" secondaryColor="red" secondaryOpacity={ 0.4 } />
+```
+
+You can specify the color and opacity for Duotone's secondary layer using the `secondaryColor` and `secondaryOpacity` props. Note that these are optional, and will simply default to using your primary color at 40% opacity.
 
 ### Masking
 

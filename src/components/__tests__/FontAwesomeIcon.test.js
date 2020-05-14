@@ -44,6 +44,16 @@ const faAcorn = {
 }
 
 
+// react-native-svg>9.x changed the way it uses the `fill` attribute. In earlier versions,
+// it used an array ([0, DECIMAL_COLOR]), whereas newer versions dropped the array
+// in favor of a scalar value %DECIMAL_COLOR%
+function getActualFillColorHex(element) {
+  const fillProp = element.props.fill
+  const decimalColor = Array.isArray(fillProp) ? fillProp[1] : fillProp;
+  // convert to hex
+  return decimalColor.toString(16);
+}
+
 fontawesome.library.add(faCoffee, faCircle)
 
 test.skip('renders with icon specified as array', () => {
@@ -237,7 +247,7 @@ describe('duotone support', () => {
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon }/>).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(primaryLayer.props.fill[1].toString(16)).toEqual('ff0000ff')
+      expect(getActualFillColorHex(primaryLayer)).toEqual('ff0000ff')
       expect(secondaryLayer.props.fillOpacity).toEqual(0.4)
     })
   })
@@ -251,7 +261,7 @@ describe('duotone support', () => {
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryOpacity={ 0.123 } />).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(primaryLayer.props.fill[1].toString(16)).toEqual('ff0000ff')
+      expect(getActualFillColorHex(primaryLayer)).toEqual('ff0000ff')
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
     })
   })
@@ -264,7 +274,7 @@ describe('duotone support', () => {
       })
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(secondaryLayer.props.fill[1].toString(16)).toEqual('ffff0000')
+      expect(getActualFillColorHex(secondaryLayer)).toEqual('ffff0000')
       expect(secondaryLayer.props.fillOpacity).toEqual(1)
     })
   })
@@ -277,7 +287,7 @@ describe('duotone support', () => {
       })
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } secondaryOpacity={ 0.123 } />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(secondaryLayer.props.fill[1].toString(16)).toEqual('ffff0000')
+      expect(getActualFillColorHex(secondaryLayer)).toEqual('ffff0000')
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
     })
   })

@@ -43,15 +43,44 @@ const faAcorn = {
   ]
 }
 
+const blueHex = '0000ff'
+const redHex = 'ff0000'
 
-// react-native-svg>9.x changed the way it uses the `fill` attribute. In earlier versions,
-// it used an array ([0, DECIMAL_COLOR]), whereas newer versions dropped the array
-// in favor of a scalar value %DECIMAL_COLOR%
+function rgbToHex(r, g, b) {
+  return [r, g, b]
+    .map((c) => {
+      const hex = c.toString(16);
+      return hex.length == 1 ? `0${hex}` : hex;
+    })
+    .join("");
+}
+
+function decimalToHex(decimal) {
+  return decimal.toString(16).substr(2, 6);
+}
+
+// react-native-svg changed the way it uses the `fill` attribute across versions. Older versions
+// return [_, r, g, b, _] (where 0 <= {r,g,b} <= 1), while other versions return arrays, and even
+// scalar values... We, much like the Borg, will adapt.
 function getActualFillColorHex(element) {
-  const fillProp = element.props.fill
-  const decimalColor = Array.isArray(fillProp) ? fillProp[1] : fillProp;
-  // convert to hex
-  return decimalColor.toString(16);
+  const fillProp = element.props.fill;
+  if (!Array.isArray(fillProp)) {
+    // rn-svg v11 use a simple sclar value, representing the decimal value of the color
+    // @link https://github.com/react-native-community/react-native-svg/blob/v11.0.1/__tests__/__snapshots__/css.test.tsx.snap
+    // https://github.com/react-native-community/react-native-svg/blob/v12.1.0/__tests__/__snapshots__/css.test.tsx.snap#L158
+    return decimalToHex(fillProp);
+  } else if (fillProp.length === 5) {
+    // rn-svg <= v8 return an array [_, r, g, b, _], where {rgb} are in the range of {0,1}
+    // @note no links provided because rn-svg didn't include any tests in those versions
+    return rgbToHex(fillProp[1] * 255, fillProp[2] * 255, fillProp[3] * 255);
+  } else if (fillProp.length === 2) {
+    // rn-svg v9, and v10 return an array with shape [_, DECIMAL_COLOR]
+    // @link https://github.com/react-native-community/react-native-svg/blob/v9.14.0/__tests__/__snapshots__/css.test.tsx.snap#L159
+    // @link https://github.com/react-native-community/react-native-svg/blob/v10.1.0/__tests__/__snapshots__/css.test.tsx.snap#L159
+    return decimalToHex(fillProp[1]);
+  }
+
+  return null;
 }
 
 fontawesome.library.add(faCoffee, faCircle)
@@ -247,7 +276,7 @@ describe('duotone support', () => {
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon }/>).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(getActualFillColorHex(primaryLayer)).toEqual('ff0000ff')
+      expect(getActualFillColorHex(primaryLayer)).toEqual(blueHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(0.4)
     })
   })
@@ -261,7 +290,7 @@ describe('duotone support', () => {
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryOpacity={ 0.123 } />).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(getActualFillColorHex(primaryLayer)).toEqual('ff0000ff')
+      expect(getActualFillColorHex(primaryLayer)).toEqual(blueHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
     })
   })
@@ -274,7 +303,7 @@ describe('duotone support', () => {
       })
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(getActualFillColorHex(secondaryLayer)).toEqual('ffff0000')
+      expect(getActualFillColorHex(secondaryLayer)).toEqual(redHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(1)
     })
   })
@@ -287,7 +316,7 @@ describe('duotone support', () => {
       })
       const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } secondaryOpacity={ 0.123 } />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
-      expect(getActualFillColorHex(secondaryLayer)).toEqual('ffff0000')
+      expect(getActualFillColorHex(secondaryLayer)).toEqual(redHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
     })
   })

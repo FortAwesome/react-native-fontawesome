@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = FontAwesomeIcon;
-exports.DEFAULT_COLOR = exports.DEFAULT_SIZE = void 0;
+exports.DEFAULT_SECONDARY_OPACITY = exports.DEFAULT_COLOR = exports.DEFAULT_SIZE = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -38,9 +38,11 @@ var _Dimensions$get = _reactNative.Dimensions.get('window'),
 
 var DEFAULT_SIZE = 16;
 exports.DEFAULT_SIZE = DEFAULT_SIZE;
-var DEFAULT_COLOR = '#000'; // Deprecated height and width defaults
-
+var DEFAULT_COLOR = '#000';
 exports.DEFAULT_COLOR = DEFAULT_COLOR;
+var DEFAULT_SECONDARY_OPACITY = 0.4; // Deprecated height and width defaults
+
+exports.DEFAULT_SECONDARY_OPACITY = DEFAULT_SECONDARY_OPACITY;
 var DEFAULT_HEIGHT = windowHeight * 0.1;
 var DEFAULT_WIDTH = windowWidth * 0.1;
 
@@ -93,7 +95,12 @@ function FontAwesomeIcon(props) {
 
   var _abstract = renderedIcon["abstract"]; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = props.color || style.color || DEFAULT_COLOR; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  var color = props.color || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
+  // `null` value will result in using the primary color, at 40% opacity
+
+  var secondaryColor = props.secondaryColor || null; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
+
+  var secondaryOpacity = props.secondaryOpacity || (secondaryColor ? 1 : DEFAULT_SECONDARY_OPACITY); // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
 
@@ -119,6 +126,8 @@ function FontAwesomeIcon(props) {
     height: resolvedHeight,
     width: resolvedWidth,
     fill: color,
+    secondaryFill: secondaryColor,
+    secondaryOpacity: secondaryOpacity,
     style: modifiedStyle
   };
   Object.keys(props).forEach(function (key) {
@@ -135,6 +144,8 @@ FontAwesomeIcon.propTypes = {
   width: _propTypes["default"].number,
   size: _propTypes["default"].number,
   color: _propTypes["default"].string,
+  secondaryColor: _propTypes["default"].string,
+  secondaryOpacity: _propTypes["default"].number,
   style: _propTypes["default"].oneOfType([_propTypes["default"].shape(_objectSpread({}, _reactNative.ViewPropTypes.style)), _propTypes["default"].array]),
   icon: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
   mask: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
@@ -146,6 +157,8 @@ FontAwesomeIcon.defaultProps = {
   transform: null,
   style: {},
   color: null,
+  secondaryColor: null,
+  secondaryOpacity: null,
   height: undefined,
   width: undefined // Once the deprecation of height and width props is complete, let's put the real default prop value for size here.
   // For now, adding it breaks the default/override logic for height/width/size.

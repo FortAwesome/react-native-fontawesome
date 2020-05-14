@@ -6,11 +6,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.5](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.5) - 2020-05-14
+
+### Added
+
+- Support for Duotone icons #59
+
+---
+
 ## [0.2.4](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.4) - 2020-04-27
 
 ### Fixed
 
-- Loosen peerDependencies versions to allow newere react-native and react-native-svg packages
+- Loosen peerDependencies versions to allow newer react-native and react-native-svg packages
 
 ---
 

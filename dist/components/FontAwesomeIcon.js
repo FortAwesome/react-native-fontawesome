@@ -28,7 +28,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -86,7 +86,7 @@ function FontAwesomeIcon(props) {
   var iconLookup = normalizeIconArgs(iconArgs);
   var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
   var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
-  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread({}, transform, {}, mask));
+  var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread(_objectSpread({}, transform), mask));
 
   if (!renderedIcon) {
     (0, _logger["default"])("ERROR: icon not found for icon = ", iconArgs);
@@ -146,7 +146,9 @@ FontAwesomeIcon.propTypes = {
   color: _propTypes["default"].string,
   secondaryColor: _propTypes["default"].string,
   secondaryOpacity: _propTypes["default"].number,
-  style: _propTypes["default"].oneOfType([_propTypes["default"].shape(_objectSpread({}, _reactNative.ViewPropTypes.style)), _propTypes["default"].array]),
+  style: _propTypes["default"].oneOfType([_propTypes["default"].shape({
+    style: _propTypes["default"].any
+  }), _propTypes["default"].array]),
   icon: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
   mask: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
   transform: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object])

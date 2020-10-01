@@ -86,17 +86,17 @@ function getActualFillColorHex(element) {
 fontawesome.library.add(faCoffee, faCircle)
 
 test.skip('renders with icon specified as array', () => {
-  const tree = renderer.create(<FontAwesomeIcon icon={ ['fas', 'coffee'] } />).toJSON()
+  const tree = renderer.create(<FontAwesomeIcon icon={['fas', 'coffee']} />).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test.skip('renders with icon object prop', () => {
-  const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
+  const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} />).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test.skip('renders with mask and transform', () => {
-  const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
+  const tree = renderer.create(<FontAwesomeIcon icon={faCircle} mask={faCoffee} transform="shrink-9 right-4" />).toJSON()
   // modify the clipPath and mask identifiers to be fixed, so they aren't regenerated each time and thus
   // our snapshot will remain stable across test runs
   const maskId = "mask-1"
@@ -119,10 +119,10 @@ test.skip('renders with mask and transform', () => {
 })
 
 test.skip('renders transform equivalently when assigning prop as string or object', () => {
-  const firstTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform="shrink-9 right-4" />).toJSON()
+  const firstTree = renderer.create(<FontAwesomeIcon icon={faCoffee} transform="shrink-9 right-4" />).toJSON()
   expect(firstTree).toMatchSnapshot()
 
-  const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform("shrink-9 right-4")} />).toJSON()
+  const secondTree = renderer.create(<FontAwesomeIcon icon={faCoffee} transform={fontawesome.parse.transform("shrink-9 right-4")} />).toJSON()
   expect(secondTree).toMatchObject(firstTree)
 })
 
@@ -134,7 +134,7 @@ describe('color', () => {
           color: 'blue'
         }
       })
-      const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} style={styles.icon} />).toJSON()
       expect(tree.props.fill).toEqual('blue')
       expect(tree.props.style.filter(s => s.color === 'blue').length).toEqual(0)
     })
@@ -146,7 +146,7 @@ describe('color', () => {
             backgroundColor: 'yellow'
           }
         })
-        const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={ styles.icon }/>).toJSON()
+        const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} style={styles.icon} />).toJSON()
         expect(tree.props.style.filter(s => s.backgroundColor === 'yellow').length).toEqual(1)
         expect(tree.props.style.filter(s => s.color === 'blue').length).toEqual(0)
       })
@@ -154,7 +154,7 @@ describe('color', () => {
   })
   describe('when color prop is given and NO style.color is given', () => {
     test('renders with color given in color prop', () => {
-      const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'purple' }/>).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} color={'purple'} />).toJSON()
       expect(tree.props.fill).toEqual('purple')
       expect(tree.props.tintColor).toBeUndefined()
       const path = tree.children[0].children.find(c => c.type === 'RNSVGPath')
@@ -168,7 +168,7 @@ describe('color', () => {
   })
   describe('when color is specified both by a color prop AND StyleSheet', () => {
     test('color prop overrides style.color', () => {
-      const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color={ 'blue' } style={{ color: 'red' }}/>).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} color={'blue'} style={{ color: 'red' }} />).toJSON()
       expect(tree.props.fill).toEqual('blue')
       expect(tree.props.tintColor).toBeUndefined()
       const path = tree.children[0].children.find(c => c.type === 'RNSVGPath')
@@ -180,14 +180,14 @@ describe('color', () => {
 describe('size', () => {
   describe('when no size, width, or height props are specified', () => {
     test('default size is assigned', () => {
-      const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} />).toJSON()
       expect(tree.props.height).toEqual(DEFAULT_SIZE)
       expect(tree.props.width).toEqual(DEFAULT_SIZE)
     })
   })
   describe('when only a size prop is specified', () => {
     test('the given size is assigned', () => {
-      const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } size={ 32 } />).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} size={32} />).toJSON()
       expect(tree.props.height).toEqual(32)
       expect(tree.props.width).toEqual(32)
     })
@@ -199,7 +199,7 @@ describe('size', () => {
 
     const warningListener = warning => {
       const re = new RegExp('^DEPRECATION')
-      if(warning.match(re)) {
+      if (warning.match(re)) {
         warnings.push(warning)
       } else {
         throw new Error(`Unexpected Warning: ${warning}`)
@@ -207,7 +207,7 @@ describe('size', () => {
     }
 
     beforeEach(() => {
-      console.warn = jest.fn( warningListener )
+      console.warn = jest.fn(warningListener)
       warnings.length = 0
     })
 
@@ -217,7 +217,7 @@ describe('size', () => {
 
     describe('when height or width props are specified without a size prop', () => {
       test('the specified height and width are assigned and a deprecation warning is emitted', () => {
-        const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } height={ 32 } width={ 32 } />).toJSON()
+        const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} height={32} width={32} />).toJSON()
         expect(tree.props.height).toEqual(32)
         expect(tree.props.width).toEqual(32)
         expect(warnings.length).toEqual(1)
@@ -226,7 +226,7 @@ describe('size', () => {
 
     describe('when height or width props are specified WITH a size prop', () => {
       test('the size prop overrides the height and width props', () => {
-        const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } size={ 64 } height={ 32 } width={ 32 } />).toJSON()
+        const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} size={64} height={32} width={32} />).toJSON()
         expect(tree.props.height).toEqual(64)
         expect(tree.props.width).toEqual(64)
         expect(warnings.length).toEqual(1)
@@ -237,7 +237,7 @@ describe('size', () => {
 
 describe('when extra props are given', () => {
   test('extra props are passed through to rendered objects', () => {
-    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } color="purple" foo="bar" />).toJSON()
+    const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} color="purple" foo="bar" />).toJSON()
     expect(tree.props.foo).toEqual("bar")
   })
 })
@@ -259,7 +259,7 @@ describe("convert focusable attribute", () => {
 
 describe('when style is given an array and not an object', () => {
   test('it uses the style objects in array', () => {
-    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } style={[{ color: 'red' }, { backgroundColor: 'yellow' }]}/>).toJSON()
+    const tree = renderer.create(<FontAwesomeIcon icon={faCoffee} style={[{ color: 'red' }, { backgroundColor: 'yellow' }]} />).toJSON()
     expect(tree.props.style.filter(s => s.color === 'red').length).toEqual(0)
     expect(tree.props.style.filter(s => s.backgroundColor === 'yellow').length).toEqual(1)
   })
@@ -273,7 +273,7 @@ describe('duotone support', () => {
           color: 'blue'
         }
       })
-      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon }/>).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faAcorn} style={styles.icon} />).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
       expect(getActualFillColorHex(primaryLayer)).toEqual(blueHex)
@@ -287,7 +287,7 @@ describe('duotone support', () => {
           color: 'blue'
         }
       })
-      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryOpacity={ 0.123 } />).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faAcorn} style={styles.icon} secondaryopacity={0.123} />).toJSON()
       const primaryLayer = tree.children[0].children[0].children[1]
       const secondaryLayer = tree.children[0].children[0].children[0]
       expect(getActualFillColorHex(primaryLayer)).toEqual(blueHex)
@@ -301,7 +301,7 @@ describe('duotone support', () => {
           color: 'blue'
         }
       })
-      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } />).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faAcorn} style={styles.icon} secondaryColor={"red"} />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
       expect(getActualFillColorHex(secondaryLayer)).toEqual(redHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(1)
@@ -314,7 +314,7 @@ describe('duotone support', () => {
           color: 'blue'
         }
       })
-      const tree = renderer.create(<FontAwesomeIcon icon={ faAcorn } style={ styles.icon } secondaryColor={ "red" } secondaryOpacity={ 0.123 } />).toJSON()
+      const tree = renderer.create(<FontAwesomeIcon icon={faAcorn} style={styles.icon} secondaryColor={"red"} secondaryopacity={0.123} />).toJSON()
       const secondaryLayer = tree.children[0].children[0].children[0]
       expect(getActualFillColorHex(secondaryLayer)).toEqual(redHex)
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)

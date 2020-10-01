@@ -385,10 +385,10 @@ Note: the `height` and `width` props have been deprecated.
 ### Duotone
 
 ```javascript
-<FontAwesomeIcon icon="coffee" color="blue" secondaryColor="red" secondaryOpacity={ 0.4 } />
+<FontAwesomeIcon icon="coffee" color="blue" secondaryColor="red" secondaryopacity={ 0.4 } />
 ```
 
-You can specify the color and opacity for Duotone's secondary layer using the `secondaryColor` and `secondaryOpacity` props. Note that these are optional, and will simply default to using your primary color at 40% opacity.
+You can specify the color and opacity for Duotone's secondary layer using the `secondaryColor` and `secondaryopacity` props. Note that these are optional, and will simply default to using your primary color at 40% opacity.
 
 ### Masking
 

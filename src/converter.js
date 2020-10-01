@@ -23,7 +23,7 @@ function convert(createElement, element, extraProps = {}) {
       const fill = isDuotoneSecondLayer
         ? extraProps.secondaryfill
         : extraProps.fill;
-      const fillOpacity = isDuotoneSecondLayer ? extraProps.secondaryOpacity : 1;
+      const fillOpacity = isDuotoneSecondLayer ? extraProps.secondaryopacity : 1;
       return convert(createElement, child, { ...extraProps, fill, fillOpacity });
     }
   )

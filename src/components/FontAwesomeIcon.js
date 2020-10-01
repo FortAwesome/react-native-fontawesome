@@ -72,7 +72,7 @@ export default function FontAwesomeIcon(props) {
   const secondaryColor = props.secondaryColor || null
 
   // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
-  const secondaryOpacity = props.secondaryOpacity || (secondaryColor ? 1 : DEFAULT_SECONDARY_OPACITY)
+  const secondaryopacity = props.secondaryopacity || (secondaryColor ? 1 : DEFAULT_SECONDARY_OPACITY)
 
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
@@ -102,7 +102,7 @@ export default function FontAwesomeIcon(props) {
     width: resolvedWidth,
     fill: color,
     secondaryfill: secondaryColor,
-    secondaryOpacity: secondaryOpacity,
+    secondaryopacity: secondaryopacity,
     style: modifiedStyle
   }
 
@@ -129,7 +129,7 @@ FontAwesomeIcon.propTypes = {
 
   secondaryColor: PropTypes.string,
 
-  secondaryOpacity: PropTypes.number,
+  secondaryopacity: PropTypes.number,
 
   style: PropTypes.oneOfType([
     PropTypes.shape({ style: PropTypes.any }),
@@ -158,7 +158,7 @@ FontAwesomeIcon.defaultProps = {
   style: {},
   color: null,
   secondaryColor: null,
-  secondaryOpacity: null,
+  secondaryopacity: null,
   height: undefined,
   width: undefined,
   // Once the deprecation of height and width props is complete, let's put the real default prop value for size here.

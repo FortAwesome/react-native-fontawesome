@@ -18,7 +18,7 @@ export interface Props {
   size?: number;
   color?: string;
   secondaryColor?: string;
-  secondaryOpacity?: number;
+  secondaryopacity?: number;
   mask?: IconProp;
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;

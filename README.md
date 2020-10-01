@@ -440,14 +440,13 @@ And then:
 
 Community:
 
-    "David Martin <github.com/iamdavidmartin>",
-
 |                                                             | Name              | GitHub                                               |
 | :---------------------------------------------------------: | ----------------- | ---------------------------------------------------- |
 | <img src="https://github.com/dizy.png?size=72" />           | Dizy              | [@dizy](https://github.com/dizy)                     |
 | <img src="https://github.com/iamdavidmartin.png?size=72" /> | David Martin      | [@iamdavidmartin](https://github.com/iamdavidmartin) |
 | <img src="https://github.com/puremana.png?size=72" />       | Jeremey           | [@puremana](https://github.com/puremana)             |
 | <img src="https://github.com/schonfeld.png?size=72" />      | Michael Schonfeld | [@schonfeld](https://github.com/schonfeld)           |
+| <img src="https://github.com/golya.png?size=72" />          | Ádám Gólya        | [@golya](https://github.com/golya)                   |
 
 The Font Awesome team:
 

@@ -91,8 +91,27 @@ And change it to something like this:
 1. `npm run dist`
 1. `npm run test`
 1. `npm publish`
-1. `npm pack`
-1. `CLOUDSMITH_API_KEY=API_TOKEN cloudsmith upload npm fortawesome/fontawesome-pro ./fortawesome-react-native-fontawesome-VERSION.tgz`
+1. `npm publish --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
 1. Create a [new release](https://github.com/FortAwesome/react-native-fontawesome/releases/new) with `CHANGELOG` details
+
+## Authenticating with the npm.fontawesome.com registry
+
+Contributors with authorization to publish to npm.fontawesome.com will receive an invite
+from a Font Awesome project owner.
+
+1. Respond to the invite in your email
+1. Let the owner know when you've setup your account
+1. Owner will add you to the team
+
+You can then run:
+
+```
+npm login --registry https://npm.fontawesome.com
+```
+
+- The username is the "slug" for your Cloudsmith account. For example mine is "rob-madole".
+- Enter the password that you setup just a few minutes ago.
+- It says the your email is PUBLIC. Pretty sure that's false since the auth is through Cloudsmith.
+- This doesn't overwrite your standard login, just adds to your `~/.npmrc`

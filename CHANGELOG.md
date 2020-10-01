@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.6](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.6) - 2020-10-01
+
+### Fixed
+
+- Removed dependence on React Native for Web's ViewPropTypes #72
+
+---
+
 ## [0.2.5](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.5) - 2020-05-14
 
 ### Added

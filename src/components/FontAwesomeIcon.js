@@ -77,12 +77,12 @@ export default function FontAwesomeIcon(props) {
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
-  const { color: styleColor, ...modifiedStyle} = style
+  const { color: styleColor, ...modifiedStyle } = style
 
   let resolvedHeight, resolvedWidth
 
-  if(height || width){
-    if(size) {
+  if (height || width) {
+    if (size) {
       console.warn(`DEPRECATION: height and width props on ${FontAwesomeIcon.displayName} have been deprecated.  ` +
         `Since you've also provided a size prop, we'll use it to override the height and width props given.  ` +
         `You should probably go ahead and remove the height and width props to avoid confusion and resolve this warning.`)
@@ -101,7 +101,7 @@ export default function FontAwesomeIcon(props) {
     height: resolvedHeight,
     width: resolvedWidth,
     fill: color,
-    secondaryFill: secondaryColor,
+    secondaryfill: secondaryColor,
     secondaryOpacity: secondaryOpacity,
     style: modifiedStyle
   }

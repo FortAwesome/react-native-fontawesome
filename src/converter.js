@@ -21,7 +21,7 @@ function convert(createElement, element, extraProps = {}) {
     (child, childIndex) => {
       const isDuotoneSecondLayer = isDuotone && childIndex === 0;
       const fill = isDuotoneSecondLayer
-        ? extraProps.secondaryFill
+        ? extraProps.secondaryfill
         : extraProps.fill;
       const fillOpacity = isDuotoneSecondLayer ? extraProps.secondaryOpacity : 1;
       return convert(createElement, child, { ...extraProps, fill, fillOpacity });
@@ -42,7 +42,7 @@ function convert(createElement, element, extraProps = {}) {
           acc.attrs[key] = (val === 'true') ? true : false
           break
         default:
-          if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || ( 'fill' === key && 'currentColor' === val )) {
+          if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || ('fill' === key && 'currentColor' === val)) {
             delete element.attributes[key]
           } else {
             acc.attrs[humps.camelize(key)] = val

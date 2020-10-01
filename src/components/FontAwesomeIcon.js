@@ -1,7 +1,7 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Dimensions, ViewPropTypes, StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
 
@@ -132,7 +132,7 @@ FontAwesomeIcon.propTypes = {
   secondaryOpacity: PropTypes.number,
 
   style: PropTypes.oneOfType([
-    PropTypes.shape({ ...ViewPropTypes.style }),
+    PropTypes.shape({ style: PropTypes.any }),
     PropTypes.array
   ]),
 

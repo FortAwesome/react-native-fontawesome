@@ -123,7 +123,7 @@ FontAwesomeIcon.propTypes = {
 
   width: PropTypes.number,
 
-  size: PropTypes.number,
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
   color: PropTypes.string,
 

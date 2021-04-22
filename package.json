@@ -27,8 +27,8 @@
   "license": "MIT",
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
-    "react": "~16",
-    "react-native": "> 0.57",
+    "react": "~17",
+    "react-native": "> 0.64",
     "react-native-svg": "> 7.0"
   },
   "devDependencies": {
@@ -42,10 +42,10 @@
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
-    "react": "16.9.0",
-    "react-native": "^0.61.5",
+    "react": "17.0.1",
+    "react-native": "^0.64.0",
     "react-native-svg": "^9.13.6",
-    "react-test-renderer": "^16.9.0"
+    "react-test-renderer": "17.0.1"
   },
   "dependencies": {
     "humps": "^2.0.1",

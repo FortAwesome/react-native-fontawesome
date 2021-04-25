@@ -126,8 +126,8 @@ function FontAwesomeIcon(props) {
     height: resolvedHeight,
     width: resolvedWidth,
     fill: color,
-    secondaryFill: secondaryColor,
-    secondaryOpacity: secondaryOpacity,
+    secondaryfill: secondaryColor,
+    secondaryopacity: secondaryOpacity,
     style: modifiedStyle
   };
   Object.keys(props).forEach(function (key) {

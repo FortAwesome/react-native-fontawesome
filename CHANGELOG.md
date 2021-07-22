@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.2.7](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.7) - 2021-07-22
+
+### Changed
+
+- Dependency updates including support for react-native 0.64 and react 17
+
+---
+
 ## [0.2.6](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.6) - 2020-10-01
 
 ### Fixed

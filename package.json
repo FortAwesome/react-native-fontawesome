@@ -27,7 +27,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
-    "react": "~16",
+    "react": ">= 16.x",
     "react-native": "> 0.57",
     "react-native-svg": "> 7.0"
   },

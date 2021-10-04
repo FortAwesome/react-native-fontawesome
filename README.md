@@ -423,7 +423,7 @@ library.add(fasFaStroopwafel, farFaStroopwafel)
 
 ### I don't think tree-shaking is working; got any advice?
 
-Check out our [docs here](https://fontawesome.com/how-to-use/with-the-api/other/tree-shaking).
+Check out our [docs here](https://fontawesome.com/how-to-use/javascript-api/other/tree-shaking).
 
 ## How to Help
 

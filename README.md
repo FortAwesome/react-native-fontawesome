@@ -21,13 +21,13 @@
   * [Explicit Import](#explicit-import)
   * [Build a Library to Reference Icons Throughout Your App More Conveniently](#build-a-library-to-reference-icons-throughout-your-app-more-conveniently)
   * [Color](#color)
-    + [Color Prop](#color-prop) 
+    + [Color Prop](#color-prop)
     + [Change Color with a StyleSheet](#color-stylesheet-property)
-  * [Size](#size)  
+  * [Size](#size)
 - [Features](#features)
   * [Duotone](#duotone)
   * [Masking](#masking)
-  * [Power Transforms](#power-transforms)    
+  * [Power Transforms](#power-transforms)
 - [Frequent questions](#frequent-questions)
   * [How do I import the same icon from two different styles?](#how-do-i-import-the-same-icon-from-two-different-styles)
   * [I don't think tree-shaking is working; got any advice?](#i-dont-think-tree-shaking-is-working-got-any-advice)
@@ -42,24 +42,24 @@ Hey there! We're glad you're here...
 
 #### Upgrading Font Awesome?
 
-If you've used Font Awesome in the past (version 4 or older) there are some
+If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/how-to-use/on-the-web/setup/upgrading-from-version-4
+> https://fontawesome.com/v6.0/docs/web/setup/upgrading/
 
 #### Get started
 
 This package is for integrating with React Native. If you aren't using React Native then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/how-to-use/on-the-web/setup/getting-started
+> https://fontawesome.com/v6.0/docs/web/setup/quick-start
 
 #### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/how-to-use/on-the-web/advanced/svg-javascript-core
+> https://fontawesome.com/v6.0/docs/web/dig-deeper/svg-core
 
 ## Installation
 
@@ -92,7 +92,7 @@ $ npm i --save @fortawesome/free-brands-svg-icons
 $ npm i --save @fortawesome/free-regular-svg-icons
 ```
 
-If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages; this requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
+If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages; this requires [additional configuration](https://fontawesome.com/v6.0/docs/web/setup/packages).
 
 ```
 $ npm i --save @fortawesome/pro-solid-svg-icons
@@ -396,7 +396,7 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 <FontAwesomeIcon icon="coffee" mask={['far', 'circle']} />
 ```
 
-[More on masking...](https://fontawesome.com/how-to-use/on-the-web/styling/masking)
+[More on masking...](https://fontawesome.com/v6.0/docs/web/style/mask#contentHeader)
 
 ### Power Transforms
 
@@ -405,7 +405,7 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 <FontAwesomeIcon icon="arrow-rightr" transform={{ rotate: 42 }} />
 ```
 
-[More on power transforms...](https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)
+[More on power transforms...](https://fontawesome.com/v6.0/docs/web/style/power-transform#contentHeader)
 
 ## Frequent questions
 
@@ -423,7 +423,7 @@ library.add(fasFaStroopwafel, farFaStroopwafel)
 
 ### I don't think tree-shaking is working; got any advice?
 
-Check out our [docs here](https://fontawesome.com/how-to-use/with-the-api/other/tree-shaking).
+Check out our [docs here](https://fontawesome.com/v6.0/docs/apis/javascript/tree-shaking).
 
 ## How to Help
 
@@ -440,19 +440,11 @@ And then:
 
 Community:
 
-|                                                             | Name              | GitHub                                               |
-| :---------------------------------------------------------: | ----------------- | ---------------------------------------------------- |
-| <img src="https://github.com/dizy.png?size=72" />           | Dizy              | [@dizy](https://github.com/dizy)                     |
-| <img src="https://github.com/iamdavidmartin.png?size=72" /> | David Martin      | [@iamdavidmartin](https://github.com/iamdavidmartin) |
-| <img src="https://github.com/puremana.png?size=72" />       | Jeremey           | [@puremana](https://github.com/puremana)             |
-| <img src="https://github.com/schonfeld.png?size=72" />      | Michael Schonfeld | [@schonfeld](https://github.com/schonfeld)           |
-| <img src="https://github.com/golya.png?size=72" />          | Ádám Gólya        | [@golya](https://github.com/golya)                   |
-
-The Font Awesome team:
-
-|                                                            | Name           | GitHub                                             |
-| :--------------------------------------------------------: | -------------- | -------------------------------------------------- |
-| <img src="https://github.com/supercodepoet.png?size=72" /> | Travis Chase   | [@supercodepoet](https://github.com/supercodepoet) |
-|   <img src="https://github.com/robmadole.png?size=72" />   | Rob Madole     | [@robmadole](https://github.com/robmadole)         |
-|  <img src="https://github.com/mlwilkerson.png?size=72" />  | Mike Wilkerson | [@mlwilkerson](https://github.com/mlwilkerson)     |
-|     <img src="https://github.com/talbs.png?size=72" />     | Brian Talbot   | [@talbs](https://github.com/talbs)                 |
+| Name              | GitHub                                                    |
+| ----------------- | --------------------------------------------------------- |
+| Dizy              | [@dizy](https://github.com/dizy)                          |
+| David Martin      | [@iamdavidmartin](https://github.com/iamdavidmartin)      |
+| Jeremey           | [@puremana](https://github.com/puremana)                  |
+| Michael Schonfeld | [@schonfeld](https://github.com/schonfeld)                |
+| Ádám Gólya        | [@golya](https://github.com/golya)                        |
+| Font Awesome Team | [@FortAwesome](https://github.com/orgs/FortAwesome/people)|

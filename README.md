@@ -45,21 +45,21 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/v6.0/docs/web/setup/upgrading/
+> https://fontawesome.com/v6/docs/web/setup/upgrading/
 
 #### Get started
 
 This package is for integrating with React Native. If you aren't using React Native then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/v6.0/docs/web/setup/quick-start
+> https://fontawesome.com/v6/docs/web/setup/quick-start
 
 #### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/v6.0/docs/web/dig-deeper/svg-core
+> https://fontawesome.com/v6/docs/web/dig-deeper/svg-core
 
 ## Installation
 
@@ -92,7 +92,7 @@ $ npm i --save @fortawesome/free-brands-svg-icons
 $ npm i --save @fortawesome/free-regular-svg-icons
 ```
 
-If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages; this requires [additional configuration](https://fontawesome.com/v6.0/docs/web/setup/packages).
+If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages; this requires [additional configuration](https://fontawesome.com/v6/docs/web/setup/packages).
 
 ```
 $ npm i --save @fortawesome/pro-solid-svg-icons
@@ -396,7 +396,7 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 <FontAwesomeIcon icon="coffee" mask={['far', 'circle']} />
 ```
 
-[More on masking...](https://fontawesome.com/v6.0/docs/web/style/mask#contentHeader)
+[More on masking...](https://fontawesome.com/v6/docs/web/style/mask#contentHeader)
 
 ### Power Transforms
 
@@ -405,7 +405,7 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 <FontAwesomeIcon icon="arrow-rightr" transform={{ rotate: 42 }} />
 ```
 
-[More on power transforms...](https://fontawesome.com/v6.0/docs/web/style/power-transform#contentHeader)
+[More on power transforms...](https://fontawesome.com/v6/docs/web/style/power-transform#contentHeader)
 
 ## Frequent questions
 
@@ -423,7 +423,7 @@ library.add(fasFaStroopwafel, farFaStroopwafel)
 
 ### I don't think tree-shaking is working; got any advice?
 
-Check out our [docs here](https://fontawesome.com/v6.0/docs/apis/javascript/tree-shaking).
+Check out our [docs here](https://fontawesome.com/v6/docs/apis/javascript/tree-shaking).
 
 ## How to Help
 

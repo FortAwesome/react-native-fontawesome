@@ -120,10 +120,10 @@ $ yarn add @fortawesome/react-native-fontawesome
 You can use Font Awesome icons in your React Native components as simply as this:
 
 ```javascript
-<FontAwesomeIcon icon="coffee" />
+<FontAwesomeIcon icon="mug-saucer" />
 ```
 
-That simple usage is made possible when you add the `"coffee"` icon, to the
+That simple usage is made possible when you add the `"mug-saucer"` icon, to the
 _library_.
 
 This is one of the two ways you can use Font Awesome 5 with React Native. We'll
@@ -164,22 +164,22 @@ Now, a simple React Native component might look like this:
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
 
 type Props = {}
 export default class App extends Component<Props> {
   render() {
     return (
       <View>
-        <FontAwesomeIcon icon={ faCoffee } />
+        <FontAwesomeIcon icon={ faMugSaucer } />
       </View>
     )
   }
 }
 ```
 
-Notice that the `faCoffee` icon is imported from
-`@fortawesome/free-solid-svg-icons` as an object and then provided to the
+Notice that the `faMugSaucer` icon is imported from
+`@fortawesome/free-solid-svg-icons/faMugSaucer` as an object and then provided to the
 `icon` prop as an object.
 
 Explicitly importing icons like this allows us to subset Font Awesome's
@@ -197,7 +197,7 @@ So, add them to the _library_. Do this setup once in some initializing module
 of your app, adding all of the icons you'll use in your app's React components.
 
 Suppose `App.js` initializes my app, including the library. For this example,
-we'll add two individual icons, `faCheckSquare` and `faCoffee`. We also add all
+we'll add two individual icons, `faSquareCheck` and `faMugSaucer`. We also add all
 of the brands in `@fortawesome/free-brands-svg-icons`. This example would
 illustrate the benefits of building a library even more clearly if it involved
 fifty or a hundred icons, but we'll keep the example brief and leave it to your
@@ -221,9 +221,10 @@ In `App.js`, where our app is initialized:
 // ...
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faSquareCheck } from '@fortawesome/free-solid-svg-icons/faSquareCheck'
+import { faMugEmpty } from '@fortawesome/free-solid-svg-icons/faMugEmpty'
 
-library.add(fab, faCheckSquare, faCoffee)
+library.add(fab, faSquareCheck, faMugSaucer)
 ```
 
 OK, so what's happening here?
@@ -235,9 +236,9 @@ In our call to <span style="white-space:nowrap;">`library.add()`</span> we're pa
   So any of the brand icons in that package may be referenced by icon name
   as a string anywhere else in our app.
   For example: `"apple"`, `"microsoft"`, or `"google"`.
-- `faCheckSquare` and `faCoffee`: Adding each of these icons individually
+- `faSquareCheck` and `faMugSaucer`: Adding each of these icons individually
   allows us to refer to them throughout our app by their icon string names,
-  `"check-square"` and `"coffee"`, respectively.
+  `"square-check"` and `"mug-saucer"`, respectively.
 
 Now, suppose you also have React Native components `Beverage` and `Gadget` in your app.
 You don't have to re-import your icons into them. Just import the `FontAwesomeIcon`
@@ -252,8 +253,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export const Beverage = () => (
   <View>
-    <FontAwesomeIcon icon="check-square" />
-    <Text>Favorite beverage: </Text><FontAwesomeIcon icon="coffee" />
+    <FontAwesomeIcon icon="square-check" />
+    <Text>Favorite beverage: </Text><FontAwesomeIcon icon="mug-saucer" />
   </View>
 )
 ```
@@ -272,7 +273,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export const Gadget = () => (
   <View>
-    <FontAwesomeIcon icon="check-square" />
+    <FontAwesomeIcon icon="square-check" />
     <Text>Popular gadgets come from vendors like:</Text>
     <FontAwesomeIcon icon={['fab', 'apple']} />
     <FontAwesomeIcon icon={['fab', 'microsoft']} />
@@ -283,7 +284,7 @@ export const Gadget = () => (
 
 Notice:
 
-- We used the `"check-square"` icon name again in this component, though we
+- We used the `"square-check"` icon name again in this component, though we
   didn't have to explicitly import it into this component. With one explicit import of
   that icon in `App.js`, and adding it to the library, we've managed to use
   it by name in multiple components.
@@ -296,10 +297,10 @@ Notice:
 Adding a prefix—and the syntax we used to do it—are new. So what's
 going on here?
 
-First, recall when we introduced `<FontAwesomeIcon icon="coffee"/>` and learned
-that a prefix of `fas` was being added to `"coffee"` by default.
+First, recall when we introduced `<FontAwesomeIcon icon="mug-saucer"/>` and learned
+that a prefix of `fas` was being added to `"mug-saucer"` by default.
 
-The `"check-square"` icon is getting a default prefix of `fas` here too, which
+The `"square-check"` icon is getting a default prefix of `fas` here too, which
 is what we want, because that icon also lives in the
 `@fortawesome/free-solid-svg-icons` package.
 
@@ -314,8 +315,8 @@ Now, what about that syntax?
 
 The `icon` prop expects a single object:
 
-- It could be an icon object, like `{faCoffee}`.
-- It could a string object, like `"coffee"`.
+- It could be an icon object, like `{faMugSaucer}`.
+- It could a string object, like `"mug-saucer"`.
   (The curly braces around a string object supplied to a prop are optional,
   so we've omitted them.)
 - Or it could be an `Array` of strings, where the first element is a prefix,
@@ -335,7 +336,7 @@ Using the color prop should be preferred over using the StyleSheet.
 #### Color Prop
 
 ```javascript
-  <FontAwesomeIcon icon={ faCoffee } color={ 'red' } />
+  <FontAwesomeIcon icon={ faMugSaucer } color={ 'red' } />
 ```
 
 #### Color StyleSheet property
@@ -346,8 +347,7 @@ To set the color of an icon, provide a `StyleSheet` like this:
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
 
 type Props = {}
 
@@ -361,7 +361,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View>
-        <FontAwesomeIcon icon={ faCoffee } style={ style.icon } />
+        <FontAwesomeIcon icon={ faMugSaucer } style={ style.icon } />
       </View>
     )
   }
@@ -375,7 +375,7 @@ Default: 16
 To adjust the size, use the `size` prop:
 
 ```javascript
-<FontAwesomeIcon icon={ faCoffee } size={ 32 } />
+<FontAwesomeIcon icon={ faMugSaucer } size={ 32 } />
 ```
 
 Note: the `height` and `width` props have been deprecated.
@@ -385,7 +385,7 @@ Note: the `height` and `width` props have been deprecated.
 ### Duotone
 
 ```javascript
-<FontAwesomeIcon icon="coffee" color="blue" secondaryColor="red" secondaryOpacity={ 0.4 } />
+<FontAwesomeIcon icon="mug-saucer" color="blue" secondaryColor="red" secondaryOpacity={ 0.4 } />
 ```
 
 You can specify the color and opacity for Duotone's secondary layer using the `secondaryColor` and `secondaryOpacity` props. Note that these are optional, and will simply default to using your primary color at 40% opacity.
@@ -393,7 +393,7 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 ### Masking
 
 ```javascript
-<FontAwesomeIcon icon="coffee" mask={['far', 'circle']} />
+<FontAwesomeIcon icon="mug-saucer" mask={['far', 'circle']} />
 ```
 
 [More on masking...](https://fontawesome.com/v6/docs/web/style/mask#contentHeader)
@@ -401,8 +401,8 @@ You can specify the color and opacity for Duotone's secondary layer using the `s
 ### Power Transforms
 
 ```javascript
-<FontAwesomeIcon icon="arrows" transform="shrink-6 left-4" />
-<FontAwesomeIcon icon="arrow-rightr" transform={{ rotate: 42 }} />
+<FontAwesomeIcon icon="arrows-up-down-left-right" transform="shrink-6 left-4" />
+<FontAwesomeIcon icon="arrow-right" transform={{ rotate: 42 }} />
 ```
 
 [More on power transforms...](https://fontawesome.com/v6/docs/web/style/power-transform#contentHeader)
@@ -415,8 +415,8 @@ With ES modules and `import` statements we can rename:
 
 ```javascript
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStroopwafel as fasFaStroopwafel } from '@fortawesome/pro-solid-svg-icons'
-import { faStroopwafel as farFaStroopwafel } from '@fortawesome/pro-regular-svg-icons'
+import { faStroopwafel as fasFaStroopwafel } from '@fortawesome/pro-solid-svg-icons/faStroopwafel'
+import { faStroopwafel as farFaStroopwafel } from '@fortawesome/pro-regular-svg-icons/faStroopwafel'
 
 library.add(fasFaStroopwafel, farFaStroopwafel)
 ```
@@ -424,6 +424,26 @@ library.add(fasFaStroopwafel, farFaStroopwafel)
 ### I don't think tree-shaking is working; got any advice?
 
 Check out our [docs here](https://fontawesome.com/v6/docs/apis/javascript/tree-shaking).
+
+If you find that your build times are taking forever, check the way that you are importing icons.
+
+In past versions of `react-native-fontawesome` we've documented importing icons like this:
+
+```javascript
+import faStroopwafel from '@fortawesome/pro-solid-svg-icons'
+```
+
+This can cause build times for your project to skyrocket because React Native is trying to tree shake. The Font Awesome
+packages are so large that we _highly_ recommend that you avoid this.
+
+Instead, use "deep imports" by default.
+
+```javascript
+import faStroopwafel from '@fortawesome/pro-solid-svg-icons/faStroopwafel' // <- notice the additional module here?
+```
+
+By directly importing from the `faStroopwafel.js` module there is no additional work that tree shaking needs to do in order to
+reduce your bundle size.
 
 ## How to Help
 

@@ -45,7 +45,7 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/v6/docs/web/setup/upgrading/
+> https://fontawesome.com/v6/docs/web/setup/upgrade/
 
 #### Get started
 

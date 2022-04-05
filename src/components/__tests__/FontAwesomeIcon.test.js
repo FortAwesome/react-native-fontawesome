@@ -56,7 +56,7 @@ function rgbToHex(r, g, b) {
 }
 
 function decimalToHex(decimal) {
-  return decimal.toString(16).substr(2, 6);
+  return decimal.toString(16).slice(2, 8);
 }
 
 // react-native-svg changed the way it uses the `fill` attribute across versions. Older versions

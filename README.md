@@ -430,7 +430,7 @@ If you find that your build times are taking forever, check the way that you are
 In past versions of `react-native-fontawesome` we've documented importing icons like this:
 
 ```javascript
-import faStroopwafel from '@fortawesome/pro-solid-svg-icons'
+import { faStroopwafel } from '@fortawesome/pro-solid-svg-icons'
 ```
 
 This can cause build times for your project to skyrocket because React Native is trying to tree shake. The Font Awesome
@@ -439,7 +439,7 @@ packages are so large that we _highly_ recommend that you avoid this.
 Instead, use "deep imports" by default.
 
 ```javascript
-import faStroopwafel from '@fortawesome/pro-solid-svg-icons/faStroopwafel' // <- notice the additional module here?
+import { faStroopwafel } from '@fortawesome/pro-solid-svg-icons/faStroopwafel' // <- notice the additional module here?
 ```
 
 By directly importing from the `faStroopwafel.js` module there is no additional work that tree shaking needs to do in order to

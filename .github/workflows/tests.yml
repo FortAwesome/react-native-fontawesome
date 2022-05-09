@@ -8,13 +8,16 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.6.x]
+        node: [
+          14.x,
+          16.x,
+          18.x
+        ]
         react: [
-          16.9.x
+          16.x,
+          17.x
         ]
         react-native-svg: [
-          7.x,
-          8.x,
           9.x,
           10.x,
           11.x,

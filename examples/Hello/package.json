@@ -8,14 +8,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.20",
-    "@fortawesome/free-solid-svg-icons": "^5.10.0",
-    "@fortawesome/react-native-fontawesome": "^0.2.3",
+    "@fortawesome/fontawesome-svg-core": "^6",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-native-fontawesome": "^0.2.6",
     "expo": "^34.0.1",
-    "react": "16.8.3",
+    "react": "^17",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-svg": "^9.5.3",
+    "react-native-svg": "^12.3.0",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { Dimensions, StyleSheet } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
+import { Rect } from 'react-native-svg'
+import react from 'react'
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
@@ -42,7 +44,9 @@ function normalizeIconArgs(icon) {
 
 export default function FontAwesomeIcon(props) {
   const { icon: iconArgs, mask: maskArgs, height, width, size } = props
-  const style = StyleSheet.flatten(props.style)
+  const style = props.style // StyleSheet.flatten(props.style)
+
+  console.log('style', style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
@@ -52,6 +56,7 @@ export default function FontAwesomeIcon(props) {
       : props.transform
   )
   const mask = objectWithKey('mask', normalizeIconArgs(maskArgs))
+
   const renderedIcon = icon(iconLookup, {
     ...transform,
     ...mask
@@ -63,6 +68,7 @@ export default function FontAwesomeIcon(props) {
   }
 
   const { abstract } = renderedIcon
+  //console.log('OG abstract', JSON.stringify(abstract, null, 2))
 
   // This is the color that will be passed to the "fill" prop of the Svg element
   const color = props.color || style.color || DEFAULT_COLOR
@@ -97,13 +103,14 @@ export default function FontAwesomeIcon(props) {
     resolvedHeight = resolvedWidth = size || DEFAULT_SIZE
   }
 
+  abstract[0].attributes.height = resolvedHeight
+  abstract[0].attributes.width = resolvedWidth
+
+  replaceCurrentColor(abstract[0], color, secondaryColor, secondaryOpacity)
+  // console.log('Updated abstract', JSON.stringify(abstract, null, 2))
+
   const extraProps = {
-    height: resolvedHeight,
-    width: resolvedWidth,
-    fill: color,
-    secondaryFill: secondaryColor,
-    secondaryOpacity: secondaryOpacity,
-    style: modifiedStyle
+    //style: modifiedStyle
   }
 
   Object.keys(props).forEach(key => {
@@ -166,3 +173,36 @@ FontAwesomeIcon.defaultProps = {
 }
 
 const convertCurry = convert.bind(null, React.createElement)
+
+function replaceCurrentColor (obj, primaryColor, secondaryColor, secondaryOpacity) {
+  (obj.children).map((child, childIndex) => {
+    replaceFill(child, primaryColor, secondaryColor, secondaryOpacity)
+
+    if (child.hasOwnProperty('attributes')) {
+      replaceFill(child.attributes, primaryColor, secondaryColor, secondaryOpacity)
+    }
+
+    if (Array.isArray(child.children) && child.children.length > 0) {
+      replaceCurrentColor(child, primaryColor, secondaryColor, secondaryOpacity)
+    }
+  })
+}
+
+function replaceFill (obj, primaryColor, secondaryColor, secondaryOpacity) {
+  if (hasPropertySetToValue(obj, 'fill', 'currentColor')) {
+    if (hasPropertySetToValue(obj, 'class', 'fa-primary')) {
+      obj.fill = primaryColor
+    } else if (hasPropertySetToValue(obj, 'class', 'fa-secondary')) {
+      obj.fill = secondaryColor
+      obj.fillOpacity = secondaryOpacity
+
+      console.log('obj', obj)
+    } else {
+      obj.fill = primaryColor
+    }
+  }
+}
+
+function hasPropertySetToValue(obj, property, value) {
+  return obj.hasOwnProperty(property) && obj[property] == value ? true : false
+}

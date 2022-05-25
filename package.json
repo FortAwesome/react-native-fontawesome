@@ -1,6 +1,6 @@
 {
   "name": "@fortawesome/react-native-fontawesome",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "Official React Native component for Font Awesome 5",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,9 @@
     "David Martin <github.com/iamdavidmartin>",
     "Jeremy <github.com/puremana>",
     "Michael Schonfeld <github.com/schonfeld>",
-    "Ádám Gólya <github.com/golya>"
+    "Ádám Gólya <github.com/golya>",
+    "Edward Emanuel <github.com/ej2>",
+    "Jason Lundien <github.com/jasonlundien>"
   ],
   "license": "MIT",
   "peerDependencies": {

@@ -55,7 +55,7 @@ function convert(createElement, element, extraProps = {}) {
 
   return createElement(
     svgObjectMap[element.tag],
-    { ...mixins.attrs, ...extraProps },
+    { ...mixins.attrs },
     ...children
   )
 }

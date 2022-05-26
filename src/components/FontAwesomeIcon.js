@@ -13,10 +13,6 @@ export const DEFAULT_SIZE = 16
 export const DEFAULT_COLOR = '#000'
 export const DEFAULT_SECONDARY_OPACITY = 0.4
 
-// Deprecated height and width defaults
-const DEFAULT_HEIGHT = windowHeight * 0.1
-const DEFAULT_WIDTH = windowWidth * 0.1
-
 function objectWithKey(key, value) {
   return (Array.isArray(value) && value.length > 0) ||
     (!Array.isArray(value) && value)
@@ -44,9 +40,7 @@ function normalizeIconArgs(icon) {
 
 export default function FontAwesomeIcon(props) {
   const { icon: iconArgs, mask: maskArgs, height, width, size } = props
-  const style = props.style // StyleSheet.flatten(props.style)
-
-  console.log('style', style)
+  const style = StyleSheet.flatten(props.style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
@@ -68,17 +62,16 @@ export default function FontAwesomeIcon(props) {
   }
 
   const { abstract } = renderedIcon
-  //console.log('OG abstract', JSON.stringify(abstract, null, 2))
 
   // This is the color that will be passed to the "fill" prop of the Svg element
   const color = props.color || style.color || DEFAULT_COLOR
 
   // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
-  const secondaryColor = props.secondaryColor || null
+  const secondaryColor = props.secondaryColor || color
 
   // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
-  const secondaryOpacity = props.secondaryOpacity || (secondaryColor ? 1 : DEFAULT_SECONDARY_OPACITY)
+  const secondaryOpacity = props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY
 
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
@@ -87,39 +80,22 @@ export default function FontAwesomeIcon(props) {
 
   let resolvedHeight, resolvedWidth
 
-  if(height || width){
-    if(size) {
-      console.warn(`DEPRECATION: height and width props on ${FontAwesomeIcon.displayName} have been deprecated.  ` +
-        `Since you've also provided a size prop, we'll use it to override the height and width props given.  ` +
-        `You should probably go ahead and remove the height and width props to avoid confusion and resolve this warning.`)
-      resolvedHeight = resolvedWidth = size
-    } else {
-      console.warn(`DEPRECATION: height and width props on ${FontAwesomeIcon.displayName} have been deprecated.  ` +
-        `Use the size prop instead.`)
-      resolvedHeight = height || DEFAULT_HEIGHT
-      resolvedWidth = width || DEFAULT_WIDTH
-    }
+  if (height || width) {
+    throw new Error(`Prop height and width for component ${FontAwesomeIcon.displayName} have been deprecated. ` +
+      `Use the size prop instead like <${FontAwesomeIcon.displayName} size={${width}} />.`)
   } else {
     resolvedHeight = resolvedWidth = size || DEFAULT_SIZE
   }
 
-  abstract[0].attributes.height = resolvedHeight
-  abstract[0].attributes.width = resolvedWidth
+  const rootAttributes = abstract[0].attributes
+
+  rootAttributes.height = resolvedHeight
+  rootAttributes.width = resolvedWidth
+  rootAttributes.style = modifiedStyle
 
   replaceCurrentColor(abstract[0], color, secondaryColor, secondaryOpacity)
-  // console.log('Updated abstract', JSON.stringify(abstract, null, 2))
 
-  const extraProps = {
-    //style: modifiedStyle
-  }
-
-  Object.keys(props).forEach(key => {
-    if (!FontAwesomeIcon.defaultProps.hasOwnProperty(key)) {
-      extraProps[key] = props[key]
-    }
-  })
-
-  return convertCurry(abstract[0], extraProps)
+  return convertCurry(abstract[0])
 }
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon'
@@ -166,10 +142,7 @@ FontAwesomeIcon.defaultProps = {
   color: null,
   secondaryColor: null,
   secondaryOpacity: null,
-  height: undefined,
-  width: undefined,
-  // Once the deprecation of height and width props is complete, let's put the real default prop value for size here.
-  // For now, adding it breaks the default/override logic for height/width/size.
+  size: DEFAULT_SIZE
 }
 
 const convertCurry = convert.bind(null, React.createElement)
@@ -195,8 +168,6 @@ function replaceFill (obj, primaryColor, secondaryColor, secondaryOpacity) {
     } else if (hasPropertySetToValue(obj, 'class', 'fa-secondary')) {
       obj.fill = secondaryColor
       obj.fillOpacity = secondaryOpacity
-
-      console.log('obj', obj)
     } else {
       obj.fill = primaryColor
     }

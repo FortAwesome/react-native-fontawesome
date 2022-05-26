@@ -11,7 +11,7 @@ const svgObjectMap = {
   "clipPath": ClipPath
 }
 
-function convert(createElement, element, extraProps = {}) {
+function convert(createElement, element) {
   if (typeof element === 'string') {
     return element
   }
@@ -19,12 +19,7 @@ function convert(createElement, element, extraProps = {}) {
   const isDuotone = (element.children || []).length === 2
   const children = (element.children || []).map(
     (child, childIndex) => {
-      const isDuotoneSecondLayer = isDuotone && childIndex === 0;
-      const fill = isDuotoneSecondLayer
-        ? extraProps.secondaryFill
-        : extraProps.fill;
-      const fillOpacity = isDuotoneSecondLayer ? extraProps.secondaryOpacity : 1;
-      return convert(createElement, child, { ...extraProps, fill, fillOpacity });
+      return convert(createElement, child);
     }
   )
 
@@ -34,7 +29,6 @@ function convert(createElement, element, extraProps = {}) {
       switch (key) {
         case 'class':
         case 'role':
-        case 'style':
         case 'xmlns':
           delete element.attributes[key]
           break

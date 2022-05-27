@@ -21,5 +21,10 @@ module.exports = {
     'jest'
   ],
   rules: {
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 }

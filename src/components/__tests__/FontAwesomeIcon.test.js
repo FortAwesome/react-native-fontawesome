@@ -1,11 +1,8 @@
 import * as fontawesome from '@fortawesome/fontawesome-svg-core'
-import FontAwesomeIcon, { DEFAULT_SIZE, DEFAULT_COLOR } from '../FontAwesomeIcon'
+import FontAwesomeIcon, { DEFAULT_SIZE } from '../FontAwesomeIcon'
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { StyleSheet } from 'react-native'
-import { find } from 'lodash'
-
-import {Svg, Path} from 'react-native-svg';
 
 jest.spyOn(React, 'createElement')
 
@@ -49,41 +46,42 @@ const BLUE = '0000ff'
 const PURPLE = '800080'
 const RED = 'ff0000'
 
-function rgbToHex(r, g, b) {
+function rgbToHex (r, g, b) {
   return [r, g, b]
     .map((c) => {
-      const hex = c.toString(16);
-      return hex.length == 1 ? `0${hex}` : hex;
+      const hex = c.toString(16)
+      return hex.length === 1 ? `0${hex}` : hex
     })
-    .join("");
+    .join('')
 }
 
-function decimalToHex(decimal) {
-  return decimal.toString(16).substr(2, 6);
+function decimalToHex (decimal) {
+  return decimal.toString(16).substr(2, 6)
 }
 
 // react-native-svg changed the way it uses the `fill` attribute across versions. Older versions
 // return [_, r, g, b, _] (where 0 <= {r,g,b} <= 1), while other versions return arrays, and even
 // scalar values... We, much like the Borg, will adapt.
-function getActualFillColorHex(element) {
-  const fillProp = element.props.fill;
+function getActualFillColorHex (element) {
+  const fillProp = element.props.fill
+
   if (!Array.isArray(fillProp)) {
     // rn-svg v11 use a simple sclar value, representing the decimal value of the color
     // @link https://github.com/react-native-community/react-native-svg/blob/v11.0.1/__tests__/__snapshots__/css.test.tsx.snap
     // https://github.com/react-native-community/react-native-svg/blob/v12.1.0/__tests__/__snapshots__/css.test.tsx.snap#L158
-    return decimalToHex(fillProp);
+    return decimalToHex(fillProp)
   } else if (fillProp.length === 5) {
     // rn-svg <= v8 return an array [_, r, g, b, _], where {rgb} are in the range of {0,1}
     // @note no links provided because rn-svg didn't include any tests in those versions
-    return rgbToHex(fillProp[1] * 255, fillProp[2] * 255, fillProp[3] * 255);
+    return rgbToHex(fillProp[1] * 255, fillProp[2] * 255, fillProp[3] * 255)
   } else if (fillProp.length === 2) {
     // rn-svg v9, and v10 return an array with shape [_, DECIMAL_COLOR]
     // @link https://github.com/react-native-community/react-native-svg/blob/v9.14.0/__tests__/__snapshots__/css.test.tsx.snap#L159
     // @link https://github.com/react-native-community/react-native-svg/blob/v10.1.0/__tests__/__snapshots__/css.test.tsx.snap#L159
-    return decimalToHex(fillProp[1]);
+    return decimalToHex(fillProp[1])
   }
 
-  return null;
+  return null
 }
 
 afterEach(() => {
@@ -109,8 +107,8 @@ describe('snapshots', () => {
     const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
     // modify the clipPath and mask identifiers to be fixed, so they aren't regenerated each time and thus
     // our snapshot will remain stable across test runs
-    const maskId = "mask-1"
-    const clipId = "clip-1"
+    const maskId = 'mask-1'
+    const clipId = 'clip-1'
 
     // clip id
     tree.children[0].children[0].children[0].props.name = clipId
@@ -132,7 +130,7 @@ describe('snapshots', () => {
     const firstTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform="shrink-9 right-4" />).toJSON()
     expect(firstTree).toMatchSnapshot()
 
-    const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform("shrink-9 right-4")} />).toJSON()
+    const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform('shrink-9 right-4')} />).toJSON()
     expect(secondTree).toMatchObject(firstTree)
   })
 })

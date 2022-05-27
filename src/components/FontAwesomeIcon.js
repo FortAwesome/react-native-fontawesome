@@ -1,26 +1,22 @@
 import React from 'react'
 import convert from '../converter'
 import PropTypes from 'prop-types'
-import { Dimensions, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { icon, parse } from '@fortawesome/fontawesome-svg-core'
 import log from '../logger'
-import { Rect } from 'react-native-svg'
-import react from 'react'
-
-const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
 export const DEFAULT_SIZE = 16
 export const DEFAULT_COLOR = '#000'
 export const DEFAULT_SECONDARY_OPACITY = 0.4
 
-function objectWithKey(key, value) {
+function objectWithKey (key, value) {
   return (Array.isArray(value) && value.length > 0) ||
     (!Array.isArray(value) && value)
     ? { [key]: value }
     : {}
 }
 
-function normalizeIconArgs(icon) {
+function normalizeIconArgs (icon) {
   if (icon === null) {
     return null
   }
@@ -38,7 +34,7 @@ function normalizeIconArgs(icon) {
   }
 }
 
-export default function FontAwesomeIcon(props) {
+export default function FontAwesomeIcon (props) {
   const { icon: iconArgs, mask: maskArgs, height, width, size } = props
   const style = StyleSheet.flatten(props.style)
 
@@ -57,7 +53,7 @@ export default function FontAwesomeIcon(props) {
   })
 
   if (!renderedIcon) {
-    log("ERROR: icon not found for icon = ", iconArgs)
+    log('ERROR: icon not found for icon = ', iconArgs)
     return null
   }
 
@@ -76,7 +72,7 @@ export default function FontAwesomeIcon(props) {
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
-  const { color: styleColor, ...modifiedStyle} = style
+  const { color: styleColor, ...modifiedStyle } = style
 
   let resolvedHeight, resolvedWidth
 
@@ -148,10 +144,10 @@ FontAwesomeIcon.defaultProps = {
 const convertCurry = convert.bind(null, React.createElement)
 
 function replaceCurrentColor (obj, primaryColor, secondaryColor, secondaryOpacity) {
-  (obj.children).map((child, childIndex) => {
+  (obj.children).forEach((child, childIndex) => {
     replaceFill(child, primaryColor, secondaryColor, secondaryOpacity)
 
-    if (child.hasOwnProperty('attributes')) {
+    if (Object.prototype.hasOwnProperty.call(child, 'attributes')) {
       replaceFill(child.attributes, primaryColor, secondaryColor, secondaryOpacity)
     }
 
@@ -174,6 +170,6 @@ function replaceFill (obj, primaryColor, secondaryColor, secondaryOpacity) {
   }
 }
 
-function hasPropertySetToValue(obj, property, value) {
-  return obj.hasOwnProperty(property) && obj[property] == value ? true : false
+function hasPropertySetToValue (obj, property, value) {
+  return Object.prototype.hasOwnProperty.call(obj, property) && obj[property] === value
 }

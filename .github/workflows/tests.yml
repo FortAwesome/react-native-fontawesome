@@ -34,7 +34,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: npm install and test
         run: |
-          apt-get install -y jq
+          sudo apt-get install -y jq
           npm install -g npm
           npm install
           npm install --no-save @fortawesome/fontawesome-svg-core@${{ matrix.fontawesome-svg-core }} react-native@${{ matrix.react-native }}

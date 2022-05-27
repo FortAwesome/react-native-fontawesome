@@ -22,6 +22,7 @@ export interface Props {
   mask?: IconProp;
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;
+  testID?: string;
 }
 
 export function FontAwesomeIcon(props: Props): JSX.Element;

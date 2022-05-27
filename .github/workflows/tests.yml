@@ -9,13 +9,12 @@ jobs:
     strategy:
       matrix:
         node: [
-          14.x,
           16.x,
           18.x
         ]
-        react: [
-          16.x,
-          17.x
+        react-native: [
+          0.68.x,
+          0.67.x
         ]
         react-native-svg: [
           9.x,
@@ -31,7 +30,12 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: npm install and test
         run: |
-          yarn install
-          yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
-          yarn list react react-dom react-test-renderer react-native-svg
-          yarn test
+          apt-get install -y jq
+          npm install -g npm
+          npm install
+          export REACT_VERSION=`cat node_modules/react-native/package.json|jq -r .peerDependencies.react`
+          npm install --no-save react-native@${{ matrix.react-native }}
+          npm install --no-save react@${REACT_VERSION} react-dom@${REACT_VERSION} react-test-renderer@${REACT_VERSION}
+          npm list react react-dom react-test-renderer react-native-svg
+          npm run lint
+          npm test

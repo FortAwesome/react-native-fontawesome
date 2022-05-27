@@ -20,6 +20,7 @@ export interface Props {
   secondaryColor?: string;
   secondaryOpacity?: number;
   mask?: IconProp;
+  maskId?: string;
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;
 }

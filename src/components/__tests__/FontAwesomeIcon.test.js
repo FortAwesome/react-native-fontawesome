@@ -1,8 +1,11 @@
+import { inspect } from 'util'
 import * as fontawesome from '@fortawesome/fontawesome-svg-core'
 import FontAwesomeIcon, { DEFAULT_SIZE } from '../FontAwesomeIcon'
+import { coreHasFeature, REFERENCE_ICON_USING_STRING, REFERENCE_ICON_BY_STYLE, ICON_ALIASES } from '../__fixtures__/helpers'
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { StyleSheet } from 'react-native'
+import { get } from 'lodash'
 
 jest.spyOn(React, 'createElement')
 
@@ -12,9 +15,9 @@ const faCoffee = {
   icon: [
     640,
     512,
-    [],
-    'f0f4',
-    'M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z'
+    ['coffee-alias'],
+    'f001',
+    'M1z'
   ]
 }
 
@@ -25,8 +28,20 @@ const faCircle = {
     640,
     512,
     [],
-    'f0f4',
-    'M192 384h192c53 0 96-43 96-96h32c70.6 0 128-57.4 128-128S582.6 32 512 32H120c-13.3 0-24 10.7-24 24v232c0 53 43 96 96 96zM512 96c35.3 0 64 28.7 64 64s-28.7 64-64 64h-32V96h32zm47.7 384H48.3c-47.6 0-61-64-36-64h583.3c25 0 11.8 64-35.9 64z'
+    'f002',
+    'M2z'
+  ]
+}
+
+const faSquare = {
+  prefix: 'far',
+  iconName: 'square',
+  icon: [
+    640,
+    512,
+    [],
+    'f003',
+    'M3z'
   ]
 }
 
@@ -37,8 +52,20 @@ const faAcorn = {
     640,
     512,
     [],
-    'f0f4',
-    ['M32 256h384a258.87 258.87 0 0 1-143.11 231.55L224 512l-48.89-24.45A258.87 258.87 0 0 1 32 256z', 'M448 160v32a32 32 0 0 1-32 32H32a32 32 0 0 1-32-32v-32a96 96 0 0 1 96-96h106a132.41 132.41 0 0 1 29.41-58.64 15.7 15.7 0 0 1 11.31-5.3 15.44 15.44 0 0 1 12 4.72L266 16.1a16 16 0 0 1 .66 21.9 84.32 84.32 0 0 0-15.16 26H352a96 96 0 0 1 96 96z']
+    'f004',
+    ['M4z']
+  ]
+}
+
+const faBeer = {
+  prefix: 'fal',
+  iconName: 'beer',
+  icon: [
+    640,
+    512,
+    [],
+    'f005',
+    ['M5z']
   ]
 }
 
@@ -103,25 +130,8 @@ describe('snapshots', () => {
     expect(tree).toMatchSnapshot()
   })
 
-  test.skip('renders with mask and transform', () => {
-    const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } transform="shrink-9 right-4" />).toJSON()
-    // modify the clipPath and mask identifiers to be fixed, so they aren't regenerated each time and thus
-    // our snapshot will remain stable across test runs
-    const maskId = 'mask-1'
-    const clipId = 'clip-1'
-
-    // clip id
-    tree.children[0].children[0].children[0].props.name = clipId
-    tree.children[0].children[1].props.clipPath = clipId
-
-    // mask id
-    tree.children[0].children[0].children[1].props.name = maskId
-    tree.children[0].children[1].props.mask = maskId
-
-    // remove the clipPath prop, if present, to normalize the shape across versions of react-native-svg.
-    // in version ^7.1.2, there was a clipRule prop here. in version ^8.0.8 there's not.
-    // normalizing this lets us match more fuzzily and have this same test work in both version scenarios.
-    tree.children[0].children[1].props = { ...tree.children[0].children[1].props, clipRule: undefined }
+  test('renders with mask and transform', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCircle } mask={ faCoffee } maskId="m1" transform="shrink-9 right-4" />).toJSON()
 
     expect(tree).toMatchSnapshot()
   })
@@ -133,6 +143,34 @@ describe('snapshots', () => {
     const secondTree = renderer.create(<FontAwesomeIcon icon={ faCoffee } transform={fontawesome.parse.transform('shrink-9 right-4')} />).toJSON()
     expect(secondTree).toMatchObject(firstTree)
   })
+})
+
+describe('when icon prop', () => {
+  beforeEach(() => {
+    fontawesome.library.add(faCoffee, faCircle, faSquare, faAcorn)
+  })
+
+  function r (icon) {
+    return renderer.create(<FontAwesomeIcon icon={icon} />).toJSON()
+  }
+
+  test('is an object not in the library', () => expect(r(faBeer)).toMatchIcon(faBeer))
+
+  if (coreHasFeature(REFERENCE_ICON_USING_STRING)) {
+    test('is a simple string', () => expect(r('coffee')).toMatchIcon(faCoffee))
+    test('is prefixed with fa-', () => expect(r('fa-coffee')).toMatchIcon(faCoffee))
+    test('includes a long style', () => expect(r('fa-duotone fa-acorn')).toMatchIcon(faAcorn))
+  }
+
+  if (coreHasFeature(REFERENCE_ICON_BY_STYLE)) {
+    test('is an array with style name', () => expect(r(['regular', 'square'])).toMatchIcon(faSquare))
+    test('is an array with fa- prefixed style name', () => expect(r(['fa-regular', 'square'])).toMatchIcon(faSquare))
+    test('is an array with both fa- prefixed', () => expect(r(['fa-regular', 'fa-square'])).toMatchIcon(faSquare))
+  }
+
+  if (coreHasFeature(ICON_ALIASES)) {
+    test('is an alias', () => expect(r('coffee-alias')).toMatchIcon(faCoffee))
+  }
 })
 
 describe('when color', () => {
@@ -207,7 +245,7 @@ describe('when size', () => {
   describe('when deprecated width or height are used', () => {
     test('an error is thrown', () => {
       expect(() => {
-        renderer.create(<FontAwesomeIcon icon={ faCoffee } height={ 32 } width={ 32 } />)
+        FontAwesomeIcon({ icon: faCoffee, style: {}, height: 16, width: 16 })
       }).toThrow(/deprecated/)
     })
   })
@@ -315,4 +353,37 @@ describe('with a duotone icon', () => {
       expect(secondaryLayer.props.fillOpacity).toEqual(0.123)
     })
   })
+})
+
+expect.extend({
+  toMatchIcon (receivedIcon, expectedIcon) {
+    const find = (tree) => {
+      if (
+        get(tree, ['props', 'd']) === expectedIcon.icon[4] ||
+        (Array.isArray(expectedIcon.icon[4]) && expectedIcon.icon[4].includes(get(tree, ['props', 'd'])))
+      ) {
+        return tree
+      }
+
+      if (Array.isArray(tree.children)) {
+        for (const child of tree.children) {
+          if (find(child)) return child
+        }
+      }
+
+      return null
+    }
+
+    if (find(receivedIcon)) {
+      return {
+        message: () => `expected icon not to match ${expectedIcon.iconName}`,
+        pass: true
+      }
+    } else {
+      return {
+        message: () => `expected icon to match ${expectedIcon.iconName}: ${inspect(receivedIcon, { depth: 10 })}`,
+        pass: false
+      }
+    }
+  }
 })

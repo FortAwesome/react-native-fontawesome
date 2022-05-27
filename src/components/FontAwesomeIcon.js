@@ -17,12 +17,16 @@ function objectWithKey (key, value) {
 }
 
 function normalizeIconArgs (icon) {
-  if (icon === null) {
-    return null
+  if (icon && typeof icon === 'object' && icon.prefix && icon.iconName && icon.icon) {
+    return icon
   }
 
-  if (typeof icon === 'object' && icon.prefix && icon.iconName) {
-    return icon
+  if (parse.icon) {
+    return parse.icon(icon)
+  }
+
+  if (icon === null) {
+    return null
   }
 
   if (Array.isArray(icon) && icon.length === 2) {
@@ -35,7 +39,7 @@ function normalizeIconArgs (icon) {
 }
 
 export default function FontAwesomeIcon (props) {
-  const { icon: iconArgs, mask: maskArgs, height, width, size } = props
+  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = props
   const style = StyleSheet.flatten(props.style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
@@ -49,7 +53,8 @@ export default function FontAwesomeIcon (props) {
 
   const renderedIcon = icon(iconLookup, {
     ...transform,
-    ...mask
+    ...mask,
+    maskId
   })
 
   if (!renderedIcon) {
@@ -127,12 +132,15 @@ FontAwesomeIcon.propTypes = {
     PropTypes.string
   ]),
 
+  maskId: PropTypes.string,
+
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 }
 
 FontAwesomeIcon.defaultProps = {
   icon: null,
   mask: null,
+  maskId: null,
   transform: null,
   style: {},
   color: null,

@@ -7,7 +7,7 @@
     "test": "jest --forceExit",
     "lint": "eslint src",
     "dist:watch": "babel --watch --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist",
-    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist",
+    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --ignore src/components/__fixtures__ --out-dir dist",
     "set.rnsvg": "yarn upgrade react-native-svg@$RNSVG_VERSION"
   },
   "types": "index.d.ts",

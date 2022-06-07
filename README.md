@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/@fortawesome/react-native-fontawesome.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/react-native-fontawesome)
 
-> Font Awesome 5 React Native component using SVG with JS
+> Font Awesome React Native component using SVG with JS
 
 <!-- toc -->
 
@@ -126,7 +126,7 @@ You can use Font Awesome icons in your React Native components as simply as this
 That simple usage is made possible when you add the `"mug-saucer"` icon, to the
 _library_.
 
-This is one of the two ways you can use Font Awesome 5 with React Native. We'll
+This is one of the two ways you can use Font Awesome with React Native. We'll
 summarize both ways briefly and then get into the details of each below.
 
 1.  **Explicit Import**

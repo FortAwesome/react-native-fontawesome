@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.3.0](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.3.0) - 2022-06-07
+
+**This release has a couple of breaking changes.**
+
+1. Minimum supported version of React Native is 0.67
+1. Minimum supported react-native-svg is 11.x
+1. Using `width` or `height` props are not allowed (they were deprecated in 0.2.x)
+1. The `secondaryOpacity` will default to 40% (0.4) instead of 100% to match other Font Awesome implementations
+
+### Added
+
+- Support for specifying icons as strings like `icon="fa-solid fa-mug-empty"`
+- Optional testId to TypeScript .d.ts file
+- Prop `maskId` allows Jest snapshot testing to have consistent results when using masks
+
+### Fixed
+
+- Full support for version 6 of Font Awesome
+- Using icons with masks should now be fully functional
+- Duotone icons have also been fixed
+
+---
+
 ## [0.2.7](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.2.7) - 2021-07-22
 
 ### Changed

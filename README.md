@@ -22,14 +22,12 @@ Official documentation is hosted at fontawesome.com: [Check it out here](https:/
 
 ## How to Help
 
-Review the following docs before diving in:
+1. Review the following docs before diving in:
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
-And then:
-
-1.  Check the existing issues and see if you can help!
+2.  Check the existing issues and see if you can help!
 
 ## Contributors
 

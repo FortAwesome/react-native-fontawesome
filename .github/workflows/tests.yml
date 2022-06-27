@@ -11,7 +11,7 @@ jobs:
         node: [
           18.x
         ]
-        fontawesome-svc-core: [
+        fontawesome-svg-core: [
           1.2.x,
           6.x
         ]

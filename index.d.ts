@@ -1,9 +1,11 @@
 import { StyleProp, ViewStyle } from "react-native";
 import { Transform, IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export type FontAwesomeIconStyle = StyleProp<ViewStyle> & {
-  color?: string;
-};
+export type FontAwesomeIconStyle = StyleProp<
+  ViewStyle & {
+    color?: string;
+  }
+>;
 
 export interface Props {
   icon: IconProp;

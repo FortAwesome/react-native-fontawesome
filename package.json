@@ -1,11 +1,13 @@
 {
   "name": "@fortawesome/react-native-fontawesome",
-  "version": "0.2.7",
-  "description": "Official React Native component for Font Awesome 5",
+  "version": "0.3.0",
+  "description": "Official React Native component for Font Awesome",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist",
+    "test": "jest --forceExit",
+    "lint": "eslint src",
+    "dist:watch": "babel --watch --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --out-dir dist",
+    "dist": "babel --config-file ./babel.dist.config.js src --ignore src/components/__tests__ --ignore src/components/__fixtures__ --out-dir dist",
     "set.rnsvg": "yarn upgrade react-native-svg@$RNSVG_VERSION"
   },
   "types": "index.d.ts",
@@ -22,14 +24,15 @@
     "David Martin <github.com/iamdavidmartin>",
     "Jeremy <github.com/puremana>",
     "Michael Schonfeld <github.com/schonfeld>",
-    "Ádám Gólya <github.com/golya>"
+    "Ádám Gólya <github.com/golya>",
+    "Edward Emanuel <github.com/ej2>",
+    "Jason Lundien <github.com/jasonlundien>"
   ],
   "license": "MIT",
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "~1 || ~6",
-    "react": ">= 16.x",
-    "react-native": "> 0.57",
-    "react-native-svg": "> 7.0"
+    "react-native": ">= 0.67",
+    "react-native-svg": ">= 11.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
@@ -40,12 +43,19 @@
     "@fortawesome/fontawesome-svg-core": "^6",
     "babel-core": "^7.0.0-bridge",
     "babel-jest": "^24.9.0",
-    "jest": "^24.9.0",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "jest": "^28.1.0",
     "metro-react-native-babel-preset": "^0.57.0",
-    "react": "16.9.0",
-    "react-native": "^0.62.3",
-    "react-native-svg": "^9.13.6",
-    "react-test-renderer": "^16.9.0"
+    "react": "^17",
+    "react-native": "^0.68.0",
+    "react-native-svg": "^12.3.0",
+    "react-test-renderer": "^17"
   },
   "dependencies": {
     "humps": "^2.0.1",

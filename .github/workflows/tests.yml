@@ -8,15 +8,18 @@ jobs:
 
     strategy:
       matrix:
-        node: [12.6.x]
-        react: [
-          16.9.x
+        node: [
+          18.x
+        ]
+        fontawesome-svg-core: [
+          1.2.x,
+          6.x
+        ]
+        react-native: [
+          0.68.x,
+          0.67.x
         ]
         react-native-svg: [
-          7.x,
-          8.x,
-          9.x,
-          10.x,
           11.x,
           12.x
         ]
@@ -28,7 +31,12 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: npm install and test
         run: |
-          yarn install
-          yarn upgrade react@${{ matrix.react }} react-dom@${{ matrix.react }} react-test-renderer@${{ matrix.react }} react-native-svg@${{ matrix.react-native-svg }}
-          yarn list react react-dom react-test-renderer react-native-svg
-          yarn test
+          sudo apt-get install -y jq
+          npm install -g npm
+          npm install
+          npm install --no-save @fortawesome/fontawesome-svg-core@${{ matrix.fontawesome-svg-core }} react-native@${{ matrix.react-native }}
+          export REACT_VERSION=`cat node_modules/react-native/package.json|jq -r .peerDependencies.react`
+          npm install --no-save react@${REACT_VERSION} react-dom@${REACT_VERSION} react-test-renderer@${REACT_VERSION}
+          npm list react react-dom react-test-renderer react-native-svg
+          npm run lint
+          npm test

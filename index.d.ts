@@ -20,8 +20,10 @@ export interface Props {
   secondaryColor?: string;
   secondaryOpacity?: number;
   mask?: IconProp;
+  maskId?: string;
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;
+  testID?: string;
 }
 
 export function FontAwesomeIcon(props: Props): JSX.Element;

@@ -23,7 +23,7 @@ to get your environment set up in your OS. For Mac OS X, that would look like:
 
 ## Launch the Example App
 
-In the `examples/Hello` subdirectory, the following script commands are available:
+In the `examples/react-native-expo` subdirectory, the following script commands are available:
 
 | Command | Purpose                               |
 | ------- | ------------------------------------- |
@@ -34,15 +34,15 @@ In the `examples/Hello` subdirectory, the following script commands are availabl
 | clean | clean out build cache. Useful when the build isn't working and you're pretty sure it should be |
 
 In one terminal tab:
-1. `cd examples/Hello`
+1. `cd examples/react-native-expo`
 1. `npm install`
 1. `npm run start`
 
 This will get the JavaScript bundler running and listening for connections from a device or iOS Simulator.
 
 In another terminal tab:
-1 `cd examples/Hello`
-1. `react-native link react-native-svg` # to link the native components in the ios project  
+1 `cd examples/react-native-expo`
+1. `react-native link react-native-svg` # to link the native components in the ios project
 1. `npm run ios`
 
 This will build the project via XCode, launch the iOS Simulator, and when the project builds successfully,
@@ -56,7 +56,7 @@ Seems like things don't always go smoothly and you have to [use some hackery](ht
 Try this:
 1. shutdown any instances of the bundler you have running.
 1. `npm run clean`
-1. `npm run start-with-cache-reset` # from the examples/Hello directory
+1. `npm run start-with-cache-reset` # from the examples/react-native-expo directory
 
 From another terminal tab:
 1. `npm run ios`
@@ -67,13 +67,13 @@ For now, we're just using the GitHub repo as our source for development versions
 test changes to the component using the example app, you'll have to push the component changes to a development branch
 and then update the `package.json` of the example app to pull the component from that branch.
 
-Here's the step-by-step: 
+Here's the step-by-step:
 
 1. make changes to this component
 1. `npm run dist` # to transpile via babel into `dist/`
 1. `git commit` # whatever changes you're trying to commit
 1. `git push origin my-dev` # to whatever topic branch you're working on, say "my-dev"
-1. Modify `examples/Hello/package.json` and find the line that looks like this:
+1. Modify `examples/react-native-expo/package.json` and find the line that looks like this:
 `"@fortawesome/react-native-fontawesome": "^0.0.1"`
 And change it to something like this:
 `"@fortawesome/react-native-fontawesome": "https://github.com/FortAwesome/react-native-fontawesome#my-dev"`

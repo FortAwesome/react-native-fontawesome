@@ -39,15 +39,28 @@ function normalizeIconArgs (icon) {
 }
 
 export default function FontAwesomeIcon (props) {
-  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = props
-  const style = StyleSheet.flatten(props.style)
+  const _props = {
+    icon: null,
+    mask: null,
+    maskId: null,
+    transform: null,
+    style: {},
+    color: null,
+    secondaryColor: null,
+    secondaryOpacity: null,
+    size: DEFAULT_SIZE,
+    ...props
+  };
+
+  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = _props
+  const style = StyleSheet.flatten(_props.style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
   const transform = objectWithKey(
     'transform',
-    typeof props.transform === 'string'
-      ? parse.transform(props.transform)
-      : props.transform
+    typeof _props.transform === 'string'
+      ? parse.transform(_props.transform)
+      : _props.transform
   )
   const mask = objectWithKey('mask', normalizeIconArgs(maskArgs))
 
@@ -65,14 +78,14 @@ export default function FontAwesomeIcon (props) {
   const { abstract } = renderedIcon
 
   // This is the color that will be passed to the "fill" prop of the Svg element
-  const color = props.color || style.color || DEFAULT_COLOR
+  const color = _props.color || style.color || DEFAULT_COLOR
 
   // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
-  const secondaryColor = props.secondaryColor || color
+  const secondaryColor = _props.secondaryColor || color
 
   // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
-  const secondaryOpacity = props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY
+  const secondaryOpacity = _props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY
 
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
@@ -135,18 +148,6 @@ FontAwesomeIcon.propTypes = {
   maskId: PropTypes.string,
 
   transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-}
-
-FontAwesomeIcon.defaultProps = {
-  icon: null,
-  mask: null,
-  maskId: null,
-  transform: null,
-  style: {},
-  color: null,
-  secondaryColor: null,
-  secondaryOpacity: null,
-  size: DEFAULT_SIZE
 }
 
 const convertCurry = convert.bind(null, React.createElement)

@@ -74,17 +74,29 @@ function normalizeIconArgs(icon) {
 }
 
 function FontAwesomeIcon(props) {
-  var iconArgs = props.icon,
-      maskArgs = props.mask,
-      maskId = props.maskId,
-      height = props.height,
-      width = props.width,
-      size = props.size;
+  var _props = _objectSpread({
+    icon: null,
+    mask: null,
+    maskId: null,
+    transform: null,
+    style: {},
+    color: null,
+    secondaryColor: null,
+    secondaryOpacity: null,
+    size: DEFAULT_SIZE
+  }, props);
 
-  var style = _reactNative.StyleSheet.flatten(props.style);
+  var iconArgs = _props.icon,
+      maskArgs = _props.mask,
+      maskId = _props.maskId,
+      height = _props.height,
+      width = _props.width,
+      size = _props.size;
+
+  var style = _reactNative.StyleSheet.flatten(_props.style);
 
   var iconLookup = normalizeIconArgs(iconArgs);
-  var transform = objectWithKey('transform', typeof props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(props.transform) : props.transform);
+  var transform = objectWithKey('transform', typeof _props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(_props.transform) : _props.transform);
   var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
   var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread(_objectSpread(_objectSpread({}, transform), mask), {}, {
     maskId: maskId
@@ -97,12 +109,12 @@ function FontAwesomeIcon(props) {
 
   var _abstract = renderedIcon["abstract"]; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = props.color || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
+  var color = _props.color || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
 
-  var secondaryColor = props.secondaryColor || color; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
+  var secondaryColor = _props.secondaryColor || color; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
 
-  var secondaryOpacity = props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  var secondaryOpacity = _props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
 
@@ -140,17 +152,6 @@ FontAwesomeIcon.propTypes = {
   mask: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].array, _propTypes["default"].string]),
   maskId: _propTypes["default"].string,
   transform: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object])
-};
-FontAwesomeIcon.defaultProps = {
-  icon: null,
-  mask: null,
-  maskId: null,
-  transform: null,
-  style: {},
-  color: null,
-  secondaryColor: null,
-  secondaryOpacity: null,
-  size: DEFAULT_SIZE
 };
 
 var convertCurry = _converter["default"].bind(null, _react["default"].createElement);

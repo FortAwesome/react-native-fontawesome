@@ -40,4 +40,5 @@ Community:
 | Jeremey           | [@puremana](https://github.com/puremana)                  |
 | Michael Schonfeld | [@schonfeld](https://github.com/schonfeld)                |
 | Ádám Gólya        | [@golya](https://github.com/golya)                        |
+| Greg Marut        | [@gregmarut](https://github.com/gregmarut)                |
 | Font Awesome Team | [@FortAwesome](https://github.com/orgs/FortAwesome/people)|

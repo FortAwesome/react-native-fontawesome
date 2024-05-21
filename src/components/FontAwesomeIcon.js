@@ -38,31 +38,29 @@ function normalizeIconArgs (icon) {
   }
 }
 
-export default function FontAwesomeIcon (props) {
-  const _props = {
-    icon: null,
-    mask: null,
-    maskId: null,
-    transform: null,
-    style: {},
-    color: null,
-    secondaryColor: null,
-    secondaryOpacity: null,
-    size: DEFAULT_SIZE,
-    ...props
-  };
+export default function FontAwesomeIcon ({
+  icon: iconArg = null,
+  mask: maskArg = null,
+  maskId = null,
+  transform: transformArg = null,
+  style: styleArg = {},
+  color: colorArg = null,
+  secondaryColor: secondaryColorArg = null,
+  secondaryOpacity: secondaryOpacityArg = null,
+  size = DEFAULT_SIZE,
+  width,
+  height
+}) {
+  const style = StyleSheet.flatten(styleArg)
 
-  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = _props
-  const style = StyleSheet.flatten(_props.style)
-
-  const iconLookup = normalizeIconArgs(iconArgs)
+  const iconLookup = normalizeIconArgs(iconArg)
   const transform = objectWithKey(
     'transform',
-    typeof _props.transform === 'string'
-      ? parse.transform(_props.transform)
-      : _props.transform
+    typeof transformArg === 'string'
+      ? parse.transform(transformArg)
+      : transformArg
   )
-  const mask = objectWithKey('mask', normalizeIconArgs(maskArgs))
+  const mask = objectWithKey('mask', normalizeIconArgs(maskArg))
 
   const renderedIcon = icon(iconLookup, {
     ...transform,
@@ -71,21 +69,21 @@ export default function FontAwesomeIcon (props) {
   })
 
   if (!renderedIcon) {
-    log('ERROR: icon not found for icon = ', iconArgs)
+    log('ERROR: icon not found for icon = ', iconArg)
     return null
   }
 
   const { abstract } = renderedIcon
 
   // This is the color that will be passed to the "fill" prop of the Svg element
-  const color = _props.color || style.color || DEFAULT_COLOR
+  const color = colorArg || style.color || DEFAULT_COLOR
 
   // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
-  const secondaryColor = _props.secondaryColor || color
+  const secondaryColor = secondaryColorArg || color
 
   // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
-  const secondaryOpacity = _props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY
+  const secondaryOpacity = secondaryOpacityArg || DEFAULT_SECONDARY_OPACITY
 
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.

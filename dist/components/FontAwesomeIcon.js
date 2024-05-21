@@ -73,48 +73,50 @@ function normalizeIconArgs(icon) {
   }
 }
 
-function FontAwesomeIcon(props) {
-  var _props = _objectSpread({
-    icon: null,
-    mask: null,
-    maskId: null,
-    transform: null,
-    style: {},
-    color: null,
-    secondaryColor: null,
-    secondaryOpacity: null,
-    size: DEFAULT_SIZE
-  }, props);
+function FontAwesomeIcon(_ref2) {
+  var _ref2$icon = _ref2.icon,
+      iconArg = _ref2$icon === void 0 ? null : _ref2$icon,
+      _ref2$mask = _ref2.mask,
+      maskArg = _ref2$mask === void 0 ? null : _ref2$mask,
+      _ref2$maskId = _ref2.maskId,
+      maskId = _ref2$maskId === void 0 ? null : _ref2$maskId,
+      _ref2$transform = _ref2.transform,
+      transformArg = _ref2$transform === void 0 ? null : _ref2$transform,
+      _ref2$style = _ref2.style,
+      styleArg = _ref2$style === void 0 ? {} : _ref2$style,
+      _ref2$color = _ref2.color,
+      colorArg = _ref2$color === void 0 ? null : _ref2$color,
+      _ref2$secondaryColor = _ref2.secondaryColor,
+      secondaryColorArg = _ref2$secondaryColor === void 0 ? null : _ref2$secondaryColor,
+      _ref2$secondaryOpacit = _ref2.secondaryOpacity,
+      secondaryOpacityArg = _ref2$secondaryOpacit === void 0 ? null : _ref2$secondaryOpacit,
+      _ref2$size = _ref2.size,
+      size = _ref2$size === void 0 ? DEFAULT_SIZE : _ref2$size,
+      width = _ref2.width,
+      height = _ref2.height;
 
-  var iconArgs = _props.icon,
-      maskArgs = _props.mask,
-      maskId = _props.maskId,
-      height = _props.height,
-      width = _props.width,
-      size = _props.size;
+  var style = _reactNative.StyleSheet.flatten(styleArg);
 
-  var style = _reactNative.StyleSheet.flatten(_props.style);
-
-  var iconLookup = normalizeIconArgs(iconArgs);
-  var transform = objectWithKey('transform', typeof _props.transform === 'string' ? _fontawesomeSvgCore.parse.transform(_props.transform) : _props.transform);
-  var mask = objectWithKey('mask', normalizeIconArgs(maskArgs));
+  var iconLookup = normalizeIconArgs(iconArg);
+  var transform = objectWithKey('transform', typeof transformArg === 'string' ? _fontawesomeSvgCore.parse.transform(transformArg) : transformArg);
+  var mask = objectWithKey('mask', normalizeIconArgs(maskArg));
   var renderedIcon = (0, _fontawesomeSvgCore.icon)(iconLookup, _objectSpread(_objectSpread(_objectSpread({}, transform), mask), {}, {
     maskId: maskId
   }));
 
   if (!renderedIcon) {
-    (0, _logger["default"])('ERROR: icon not found for icon = ', iconArgs);
+    (0, _logger["default"])('ERROR: icon not found for icon = ', iconArg);
     return null;
   }
 
   var _abstract = renderedIcon["abstract"]; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = _props.color || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
+  var color = colorArg || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
 
-  var secondaryColor = _props.secondaryColor || color; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
+  var secondaryColor = secondaryColorArg || color; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
 
-  var secondaryOpacity = _props.secondaryOpacity || DEFAULT_SECONDARY_OPACITY; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
+  var secondaryOpacity = secondaryOpacityArg || DEFAULT_SECONDARY_OPACITY; // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
 

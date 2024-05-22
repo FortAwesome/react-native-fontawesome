@@ -50,7 +50,7 @@ export default function FontAwesomeIcon (props) {
     secondaryOpacity: null,
     size: DEFAULT_SIZE,
     ...props
-  };
+  }
 
   const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = _props
   const style = StyleSheet.flatten(_props.style)
@@ -78,7 +78,7 @@ export default function FontAwesomeIcon (props) {
   const { abstract } = renderedIcon
 
   // This is the color that will be passed to the "fill" prop of the Svg element
-  const color = _props.color || style.color || DEFAULT_COLOR
+  const color = _props.color || (style || {}).color || DEFAULT_COLOR
 
   // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
@@ -90,7 +90,7 @@ export default function FontAwesomeIcon (props) {
   // To avoid confusion down the line, we'll remove properties from the StyleSheet, like color, that are being overridden
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
-  const { color: styleColor, ...modifiedStyle } = style
+  const { color: styleColor, ...modifiedStyle } = (style || {})
 
   let resolvedHeight, resolvedWidth
 

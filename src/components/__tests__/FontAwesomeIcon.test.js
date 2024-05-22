@@ -145,6 +145,26 @@ describe('snapshots', () => {
   })
 })
 
+describe('using defaultProps', () => {
+  const UNDEFINED_DEFAULT_PROPS = {
+    icon: undefined,
+    mask: undefined,
+    maskId: undefined,
+    transform: undefined,
+    style: undefined,
+    color: undefined,
+    secondaryColor: undefined,
+    secondaryOpacity: undefined,
+    size: undefined
+  }
+
+  test('undefined props passed', () => {
+    expect(() =>
+      renderer.create(<FontAwesomeIcon {...UNDEFINED_DEFAULT_PROPS} icon={ faCoffee } />).toJSON()
+    ).not.toThrow(TypeError)
+  })
+})
+
 describe('when icon prop', () => {
   beforeEach(() => {
     fontawesome.library.add(faCoffee, faCircle, faSquare, faAcorn)

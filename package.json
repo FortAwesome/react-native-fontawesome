@@ -53,7 +53,7 @@
     "eslint-plugin-react": "^7.30.0",
     "jest": "^28.1.0",
     "metro-react-native-babel-preset": "^0.57.0",
-    "react": "^17",
+    "react": "^17 || ^18",
     "react-native": "^0.68.0",
     "react-native-svg": "^12.3.0",
     "react-test-renderer": "^17"

@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node: [
-          18.x
+          18.16.x
         ]
         fontawesome-svg-core: [
           1.2.x,

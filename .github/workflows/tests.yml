@@ -40,7 +40,7 @@ jobs:
           sudo apt-get install -y jq
           npm install -g npm
           npm install
-          npm install --no-save @fortawesome/fontawesome-svg-core@${{ matrix.fontawesome-svg-core }} react-native@${{ matrix.react-native }}
+          npm install --no-save --force @fortawesome/fontawesome-svg-core@${{ matrix.fontawesome-svg-core }} react-native@${{ matrix.react-native }}
           export REACT_VERSION=`cat node_modules/react-native/package.json|jq -r .peerDependencies.react`
           npm install --no-save react@${REACT_VERSION} react-dom@${REACT_VERSION} react-test-renderer@${REACT_VERSION}
           npm list react react-dom react-test-renderer react-native-svg

@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [0.3.2](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.3.2) - 2024-05-23
+
+### Fixed
+
+- Props with nullable/undefined values no longer throw an error
+
+---
+
 ## [0.3.1](https://github.com/FortAwesome/react-native-fontawesome/releases/tag/0.3.1) - 2024-05-16
 
 ### Changed

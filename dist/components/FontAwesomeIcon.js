@@ -109,7 +109,7 @@ function FontAwesomeIcon(props) {
 
   var _abstract = renderedIcon["abstract"]; // This is the color that will be passed to the "fill" prop of the Svg element
 
-  var color = _props.color || style.color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
+  var color = _props.color || (style || {}).color || DEFAULT_COLOR; // This is the color that will be passed to the "fill" prop of the secondary Path element child (in Duotone Icons)
   // `null` value will result in using the primary color, at 40% opacity
 
   var secondaryColor = _props.secondaryColor || color; // Secondary layer opacity should default to 0.4, unless a specific opacity value or a specific secondary color was given
@@ -118,8 +118,9 @@ function FontAwesomeIcon(props) {
   // or resolved in other ways, to avoid ambiguity as to which inputs cause which outputs in the underlying rendering process.
   // In other words, we don't want color (for example) to be specified via two different inputs.
 
-  var styleColor = style.color,
-      modifiedStyle = _objectWithoutProperties(style, _excluded);
+  var _ref2 = style || {},
+      styleColor = _ref2.color,
+      modifiedStyle = _objectWithoutProperties(_ref2, _excluded);
 
   var resolvedHeight, resolvedWidth;
 

@@ -140,6 +140,7 @@ function FontAwesomeIcon(props) {
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
+  onPress: _propTypes["default"].func,
   height: _propTypes["default"].number,
   width: _propTypes["default"].number,
   size: _propTypes["default"].number,

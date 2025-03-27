@@ -38,6 +38,8 @@ function normalizeIconArgs (icon) {
   }
 }
 
+const noop = () => {};
+
 export default function FontAwesomeIcon (props) {
   const _props = {
     icon: null,
@@ -49,10 +51,11 @@ export default function FontAwesomeIcon (props) {
     secondaryColor: null,
     secondaryOpacity: null,
     size: DEFAULT_SIZE,
+    onPress: noop,
     ...props
   }
 
-  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size } = _props
+  const { icon: iconArgs, mask: maskArgs, maskId, height, width, size, onPress } = _props
   const style = StyleSheet.flatten(_props.style)
 
   const iconLookup = normalizeIconArgs(iconArgs)
@@ -106,6 +109,7 @@ export default function FontAwesomeIcon (props) {
   rootAttributes.height = resolvedHeight
   rootAttributes.width = resolvedWidth
   rootAttributes.style = modifiedStyle
+  rootAttributes.onPress = onPress
 
   replaceCurrentColor(abstract[0], color, secondaryColor, secondaryOpacity)
 

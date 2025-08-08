@@ -279,6 +279,64 @@ describe('when extra props are given', () => {
   })
 })
 
+describe('when accessibility props are given', () => {
+  test('accessibility is automatically enabled when accessibilityLabel is provided', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessibilityLabel="Coffee icon" />).toJSON()
+
+    expect(tree.props).toHaveProperty('accessible', true)
+    expect(tree.props).toHaveProperty('accessibilityLabel', 'Coffee icon')
+    expect(tree.props).toHaveProperty('accessibilityRole', 'image') // defaults to 'image'
+  })
+
+  test('custom accessibilityRole is applied when provided with accessibilityLabel', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessibilityLabel="Coffee icon" accessibilityRole="button" />).toJSON()
+
+    expect(tree.props).toHaveProperty('accessible', true)
+    expect(tree.props).toHaveProperty('accessibilityLabel', 'Coffee icon')
+    expect(tree.props).toHaveProperty('accessibilityRole', 'button')
+  })
+
+  test('no accessibility props when accessibilityLabel is not provided', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } />).toJSON()
+
+    expect(tree.props).not.toHaveProperty('accessible')
+    expect(tree.props).not.toHaveProperty('accessibilityLabel')
+    expect(tree.props).not.toHaveProperty('accessibilityRole')
+  })
+
+  test('accessibility is disabled when accessible is explicitly set to false', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessible={false} accessibilityLabel="Coffee icon" accessibilityRole="image" />).toJSON()
+
+    expect(tree.props).not.toHaveProperty('accessible')
+    expect(tree.props).not.toHaveProperty('accessibilityLabel')
+    expect(tree.props).not.toHaveProperty('accessibilityRole')
+  })
+
+  test('accessibility works when explicitly enabled with accessible=true', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessible={true} accessibilityLabel="Coffee icon" accessibilityRole="image" />).toJSON()
+
+    expect(tree.props).toHaveProperty('accessible', true)
+    expect(tree.props).toHaveProperty('accessibilityLabel', 'Coffee icon')
+    expect(tree.props).toHaveProperty('accessibilityRole', 'image')
+  })
+
+  test('accessibilityRole only applied when accessibilityLabel is provided', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessibilityRole="button" />).toJSON()
+
+    expect(tree.props).not.toHaveProperty('accessible')
+    expect(tree.props).not.toHaveProperty('accessibilityLabel')
+    expect(tree.props).not.toHaveProperty('accessibilityRole')
+  })
+
+  test('accessibility defaults to image role when only accessibilityLabel is provided', () => {
+    const tree = renderer.create(<FontAwesomeIcon icon={ faCoffee } accessibilityLabel="Coffee icon" />).toJSON()
+
+    expect(tree.props).toHaveProperty('accessible', true)
+    expect(tree.props).toHaveProperty('accessibilityLabel', 'Coffee icon')
+    expect(tree.props).toHaveProperty('accessibilityRole', 'image')
+  })
+})
+
 describe('focusable attribute', () => {
   test('is never used to render elements', () => {
     renderer.create(<FontAwesomeIcon icon={faCoffee} />).toJSON()

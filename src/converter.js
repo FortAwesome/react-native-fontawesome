@@ -27,12 +27,17 @@ function convert (createElement, element) {
       const val = element.attributes[key]
       switch (key) {
         case 'class':
-        case 'role':
         case 'xmlns':
           delete element.attributes[key]
           break
         case 'focusable':
           acc.attrs[key] = val === 'true'
+          break
+        case 'role':
+        case 'accessible':
+        case 'accessibilityRole':
+        case 'accessibilityLabel':
+          acc.attrs[key] = val
           break
         default:
           if (key.indexOf('aria-') === 0 || key.indexOf('data-') === 0 || (key === 'fill' && val === 'currentColor')) {

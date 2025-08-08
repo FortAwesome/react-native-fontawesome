@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle, AccessibilityRole } from "react-native";
 import { Transform, IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export type FontAwesomeIconStyle = StyleProp<ViewStyle> & {
@@ -24,6 +24,9 @@ export interface Props {
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;
   testID?: string;
+  accessible?: boolean;
+  accessibilityRole?: AccessibilityRole;
+  accessibilityLabel?: string;
 }
 
 export function FontAwesomeIcon(props: Props): JSX.Element;

@@ -107,6 +107,21 @@ export default function FontAwesomeIcon (props) {
   rootAttributes.width = resolvedWidth
   rootAttributes.style = modifiedStyle
 
+  // Add accessibility properties to the root SVG element
+  // atleast accessibilityLabel prop should be passed to make the icon accessible
+  if (_props.accessibilityLabel && _props.accessible !== false) {
+    rootAttributes.accessible = true
+    rootAttributes.accessibilityLabel = _props.accessibilityLabel
+
+    if (_props.accessibilityRole) {
+      rootAttributes.accessibilityRole = _props.accessibilityRole
+    } else {
+      // If accessibilityLabel is set, we default to 'image' role if not already set
+      // This is to ensure that screen readers can announce the icon correctly
+      rootAttributes.accessibilityRole = 'image'
+    }
+  }
+
   replaceCurrentColor(abstract[0], color, secondaryColor, secondaryOpacity)
 
   return convertCurry(abstract[0])
@@ -147,7 +162,13 @@ FontAwesomeIcon.propTypes = {
 
   maskId: PropTypes.string,
 
-  transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+  transform: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
+  accessible: PropTypes.bool,
+
+  accessibilityRole: PropTypes.string,
+
+  accessibilityLabel: PropTypes.string
 }
 
 const convertCurry = convert.bind(null, React.createElement)

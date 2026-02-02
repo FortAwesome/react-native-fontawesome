@@ -1,4 +1,5 @@
 {
+  "exclude": ["example", "lib", "node_modules"],
   "compilerOptions": {
     "rootDir": ".",
     "paths": {

@@ -1,0 +1,392 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots renders transform equivalently when assigning prop as string or object 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight={16}
+  bbWidth={16}
+  focusable={false}
+  height={16}
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    [
+      {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      {},
+      {
+        "flex": 0,
+        "height": 16,
+        "width": 16,
+      },
+    ]
+  }
+  vbHeight={512}
+  vbWidth={640}
+  width={16}
+>
+  <RNSVGGroup
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+  >
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      matrix={
+        [
+          1,
+          0,
+          0,
+          1,
+          320,
+          256,
+        ]
+      }
+    >
+      <RNSVGGroup
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        matrix={
+          [
+            0.4375,
+            0,
+            0,
+            0.4375,
+            128,
+            0,
+          ]
+        }
+      >
+        <RNSVGPath
+          d="M1z"
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          matrix={
+            [
+              1,
+              0,
+              0,
+              1,
+              -320,
+              -256,
+            ]
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGGroup>
+    </RNSVGGroup>
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
+
+exports[`snapshots renders with icon object prop 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight={16}
+  bbWidth={16}
+  focusable={false}
+  height={16}
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    [
+      {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      {},
+      {
+        "flex": 0,
+        "height": 16,
+        "width": 16,
+      },
+    ]
+  }
+  vbHeight={512}
+  vbWidth={640}
+  width={16}
+>
+  <RNSVGGroup
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+  >
+    <RNSVGPath
+      d="M1z"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      propList={
+        [
+          "fill",
+        ]
+      }
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
+
+exports[`snapshots renders with icon specified as array from the library 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight={16}
+  bbWidth={16}
+  focusable={false}
+  height={16}
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    [
+      {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      {},
+      {
+        "flex": 0,
+        "height": 16,
+        "width": 16,
+      },
+    ]
+  }
+  vbHeight={512}
+  vbWidth={640}
+  width={16}
+>
+  <RNSVGGroup
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+  >
+    <RNSVGPath
+      d="M1z"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      propList={
+        [
+          "fill",
+        ]
+      }
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
+
+exports[`snapshots renders with mask and transform 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight={16}
+  bbWidth={16}
+  focusable={false}
+  height={16}
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    [
+      {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      {},
+      {
+        "flex": 0,
+        "height": 16,
+        "width": 16,
+      },
+    ]
+  }
+  vbHeight={512}
+  vbWidth={640}
+  width={16}
+>
+  <RNSVGGroup
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
+  >
+    <RNSVGDefs>
+      <RNSVGClipPath
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        name="clip-m1"
+      >
+        <RNSVGPath
+          d="M1z"
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGClipPath>
+      <RNSVGMask
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        height="100%"
+        maskContentUnits={1}
+        maskType={0}
+        maskUnits={1}
+        name="mask-m1"
+        width="100%"
+        x={0}
+        y={0}
+      >
+        <RNSVGRect
+          fill={
+            {
+              "payload": 4294967295,
+              "type": 0,
+            }
+          }
+          height="100%"
+          propList={
+            [
+              "fill",
+            ]
+          }
+          width="100%"
+          x={0}
+          y={0}
+        />
+        <RNSVGGroup
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          matrix={
+            [
+              1,
+              0,
+              0,
+              1,
+              320,
+              256,
+            ]
+          }
+        >
+          <RNSVGGroup
+            fill={
+              {
+                "payload": 4278190080,
+                "type": 0,
+              }
+            }
+            matrix={
+              [
+                0.4375,
+                0,
+                0,
+                0.4375,
+                128,
+                0,
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M2z"
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+              matrix={
+                [
+                  1,
+                  0,
+                  0,
+                  1,
+                  -320,
+                  -256,
+                ]
+              }
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGGroup>
+      </RNSVGMask>
+    </RNSVGDefs>
+    <RNSVGRect
+      clipPath="clip-m1"
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+      height="100%"
+      mask="mask-m1"
+      propList={
+        [
+          "fill",
+        ]
+      }
+      width="100%"
+      x={0}
+      y={0}
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;

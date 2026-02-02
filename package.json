@@ -1,6 +1,6 @@
 {
-  "name": "react-native-fontawesome",
-  "version": "0.1.0",
+  "name": "@fortawesome/react-native-fontawesome",
+  "version": "1.0.0-alpha.1",
   "description": "Official React Native component for Font Awesome",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",

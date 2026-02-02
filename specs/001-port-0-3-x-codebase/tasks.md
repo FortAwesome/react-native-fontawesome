@@ -65,12 +65,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T017 [US1] Port logger utility from ../react-native-fontawesome-0.3.x/src/logger.js to src/logger.ts
-- [ ] T018 [US1] Port converter utility from ../react-native-fontawesome-0.3.x/src/converter.js to src/converter.ts
-- [ ] T019 [US1] Port FontAwesomeIcon component from ../react-native-fontawesome-0.3.x/src/components/FontAwesomeIcon.js to src/FontAwesomeIcon.tsx (basic icon rendering only)
-- [ ] T020 [US1] Update src/index.tsx to export FontAwesomeIcon and constants (DEFAULT_SIZE, DEFAULT_COLOR, DEFAULT_SECONDARY_OPACITY)
-- [ ] T021 [US1] Add TypeScript Props interface to src/FontAwesomeIcon.tsx based on ../react-native-fontawesome-0.3.x/index.d.ts
-- [ ] T022 [US1] Run tests for basic icon rendering: `npm test` - verify snapshot tests pass
+- [x] T017 [US1] Port logger utility from ../react-native-fontawesome-0.3.x/src/logger.js to src/logger.ts
+- [x] T018 [US1] Port converter utility from ../react-native-fontawesome-0.3.x/src/converter.js to src/converter.ts
+- [x] T019 [US1] Port FontAwesomeIcon component from ../react-native-fontawesome-0.3.x/src/components/FontAwesomeIcon.js to src/FontAwesomeIcon.tsx (basic icon rendering only)
+- [x] T020 [US1] Update src/index.tsx to export FontAwesomeIcon and constants (DEFAULT_SIZE, DEFAULT_COLOR, DEFAULT_SECONDARY_OPACITY)
+- [x] T021 [US1] Add TypeScript Props interface to src/FontAwesomeIcon.tsx based on ../react-native-fontawesome-0.3.x/index.d.ts
+- [x] T022 [US1] Run tests for basic icon rendering: `npm test` - verify snapshot tests pass
 
 **Checkpoint**: Basic icon rendering works - tests for object and array icon formats pass
 
@@ -84,11 +84,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] Verify size prop handling in src/FontAwesomeIcon.tsx (already ported, verify tests pass)
-- [ ] T024 [US2] Verify color prop handling in src/FontAwesomeIcon.tsx (already ported, verify tests pass)
-- [ ] T025 [US2] Verify style prop and StyleSheet array flattening in src/FontAwesomeIcon.tsx
-- [ ] T026 [US2] Verify color precedence (color prop > style.color) in tests
-- [ ] T027 [US2] Run tests for customization: `npm test` - verify all color/size/style tests pass
+- [x] T023 [US2] Verify size prop handling in src/FontAwesomeIcon.tsx (already ported, verify tests pass)
+- [x] T024 [US2] Verify color prop handling in src/FontAwesomeIcon.tsx (already ported, verify tests pass)
+- [x] T025 [US2] Verify style prop and StyleSheet array flattening in src/FontAwesomeIcon.tsx
+- [x] T026 [US2] Verify color precedence (color prop > style.color) in tests
+- [x] T027 [US2] Run tests for customization: `npm test` - verify all color/size/style tests pass
 
 **Checkpoint**: Icon customization works - size, color, and style tests pass
 
@@ -102,10 +102,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T028 [US3] Verify replaceCurrentColor function handles duotone layers in src/FontAwesomeIcon.tsx
-- [ ] T029 [US3] Verify secondaryColor prop in src/FontAwesomeIcon.tsx
-- [ ] T030 [US3] Verify secondaryOpacity prop with default 0.4 in src/FontAwesomeIcon.tsx
-- [ ] T031 [US3] Run tests for duotone: `npm test` - verify all duotone tests pass
+- [x] T028 [US3] Verify replaceCurrentColor function handles duotone layers in src/FontAwesomeIcon.tsx
+- [x] T029 [US3] Verify secondaryColor prop in src/FontAwesomeIcon.tsx
+- [x] T030 [US3] Verify secondaryOpacity prop with default 0.4 in src/FontAwesomeIcon.tsx
+- [x] T031 [US3] Run tests for duotone: `npm test` - verify all duotone tests pass
 
 **Checkpoint**: Duotone icons work - primary/secondary color separation verified
 
@@ -119,9 +119,9 @@
 
 ### Implementation for User Story 4
 
-- [ ] T032 [US4] Verify transform prop (string and object) handling in src/FontAwesomeIcon.tsx
-- [ ] T033 [US4] Verify mask and maskId props in src/FontAwesomeIcon.tsx
-- [ ] T034 [US4] Run tests for transforms/masks: `npm test` - verify snapshot tests for mask/transform pass
+- [x] T032 [US4] Verify transform prop (string and object) handling in src/FontAwesomeIcon.tsx
+- [x] T033 [US4] Verify mask and maskId props in src/FontAwesomeIcon.tsx
+- [x] T034 [US4] Run tests for transforms/masks: `npm test` - verify snapshot tests for mask/transform pass
 
 **Checkpoint**: Transforms and masks work - all feature tests pass
 
@@ -131,13 +131,13 @@
 
 **Purpose**: Final verification, build validation, cleanup
 
-- [ ] T035 Run full test suite: `npm test` - ALL tests must pass
-- [ ] T036 Run TypeScript check: `npm run typecheck` - verify compilation succeeds
-- [ ] T037 Run linter: `npm run lint` - verify no errors
-- [ ] T038 Run build: `npm run prepare` - verify lib/ output is generated
-- [ ] T039 Verify package.json exports point to correct lib/ paths
-- [ ] T040 Remove scaffold placeholder code from src/index.tsx (multiply function)
-- [ ] T041 Update snapshot files if react-native-svg version differences cause changes: `npm test -- -u`
+- [x] T035 Run full test suite: `npm test` - ALL tests must pass
+- [x] T036 Run TypeScript check: `npm run typecheck` - verify compilation succeeds
+- [x] T037 Run linter: `npm run lint` - verify no errors
+- [x] T038 Run build: `npm run prepare` - verify lib/ output is generated
+- [x] T039 Verify package.json exports point to correct lib/ paths
+- [x] T040 Remove scaffold placeholder code from src/index.tsx (multiply function)
+- [x] T041 Update snapshot files if react-native-svg version differences cause changes: `npm test -- -u`
 
 **Checkpoint**: Port complete - all tests pass, build succeeds, ready for review
 

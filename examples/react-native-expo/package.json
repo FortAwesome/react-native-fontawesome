@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/webpack-config": "~0.16.2",
+    "@expo/webpack-config": "~0.16.24",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/pro-duotone-svg-icons": "^6.1.1",
     "@fortawesome/pro-light-svg-icons": "^6.1.1",
@@ -25,7 +25,7 @@
     "react-native": "0.68.2",
     "react-native-web": "0.17.7",
     "react-native-svg": "^12.3.0",
-    "webpack-dev-server": "~3.11.0"
+    "webpack-dev-server": "~5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

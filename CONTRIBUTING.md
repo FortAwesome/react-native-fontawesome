@@ -1,134 +1,58 @@
-# Contributing
+This is the repository for the _official_ Font Awesome React Native component, _initialized_ by the team behind Font Awesome,
+but intended to evolve over time with _community_ contributions.
 
-Contributions are always welcome, no matter how large or small!
+# Ways to Contribute
 
-We want this community to be friendly and respectful to each other. Please follow it in all your interactions with the project. Before contributing, please read the [code of conduct](./CODE_OF_CONDUCT.md).
+## Ask a Question
 
-## Development workflow
+Trying to figure out how to make it work? Or how to use it in your scenario?
 
-This project is a monorepo managed using [Yarn workspaces](https://yarnpkg.com/features/workspaces). It contains the following packages:
+1.  Review the [README](README.md)
+1.  Get familiar with the documentation for the [SVG with JavaScript](https://fontawesome.com/how-to-use/svg-with-js) implementation,
+    the framework upon which this component is built. Sometimes the answers you need may be there.
+1.  Post any remaining questions on [StackOverflow](https://stackoverflow.com/questions/tagged/react-fontawesome) with the tag `react-native-fontawesome`.
 
-- The library package in the root directory.
-- An example app in the `example/` directory.
+## Report a Bug
 
-To get started with the project, make sure you have the correct version of [Node.js](https://nodejs.org/) installed. See the [`.nvmrc`](./.nvmrc) file for the version used in this project.
+1.  Use [Expo Snack](https://snack.expo.io/) to create a reproduction of the unexpected behavior
+1.  [Open a new issue with this template](https://github.com/FortAwesome/react-native-fontawesome/issues/new?template=bug_report.md),
+    and be sure to include a link to the reproduction you made with Expo Snack.
 
-Run `yarn` in the root directory to install the required dependencies for each package:
+## Submit a Pull Request
 
-```sh
-yarn
-```
+Add tests if you add code.
 
-> Since the project relies on Yarn workspaces, you cannot use [`npm`](https://github.com/npm/cli) for development without manually migrating.
+## Everything Else
 
-The [example app](/example/) demonstrates usage of the library. You need to run it to test any changes you make.
+* [Request a feature](https://github.com/FortAwesome/react-native-fontawesome/issues/new??title=Feature%20request:feature-name&template=feature_request.md)
+* [Request a new icon](https://github.com/FortAwesome/Font-Awesome/issues/new?title=Icon%20request:%20icon-name&template=icon-request.md)
 
-It is configured to use the local version of the library, so any changes you make to the library's source code will be reflected in the example app. Changes to the library's JavaScript code will be reflected in the example app without a rebuild, but native code changes will require a rebuild of the example app.
+# Project Goals
 
-You can use various commands from the root directory to work with the project.
+1.  Achieve and maintain feature parity with Font Awesome's [SVG with JavaScript](https://fontawesome.com/how-to-use/svg-with-js) method.
 
-To start the packager:
+1.  Keep with best practices in the React Native development community.
 
-```sh
-yarn example start
-```
+1.  Stay current with major developments in React Native and `react-native-svg`
 
-To run the example app on Android:
+1.  Maintain a reasonable level of consistency between this component and the 
+    official Font Awesome [React component](https://github.com/FortAwesome/react-native-fontawesome). 
 
-```sh
-yarn example android
-```
+1.  Sharing responsibility: The Font Awesome team will continue to be involved in ongoing development, hoping to _propel_
+    the project's momentum as we make _our_ contributions, while minimizing any bottle-necking that may happen as we balance
+    our own priorities across various projects. Ideally, members of the community will enjoy lending a hand to help keep
+    the project moving forward by responding to issues, answering questions on StackOverflow, reviewing and merging pull
+    requests, and publishing npm updates.
 
-To run the example app on iOS:
+# Code of Conduct
 
-```sh
-yarn example ios
-```
+We'll contribute according to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
+# Wanted: Core Contributors
 
-```sh
-Running "FontawesomeExample" with {"fabric":true,"initialProps":{"concurrentRoot":true},"rootTag":1}
-```
+We're seeking core contributors to help drive this project. Core contributors:
 
-Note the `"fabric":true` and `"concurrentRoot":true` properties.
-
-To run the example app on Web:
-
-```sh
-yarn example web
-```
-
-Make sure your code passes TypeScript:
-
-```sh
-yarn typecheck
-```
-
-To check for linting errors, run the following:
-
-```sh
-yarn lint
-```
-
-To fix formatting errors, run the following:
-
-```sh
-yarn lint --fix
-```
-
-Remember to add tests for your change if possible. Run the unit tests by:
-
-```sh
-yarn test
-```
-
-
-### Commit message convention
-
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:
-
-- `fix`: bug fixes, e.g. fix crash due to deprecated method.
-- `feat`: new features, e.g. add new method to the module.
-- `refactor`: code refactor, e.g. migrate from class components to hooks.
-- `docs`: changes into documentation, e.g. add usage example for the module.
-- `test`: adding or updating tests, e.g. add integration tests using detox.
-- `chore`: tooling changes, e.g. change CI config.
-
-Our pre-commit hooks verify that your commit message matches this format when committing.
-
-
-### Publishing to npm
-
-We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
-
-To publish new versions, run the following:
-
-```sh
-yarn release
-```
-
-
-### Scripts
-
-The `package.json` file contains various scripts for common tasks:
-
-- `yarn`: setup project by installing dependencies.
-- `yarn typecheck`: type-check files with TypeScript.
-- `yarn lint`: lint files with [ESLint](https://eslint.org/).
-- `yarn test`: run unit tests with [Jest](https://jestjs.io/).
-- `yarn example start`: start the Metro server for the example app.
-- `yarn example android`: run the example app on Android.
-- `yarn example ios`: run the example app on iOS.
-
-### Sending a pull request
-
-> **Working on your first pull request?** You can learn how from this _free_ series: [How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github).
-
-When you're sending a pull request:
-
-- Prefer small pull requests focused on one change.
-- Verify that linters and tests are passing.
-- Review the documentation to make sure it looks good.
-- Follow the pull request template when opening a pull request.
-- For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
+1.  Share these goals
+1.  Demonstrate competence through contributions
+1.  Contribute with conduct fitting with our code of conduct
+1.  Want to make this project awesome

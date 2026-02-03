@@ -194,7 +194,8 @@ export default function FontAwesomeIcon(
     }
   }
 
-  return convertCurry(abstract[0] as AbstractElement);
+  // AbstractElement input always produces a ReactElement (not string), so cast is safe
+  return convertCurry(abstract[0] as AbstractElement) as React.ReactElement;
 }
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';

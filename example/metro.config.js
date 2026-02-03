@@ -1,8 +1,8 @@
 const path = require('path');
 const { getDefaultConfig } = require('@expo/metro-config');
-const { withMetroConfig } = require('react-native-monorepo-config');
 
 const root = path.resolve(__dirname, '..');
+const rootNodeModules = path.resolve(root, 'node_modules');
 
 /**
  * Metro configuration
@@ -10,9 +10,14 @@ const root = path.resolve(__dirname, '..');
  *
  * @type {import('metro-config').MetroConfig}
  */
-const config = withMetroConfig(getDefaultConfig(__dirname), {
-  root,
-  dirname: __dirname,
-});
+const config = getDefaultConfig(__dirname);
+
+// Configure for monorepo: watch root directory and resolve modules from root node_modules
+config.watchFolders = [root];
+config.resolver.nodeModulesPaths = [rootNodeModules];
+// Point to the library source in the monorepo root
+config.resolver.extraNodeModules = {
+  '@fortawesome/react-native-fontawesome': root,
+};
 
 module.exports = config;

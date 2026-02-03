@@ -180,6 +180,20 @@ export default function FontAwesomeIcon(
     secondaryOpacity
   );
 
+  // Parse viewBox to get dimensions for percentage replacement
+  // viewBox format: "minX minY width height" e.g., "0 0 512 512"
+  const viewBox = rootAttributes.viewBox as string | undefined;
+  if (viewBox) {
+    const parts = viewBox.split(' ').map(Number);
+    if (parts.length === 4) {
+      const vbWidth = parts[2];
+      const vbHeight = parts[3];
+      if (vbWidth !== undefined && vbHeight !== undefined) {
+        replacePercentages(abstract[0] as AbstractElement, vbWidth, vbHeight);
+      }
+    }
+  }
+
   // AbstractElement input always produces a ReactElement (not string), so cast is safe
   return convertCurry(abstract[0] as AbstractElement) as React.ReactElement;
 }
@@ -246,4 +260,30 @@ function hasPropertySetToValue(
     Object.prototype.hasOwnProperty.call(obj, property) &&
     (obj as Record<string, unknown>)[property] === value
   );
+}
+
+/**
+ * react-native-svg has issues with percentage values like "100%" in masks and rects.
+ * This function replaces percentage values with actual numeric values based on the viewBox.
+ */
+function replacePercentages(
+  obj: AbstractElement,
+  viewBoxWidth: number,
+  viewBoxHeight: number
+): void {
+  const attrs = obj.attributes as Record<string, unknown> | undefined;
+  if (attrs) {
+    if (attrs.width === '100%') {
+      attrs.width = viewBoxWidth;
+    }
+    if (attrs.height === '100%') {
+      attrs.height = viewBoxHeight;
+    }
+  }
+
+  (obj.children || []).forEach((child) => {
+    if (typeof child !== 'string') {
+      replacePercentages(child, viewBoxWidth, viewBoxHeight);
+    }
+  });
 }

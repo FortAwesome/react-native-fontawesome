@@ -278,12 +278,12 @@ exports[`snapshots renders with mask and transform 1`] = `
             "type": 0,
           }
         }
-        height="100%"
+        height={512}
         maskContentUnits={1}
         maskType={0}
         maskUnits={1}
         name="mask-m1"
-        width="100%"
+        width={640}
         x={0}
         y={0}
       >
@@ -294,13 +294,13 @@ exports[`snapshots renders with mask and transform 1`] = `
               "type": 0,
             }
           }
-          height="100%"
+          height={512}
           propList={
             [
               "fill",
             ]
           }
-          width="100%"
+          width={640}
           x={0}
           y={0}
         />
@@ -376,14 +376,14 @@ exports[`snapshots renders with mask and transform 1`] = `
           "type": 0,
         }
       }
-      height="100%"
+      height={512}
       mask="mask-m1"
       propList={
         [
           "fill",
         ]
       }
-      width="100%"
+      width={640}
       x={0}
       y={0}
     />

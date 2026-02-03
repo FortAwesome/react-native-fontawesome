@@ -1,3 +1,4 @@
+import type React from 'react';
 import humps from 'humps';
 import { Svg, Path, Rect, Defs, Mask, G, ClipPath } from 'react-native-svg';
 
@@ -9,7 +10,8 @@ interface AbstractElement {
 
 type CreateElementFn = typeof import('react').createElement;
 
-const svgObjectMap: Record<string, unknown> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- required for dynamic component lookup from FA abstract elements
+const svgObjectMap: Record<string, React.ComponentType<any>> = {
   svg: Svg,
   path: Path,
   rect: Rect,
@@ -22,7 +24,7 @@ const svgObjectMap: Record<string, unknown> = {
 function convert(
   createElement: CreateElementFn,
   element: AbstractElement | string
-): any {
+): React.ReactNode {
   if (typeof element === 'string') {
     return element;
   }

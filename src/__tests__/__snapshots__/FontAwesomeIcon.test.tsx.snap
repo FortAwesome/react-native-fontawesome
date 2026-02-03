@@ -9,7 +9,7 @@ exports[`snapshots renders transform equivalently when assigning prop as string 
   height={16}
   meetOrSlice={0}
   minX={0}
-  minY={0}
+  minY={-32}
   style={
     [
       {
@@ -24,7 +24,7 @@ exports[`snapshots renders transform equivalently when assigning prop as string 
       },
     ]
   }
-  vbHeight={512}
+  vbHeight={576}
   vbWidth={640}
   width={16}
 >
@@ -111,7 +111,7 @@ exports[`snapshots renders with icon object prop 1`] = `
   height={16}
   meetOrSlice={0}
   minX={0}
-  minY={0}
+  minY={-32}
   style={
     [
       {
@@ -126,7 +126,7 @@ exports[`snapshots renders with icon object prop 1`] = `
       },
     ]
   }
-  vbHeight={512}
+  vbHeight={576}
   vbWidth={640}
   width={16}
 >
@@ -165,7 +165,7 @@ exports[`snapshots renders with icon specified as array from the library 1`] = `
   height={16}
   meetOrSlice={0}
   minX={0}
-  minY={0}
+  minY={-32}
   style={
     [
       {
@@ -180,7 +180,7 @@ exports[`snapshots renders with icon specified as array from the library 1`] = `
       },
     ]
   }
-  vbHeight={512}
+  vbHeight={576}
   vbWidth={640}
   width={16}
 >
@@ -219,7 +219,7 @@ exports[`snapshots renders with mask and transform 1`] = `
   height={16}
   meetOrSlice={0}
   minX={0}
-  minY={0}
+  minY={-32}
   style={
     [
       {
@@ -234,7 +234,7 @@ exports[`snapshots renders with mask and transform 1`] = `
       },
     ]
   }
-  vbHeight={512}
+  vbHeight={576}
   vbWidth={640}
   width={16}
 >
@@ -278,7 +278,7 @@ exports[`snapshots renders with mask and transform 1`] = `
             "type": 0,
           }
         }
-        height={512}
+        height={576}
         maskContentUnits={1}
         maskType={0}
         maskUnits={1}
@@ -294,7 +294,7 @@ exports[`snapshots renders with mask and transform 1`] = `
               "type": 0,
             }
           }
-          height={512}
+          height={576}
           propList={
             [
               "fill",
@@ -376,7 +376,7 @@ exports[`snapshots renders with mask and transform 1`] = `
           "type": 0,
         }
       }
-      height={512}
+      height={576}
       mask="mask-m1"
       propList={
         [

@@ -180,8 +180,14 @@ export default function FontAwesomeIcon(
     secondaryOpacity
   );
 
+  // Expand viewBox for FA7 overflow icon support
+  // This must happen before percentage replacement to ensure correct dimensions
+  if (rootAttributes.viewBox) {
+    rootAttributes.viewBox = expandViewBox(rootAttributes.viewBox as string);
+  }
+
   // Parse viewBox to get dimensions for percentage replacement
-  // viewBox format: "minX minY width height" e.g., "0 0 512 512"
+  // viewBox format: "minX minY width height" e.g., "0 -32 512 576" (after expansion)
   const viewBox = rootAttributes.viewBox as string | undefined;
   if (viewBox) {
     const parts = viewBox.split(' ').map(Number);
@@ -260,6 +266,42 @@ function hasPropertySetToValue(
     Object.prototype.hasOwnProperty.call(obj, property) &&
     (obj as Record<string, unknown>)[property] === value
   );
+}
+
+/**
+ * Expands the viewBox to accommodate Font Awesome 7 icons that overflow their standard viewBox.
+ * FA7 introduced icons where paths extend beyond the declared viewBox boundaries.
+ * React Native clips content to the viewBox (unlike web browsers which support CSS overflow: visible).
+ * This expansion adds vertical space by subtracting 32 from minY and adding 64 to height.
+ *
+ * @param viewBox - The original viewBox string in format "minX minY width height"
+ * @returns The expanded viewBox string with adjusted minY and height
+ */
+export function expandViewBox(viewBox: string): string {
+  const parts = viewBox.split(' ').map(Number);
+  if (parts.length !== 4) return viewBox;
+
+  const minX = parts[0];
+  const minY = parts[1];
+  const width = parts[2];
+  const height = parts[3];
+
+  // Validate that all parts are valid numbers
+  if (
+    minX === undefined ||
+    minY === undefined ||
+    width === undefined ||
+    height === undefined ||
+    isNaN(minX) ||
+    isNaN(minY) ||
+    isNaN(width) ||
+    isNaN(height)
+  ) {
+    return viewBox;
+  }
+
+  // Expand for FA7 overflow icons: subtract 32 from minY, add 64 to height
+  return `${minX} ${minY - 32} ${width} ${height + 64}`;
 }
 
 /**

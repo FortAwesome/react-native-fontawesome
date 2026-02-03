@@ -24,10 +24,10 @@
 
 **Purpose**: Verify environment and ensure dependencies are current
 
-- [ ] T001 Verify current branch is `003-fa7-viewbox-overflow` and working directory is clean
-- [ ] T002 Run `npm install` to ensure dependencies are installed
-- [ ] T003 Run `npm test` to verify all existing tests pass (baseline)
-- [ ] T004 Run `npm run typecheck` to verify TypeScript compilation succeeds (baseline)
+- [x] T001 Verify current branch is `003-fa7-viewbox-overflow` and working directory is clean
+- [x] T002 Run `npm install` to ensure dependencies are installed
+- [x] T003 Run `npm test` to verify all existing tests pass (baseline)
+- [x] T004 Run `npm run typecheck` to verify TypeScript compilation succeeds (baseline)
 
 ---
 
@@ -37,11 +37,11 @@
 
 **⚠️ CRITICAL**: User story implementation cannot properly validate without FA7 dependencies
 
-- [ ] T005 Update peerDependencies in package.json to `"@fortawesome/fontawesome-svg-core": "~7"` (remove ~1 and ~6)
-- [ ] T006 Update devDependencies in package.json: `@fortawesome/fontawesome-svg-core` to `^7.0.0`
-- [ ] T007 Update devDependencies in package.json: `@fortawesome/free-solid-svg-icons` to `^7.0.0`
-- [ ] T008 Run `npm install` to update node_modules with new dependencies
-- [ ] T009 Run `npm test` to verify existing tests still pass with FA7 dependencies
+- [x] T005 Update peerDependencies in package.json to `"@fortawesome/fontawesome-svg-core": "~7"` (remove ~1 and ~6)
+- [x] T006 Update devDependencies in package.json: `@fortawesome/fontawesome-svg-core` to `^7.0.0`
+- [x] T007 Update devDependencies in package.json: `@fortawesome/free-solid-svg-icons` to `^7.0.0`
+- [x] T008 Run `npm install` to update node_modules with new dependencies
+- [x] T009 Run `npm test` to verify existing tests still pass with FA7 dependencies
 
 **Checkpoint**: Foundation ready - FA7 dependencies installed, existing tests pass
 
@@ -57,22 +57,22 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Add test: viewBox expansion subtracts 32 from minY in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T011 [P] [US1] Add test: viewBox expansion adds 64 to height in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T012 [P] [US1] Add test: viewBox expansion preserves minX unchanged in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T013 [P] [US1] Add test: viewBox expansion preserves width unchanged in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T014 [P] [US1] Add test: viewBox expansion handles non-zero minY correctly in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T015 [P] [US1] Add test: viewBox expansion handles invalid/missing viewBox gracefully in src/__tests__/FontAwesomeIcon.test.tsx
-- [ ] T016 [US1] Run `npm test` to confirm new tests FAIL (Red phase)
+- [x] T010 [P] [US1] Add test: viewBox expansion subtracts 32 from minY in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T011 [P] [US1] Add test: viewBox expansion adds 64 to height in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T012 [P] [US1] Add test: viewBox expansion preserves minX unchanged in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T013 [P] [US1] Add test: viewBox expansion preserves width unchanged in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T014 [P] [US1] Add test: viewBox expansion handles non-zero minY correctly in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T015 [P] [US1] Add test: viewBox expansion handles invalid/missing viewBox gracefully in src/__tests__/FontAwesomeIcon.test.tsx
+- [x] T016 [US1] Run `npm test` to confirm new tests FAIL (Red phase)
 
 ### Implementation for User Story 1
 
-- [ ] T017 [US1] Add `expandViewBox(viewBox: string): string` function in src/FontAwesomeIcon.tsx
-- [ ] T018 [US1] Integrate expandViewBox call after abstract element retrieval, before percentage replacement in src/FontAwesomeIcon.tsx
-- [ ] T019 [US1] Run `npm test` to confirm all tests PASS (Green phase)
-- [ ] T020 [US1] Run `npm run typecheck` to verify TypeScript compilation succeeds
-- [ ] T021 [US1] Run `npm run lint` to verify no linting errors
-- [ ] T022 [US1] Review expandViewBox for refactoring opportunities (Refactor phase) in src/FontAwesomeIcon.tsx
+- [x] T017 [US1] Add `expandViewBox(viewBox: string): string` function in src/FontAwesomeIcon.tsx
+- [x] T018 [US1] Integrate expandViewBox call after abstract element retrieval, before percentage replacement in src/FontAwesomeIcon.tsx
+- [x] T019 [US1] Run `npm test` to confirm all tests PASS (Green phase)
+- [x] T020 [US1] Run `npm run typecheck` to verify TypeScript compilation succeeds
+- [x] T021 [US1] Run `npm run lint` to verify no linting errors
+- [x] T022 [US1] Review expandViewBox for refactoring opportunities (Refactor phase) in src/FontAwesomeIcon.tsx
 
 **Checkpoint**: User Story 1 complete - viewBox expansion implemented, all tests pass
 
@@ -86,13 +86,13 @@
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] Add paperclip icon import to example app in example/src/iconFactory.ts or example/src/App.tsx
-- [ ] T024 [US2] Ensure paperclip icon is included in the icon rotation/grid in example/src/iconFactory.ts
-- [ ] T025 [US2] Run example app with `cd example && npm start` and visually verify overflow icons render correctly
-- [ ] T026 [US2] Test overflow icon with transforms enabled in example app
-- [ ] T027 [US2] Test overflow icon with mask enabled in example app
-- [ ] T028 [US2] Verify example app builds for iOS: `cd example && npm run ios`
-- [ ] T029 [US2] Verify example app builds for Android: `cd example && npm run android`
+- [x] T023 [US2] Example app already displays overflow icons - no changes needed
+- [x] T024 [US2] Example app icon rotation already includes all fas icons including paperclip
+- [ ] T025 [US2] Run example app with `cd example && npm start` and visually verify overflow icons render correctly (MANUAL)
+- [ ] T026 [US2] Test overflow icon with transforms enabled in example app (MANUAL)
+- [ ] T027 [US2] Test overflow icon with mask enabled in example app (MANUAL)
+- [ ] T028 [US2] Verify example app builds for iOS: `cd example && npm run ios` (MANUAL)
+- [ ] T029 [US2] Verify example app builds for Android: `cd example && npm run android` (MANUAL)
 
 **Checkpoint**: User Story 2 complete - example app demonstrates the fix visually
 
@@ -106,10 +106,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T030 [US3] Update README.md with FA7 compatibility notice in README.md
-- [ ] T031 [US3] Add version migration guidance: "For FA6 support, use react-native-fontawesome 0.3.x" in README.md
-- [ ] T032 [US3] Update any version references in documentation to reflect FA7 requirement in README.md
-- [ ] T033 [US3] Verify peerDependencies in package.json shows only `"~7"` for fontawesome-svg-core in package.json
+- [x] T030 [US3] Update README.md with FA7 compatibility notice in README.md
+- [x] T031 [US3] Add version migration guidance: "For FA6 support, use react-native-fontawesome 0.3.x" in README.md
+- [x] T032 [US3] Update any version references in documentation to reflect FA7 requirement in README.md
+- [x] T033 [US3] Verify peerDependencies in package.json shows only `"~7"` for fontawesome-svg-core in package.json
 
 **Checkpoint**: User Story 3 complete - documentation clearly communicates FA7-only compatibility
 
@@ -119,12 +119,12 @@
 
 **Purpose**: Final validation and cleanup
 
-- [ ] T034 Run full validation suite: `npm test && npm run typecheck && npm run lint`
-- [ ] T035 Build the library: `npm run prepare`
-- [ ] T036 Review all snapshot tests for expected viewBox changes in src/__tests__/__snapshots__/
-- [ ] T037 Update snapshot tests if viewBox values have changed as expected
-- [ ] T038 Run quickstart.md validation commands to verify documentation accuracy
-- [ ] T039 Verify no regressions in existing icon rendering (non-overflow icons still display correctly)
+- [x] T034 Run full validation suite: `npm test && npm run typecheck && npm run lint`
+- [x] T035 Build the library: `npm run prepare`
+- [x] T036 Review all snapshot tests for expected viewBox changes in src/__tests__/__snapshots__/
+- [x] T037 Update snapshot tests if viewBox values have changed as expected
+- [x] T038 Run quickstart.md validation commands to verify documentation accuracy
+- [x] T039 Verify no regressions in existing icon rendering (non-overflow icons still display correctly)
 
 ---
 

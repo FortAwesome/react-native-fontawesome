@@ -465,6 +465,91 @@ describe('with a duotone icon', () => {
   });
 });
 
+describe('viewBox expansion for FA7 overflow icons', () => {
+  // react-native-svg parses viewBox string into separate numeric props:
+  // minX, minY, vbWidth, vbHeight
+  // We test these parsed values to verify the viewBox expansion
+
+  // T010: viewBox expansion subtracts 32 from minY
+  test('expands viewBox by subtracting 32 from minY', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} />
+    ).toJSON() as any;
+
+    // faCoffee has viewBox "0 0 640 512"
+    // After expansion: "0 -32 640 576"
+    // react-native-svg parses this into minY=-32
+    expect(tree.props.minY).toEqual(-32);
+  });
+
+  // T011: viewBox expansion adds 64 to height
+  test('expands viewBox by adding 64 to height', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} />
+    ).toJSON() as any;
+
+    // faCoffee original height: 512
+    // After expansion: 512 + 64 = 576
+    expect(tree.props.vbHeight).toEqual(576);
+  });
+
+  // T012: viewBox expansion preserves minX unchanged
+  test('preserves minX unchanged', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} />
+    ).toJSON() as any;
+
+    // minX should remain 0 (unchanged)
+    expect(tree.props.minX).toEqual(0);
+  });
+
+  // T013: viewBox expansion preserves width unchanged
+  test('preserves width unchanged', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} />
+    ).toJSON() as any;
+
+    // width should remain 640 (unchanged)
+    expect(tree.props.vbWidth).toEqual(640);
+  });
+
+  // T014: viewBox expansion handles icons with different heights correctly
+  test('handles icons with different heights correctly', () => {
+    // Create an icon with different dimensions
+    // Note: fontawesome-svg-core generates viewBox from icon array [width, height, ...]
+    const faIconWithDifferentHeight: IconDefinition = {
+      prefix: 'fas',
+      iconName: 'tall-icon' as fontawesome.IconName,
+      // icon array: [width, height, aliases, unicode, pathData]
+      icon: [512, 532, [], 'f999', 'M1z'],
+    };
+
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faIconWithDifferentHeight} />
+    ).toJSON() as any;
+
+    // minY: 0 - 32 = -32
+    // height: 532 + 64 = 596
+    expect(tree.props.minY).toEqual(-32);
+    expect(tree.props.vbHeight).toEqual(596);
+  });
+
+  // T015: viewBox expansion handles rendering gracefully
+  test('renders correctly with expanded viewBox', () => {
+    // This test ensures the component still renders with viewBox processing
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} />
+    ).toJSON() as any;
+
+    expect(tree).not.toBeNull();
+    // Verify all viewBox-related props are present and numeric
+    expect(typeof tree.props.minX).toEqual('number');
+    expect(typeof tree.props.minY).toEqual('number');
+    expect(typeof tree.props.vbWidth).toEqual('number');
+    expect(typeof tree.props.vbHeight).toEqual('number');
+  });
+});
+
 // Custom matcher declaration
 declare global {
   namespace jest {

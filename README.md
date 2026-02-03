@@ -8,8 +8,22 @@
 
 > Font Awesome React Native component using SVG with JS
 
+## Version Compatibility
+
+| Library Version | Font Awesome Version | Notes |
+|-----------------|---------------------|-------|
+| 1.x | Font Awesome 7 | Current version, FA7 only |
+| 0.3.x | Font Awesome 6 | Use for FA6 compatibility |
+
+**Important**: The 1.x branch requires Font Awesome 7. If you're using Font Awesome 6, please use version 0.3.x of this library:
+
+```bash
+npm install @fortawesome/react-native-fontawesome@0.3
+```
+
 <!-- toc -->
 
+- [Version Compatibility](#version-compatibility)
 - [Documentation](#documentation)
 - [How to Help](#how-to-help)
 - [Contributors](#contributors)

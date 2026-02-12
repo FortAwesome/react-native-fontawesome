@@ -23,13 +23,15 @@ const svgObjectMap: Record<string, React.ComponentType<any>> = {
 
 function convert(
   createElement: CreateElementFn,
-  element: AbstractElement | string
+  element: AbstractElement | string,
+  extraProps?: Record<string, unknown>
 ): React.ReactNode {
   if (typeof element === 'string') {
     return element;
   }
 
   const children = (element.children || []).map((child) => {
+    // extraProps only apply to root element, not children
     return convert(createElement, child);
   });
 
@@ -61,9 +63,15 @@ function convert(
     { attrs: {} as Record<string, unknown> }
   );
 
+  // Merge extraProps (user-provided props) with processed attributes
+  // extraProps come first, then mixins.attrs override (FA attrs take precedence)
+  const finalProps = extraProps
+    ? { ...extraProps, ...mixins.attrs }
+    : mixins.attrs;
+
   return createElement(
     svgObjectMap[element.tag] as React.ComponentType,
-    { ...mixins.attrs },
+    finalProps,
     ...children
   );
 }

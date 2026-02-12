@@ -2,6 +2,7 @@ import React from 'react';
 import convert from './converter';
 import { StyleSheet } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
+import type { SvgProps } from 'react-native-svg';
 import { icon, parse } from '@fortawesome/fontawesome-svg-core';
 import type {
   Transform,
@@ -21,7 +22,11 @@ export type FontAwesomeIconStyle = StyleProp<ViewStyle> & {
   color?: string;
 };
 
-export interface Props {
+/**
+ * Props that FontAwesomeIcon manages internally.
+ * These take precedence over any passthrough props.
+ */
+interface FontAwesomeIconOwnProps {
   icon: IconProp;
   /** @deprecated Use size instead */
   height?: number;
@@ -35,8 +40,15 @@ export interface Props {
   maskId?: string;
   transform?: string | Transform;
   style?: FontAwesomeIconStyle;
-  testID?: string;
 }
+
+/**
+ * Props type that combines FontAwesomeIcon-specific props with
+ * passthrough props from SvgProps. Conflicting props (width, height, color)
+ * are omitted from SvgProps since FontAwesomeIcon manages them internally.
+ */
+export type Props = FontAwesomeIconOwnProps &
+  Omit<SvgProps, keyof FontAwesomeIconOwnProps | 'width' | 'height' | 'color'>;
 
 type IconLookupOrDefinition = FAIconLookup | FAIconDefinition;
 
@@ -110,6 +122,7 @@ export default function FontAwesomeIcon(
     secondaryColor: secondaryColorInput = null,
     secondaryOpacity: secondaryOpacityInput = null,
     transform: transformInput = null,
+    ...restProps
   } = props;
   const style = StyleSheet.flatten(styleInput) as Record<
     string,
@@ -201,12 +214,15 @@ export default function FontAwesomeIcon(
   }
 
   // AbstractElement input always produces a ReactElement (not string), so cast is safe
-  return convertCurry(abstract[0] as AbstractElement) as React.ReactElement;
+  // Pass restProps to converter so user-provided props (like accessibility props) bypass attribute processing
+  return convert(
+    React.createElement,
+    abstract[0] as AbstractElement,
+    restProps as Record<string, unknown>
+  ) as React.ReactElement;
 }
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
-
-const convertCurry = convert.bind(null, React.createElement);
 
 function replaceCurrentColor(
   obj: AbstractElement,

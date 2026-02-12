@@ -325,17 +325,21 @@ describe('when size', () => {
 });
 
 describe('when extra props are given', () => {
-  test('they are ommitted from what we give RNSVG', () => {
+  // NOTE: As of feature 004-accessibility-support, extra props ARE passed through
+  // to the root SVG element. This is intentional to support accessibility props
+  // and other standard React Native View props.
+  test('they are passed through to RNSVG (prop passthrough feature)', () => {
     const tree = createComponent(
       <FontAwesomeIcon
         icon={faCoffee}
         color="purple"
-        // @ts-expect-error testing extra props
+        // @ts-expect-error testing extra props that aren't in SvgProps
         foo="bar"
       />
     ).toJSON() as any;
 
-    expect(tree.props).not.toHaveProperty('foo');
+    // Extra props are now passed through to support accessibility and other View props
+    expect(tree.props).toHaveProperty('foo', 'bar');
   });
 });
 
@@ -547,6 +551,145 @@ describe('viewBox expansion for FA7 overflow icons', () => {
     expect(typeof tree.props.minY).toEqual('number');
     expect(typeof tree.props.vbWidth).toEqual('number');
     expect(typeof tree.props.vbHeight).toEqual('number');
+  });
+});
+
+// ============================================================================
+// Accessibility and Prop Passthrough Tests (Feature 004-accessibility-support)
+// ============================================================================
+
+describe('accessibility props', () => {
+  // T007: Test accessibilityLabel forwarding
+  test('forwards accessibilityLabel to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} accessibilityLabel="Delete item" />
+    ).toJSON() as any;
+
+    expect(tree.props.accessibilityLabel).toEqual('Delete item');
+  });
+
+  // T008: Test accessibilityRole forwarding
+  test('forwards accessibilityRole to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} accessibilityRole="button" />
+    ).toJSON() as any;
+
+    expect(tree.props.accessibilityRole).toEqual('button');
+  });
+
+  // T009: Test accessibilityHint forwarding
+  test('forwards accessibilityHint to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon
+        icon={faCoffee}
+        accessibilityHint="Removes this item from your cart"
+      />
+    ).toJSON() as any;
+
+    expect(tree.props.accessibilityHint).toEqual(
+      'Removes this item from your cart'
+    );
+  });
+
+  // T011: Test accessible={false} forwarding
+  test('forwards accessible={false} to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} accessible={false} />
+    ).toJSON() as any;
+
+    expect(tree.props.accessible).toEqual(false);
+  });
+
+  // T012: Test aria-hidden forwarding
+  test('forwards aria-hidden to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} aria-hidden={true} />
+    ).toJSON() as any;
+
+    expect(tree.props['aria-hidden']).toEqual(true);
+  });
+
+  // T020: Test accessibilityState forwarding
+  test('forwards accessibilityState to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon
+        icon={faCoffee}
+        accessibilityState={{ selected: true, disabled: false }}
+      />
+    ).toJSON() as any;
+
+    expect(tree.props.accessibilityState).toEqual({
+      selected: true,
+      disabled: false,
+    });
+  });
+
+  // T021: Test accessibilityValue forwarding
+  test('forwards accessibilityValue to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon
+        icon={faCoffee}
+        accessibilityValue={{ min: 0, max: 100, now: 50 }}
+      />
+    ).toJSON() as any;
+
+    expect(tree.props.accessibilityValue).toEqual({
+      min: 0,
+      max: 100,
+      now: 50,
+    });
+  });
+});
+
+describe('prop passthrough', () => {
+  // T014: Test nativeID forwarding
+  test('forwards nativeID to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} nativeID="my-icon" />
+    ).toJSON() as any;
+
+    expect(tree.props.nativeID).toEqual('my-icon');
+  });
+
+  // T015: Test pointerEvents forwarding
+  test('forwards pointerEvents to root Svg element', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} pointerEvents="none" />
+    ).toJSON() as any;
+
+    expect(tree.props.pointerEvents).toEqual('none');
+  });
+
+  // T016: Test testID backward compatibility
+  test('testID continues to work (backward compatibility)', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} testID="icon-test-id" />
+    ).toJSON() as any;
+
+    expect(tree.props.testID).toEqual('icon-test-id');
+  });
+
+  // T017: Test FA props precedence over passthrough
+  test('FA-specific props take precedence over passthrough', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} size={32} />
+    ).toJSON() as any;
+
+    // FA's size prop should control width/height, not any passthrough
+    expect(tree.props.width).toEqual(32);
+    expect(tree.props.height).toEqual(32);
+  });
+
+  // T018: Test backward compatibility with no passthrough props
+  test('existing behavior unchanged when no passthrough props provided', () => {
+    const tree = createComponent(
+      <FontAwesomeIcon icon={faCoffee} size={24} color="blue" />
+    ).toJSON() as any;
+
+    // Verify basic rendering still works
+    expect(tree.props.width).toEqual(24);
+    expect(tree.props.height).toEqual(24);
+    expect(tree).not.toBeNull();
   });
 });
 

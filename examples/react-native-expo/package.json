@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/webpack-config": "~0.16.2",
+    "@expo/webpack-config": "~19.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/pro-duotone-svg-icons": "^6.1.1",
     "@fortawesome/pro-light-svg-icons": "^6.1.1",

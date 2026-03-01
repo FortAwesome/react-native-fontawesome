@@ -73,6 +73,8 @@ function normalizeIconArgs(icon) {
   }
 }
 
+const noop = () => {};
+
 function FontAwesomeIcon(props) {
   var _props = _objectSpread({
     icon: null,
@@ -83,7 +85,8 @@ function FontAwesomeIcon(props) {
     color: null,
     secondaryColor: null,
     secondaryOpacity: null,
-    size: DEFAULT_SIZE
+    size: DEFAULT_SIZE,
+    onPress: noop
   }, props);
 
   var iconArgs = _props.icon,
@@ -91,7 +94,8 @@ function FontAwesomeIcon(props) {
       maskId = _props.maskId,
       height = _props.height,
       width = _props.width,
-      size = _props.size;
+      size = _props.size,
+      onPress = _props.onPress;
 
   var style = _reactNative.StyleSheet.flatten(_props.style);
 
@@ -134,12 +138,14 @@ function FontAwesomeIcon(props) {
   rootAttributes.height = resolvedHeight;
   rootAttributes.width = resolvedWidth;
   rootAttributes.style = modifiedStyle;
+  rootAttributes.onPress = onPress;
   replaceCurrentColor(_abstract[0], color, secondaryColor, secondaryOpacity);
   return convertCurry(_abstract[0]);
 }
 
 FontAwesomeIcon.displayName = 'FontAwesomeIcon';
 FontAwesomeIcon.propTypes = {
+  onPress: _propTypes["default"].func,
   height: _propTypes["default"].number,
   width: _propTypes["default"].number,
   size: _propTypes["default"].number,

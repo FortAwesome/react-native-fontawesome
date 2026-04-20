@@ -163,6 +163,9 @@
           "name": "angular"
         }
       }
+    },
+    "hooks": {
+      "after:npm:release": "npm publish --registry=https://npm.fontawesome.com/"
     }
   },
   "prettier": {
